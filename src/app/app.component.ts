@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import {Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

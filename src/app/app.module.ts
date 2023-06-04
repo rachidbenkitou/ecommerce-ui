@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
+import { ProductListComponent } from './admin/components/product/product-list/product-list.component';
 
-import { ProductListComponent } from './components/product/product-list/product-list.component';
-import { DashboardComponent } from './components/shared/dashboard/dashboard.component';
+
 
 
 @NgModule({
