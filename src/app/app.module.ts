@@ -5,17 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
-import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
+
 import { ProductListComponent } from './components/product/product-list/product-list.component';
+import { DashboardComponent } from './components/shared/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
-    NavbarComponent,
-    ProductListComponent
+    ProductListComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
