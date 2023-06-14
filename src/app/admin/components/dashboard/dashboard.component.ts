@@ -13,7 +13,6 @@ export class DashboardComponent implements AfterViewInit, OnInit{
 
   ngOnInit(): void {
     this.hideSideBar();
-    this.switchMode();
   }
 
   initializeSideMenu(): void {
@@ -40,17 +39,7 @@ export class DashboardComponent implements AfterViewInit, OnInit{
     });
   }
 
-  switchMode(){
-    const switchMode = document.getElementById('switch-mode') as HTMLInputElement;
 
-    switchMode.addEventListener('change', function () {
-      if (this.checked) {
-        document.body.classList.add('dark');
-      } else {
-        document.body.classList.remove('dark');
-      }
-    });
-  }
   }
   
 

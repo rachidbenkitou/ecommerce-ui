@@ -19,3 +19,7 @@
 .action button{
     flex: 1;
 }
+
+.wide-input {
+    width: 300px;
+}

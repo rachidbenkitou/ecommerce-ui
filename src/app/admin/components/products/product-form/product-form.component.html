@@ -5,19 +5,19 @@
 <form [formGroup]="productForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content class="content">
         <div class="row">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="wide-input">
                 <mat-label>Nom du produit</mat-label>
                 <input matInput type="text" placeholder="Ex. Smart Phone" formControlName="nomProduct">
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="wide-input">
                 <mat-label>Nom du produit</mat-label>
                 <input matInput type="text" placeholder="Ex. Smart Phone">
             </mat-form-field>
         </div>
 
         <div class="row">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="wide-input">
                 <mat-label>SubCategories</mat-label>
                 <mat-select>
                     <mat-option *ngFor="let subCategory of subCategories" [value]="subCategory">
@@ -26,7 +26,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="wide-input">
                 <mat-label>Quantité</mat-label>
                 <input matInput type="number" placeholder="Ex. 50">
             </mat-form-field>
@@ -34,7 +34,7 @@
     </div>
 
     <div mat-dialog-actions class="action">
-        <button mat-raised-button>Annuler</button>
-        <button mat-raised-button class="custom-button" color="primary" type="submit">Ajouter</button>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Annuler</button>
+        <button mat-raised-button class="custom-button" color="primary" type="submit" >{{data ? 'Modifier': 'Ajouter'}}</button>
     </div>
 </form>

@@ -2,3 +2,18 @@
   cursor: pointer;
 }
 
+.test {
+  margin-top: 27px;
+}
+
+.table-container {}
+
+.main-body {
+  max-width: 1248px;
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
+.main-body mat-form-field {
+  width: 100%;
+}
