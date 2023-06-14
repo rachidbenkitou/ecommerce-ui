@@ -1,0 +1,40 @@
+<div mat-dialog-title>
+    <h1>Formulaire du produit</h1>
+</div>
+
+<form [formGroup]="productForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Nom du produit</mat-label>
+                <input matInput type="text" placeholder="Ex. Smart Phone" formControlName="nomProduct">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Nom du produit</mat-label>
+                <input matInput type="text" placeholder="Ex. Smart Phone">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>SubCategories</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let subCategory of subCategories" [value]="subCategory">
+                        {{subCategory}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Quantité</mat-label>
+                <input matInput type="number" placeholder="Ex. 50">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button>Annuler</button>
+        <button mat-raised-button class="custom-button" color="primary" type="submit">Ajouter</button>
+    </div>
+</form>
