@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Product } from 'src/app/shared/models/product';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css']
 })
-export class ProductFormComponent implements OnInit{
+export class ProductFormComponent implements OnInit {
   productForm: FormGroup;
 
   subCategories: string[] = [
@@ -21,21 +22,33 @@ export class ProductFormComponent implements OnInit{
     private _productService: ProductService,
     private _formBuilder: FormBuilder,
     private _dialogRef: MatDialogRef<ProductFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any
+    @Inject(MAT_DIALOG_DATA) public data: Product
   ) {
     this.productForm = this._formBuilder.group({
-      nomProduct: ''
+      id: '',
+      name: '',
+      description: '',
+      price: '',
+      quantity: '',
     });
   }
-  
+
   ngOnInit(): void {
     this.productForm.patchValue(this.data)
   }
 
+  //This Function helps to add or update a product
   onFormSubmit(): void {
     if (this.productForm.valid) {
-      alert('The product is added successfully!')
-      this._dialogRef.close(true)
+      this._productService.addProduct(this.productForm.value).subscribe({
+        next: (val: any) => {
+          this._dialogRef.close(true)
+          alert('Product is added successfully!')
+        },
+        error: (err: any) => {
+          console.log(err)
+        }
+      });
     }
   }
 }

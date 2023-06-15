@@ -12,7 +12,12 @@ export class ProductService {
     private _http: HttpClient
   ) { }
 
-  addProduct(product: Product): Observable<Product>{
-    return this._http.post(`locahost:8222/notes/all`, product)
+  addProduct(product: Product): Observable<Product> {
+    return this._http.post<Product>(`http://localhost:9000/products`, product)
   }
+
+  getProducts(): Observable<Product[]> {
+    return this._http.get<Product[]>(`http://localhost:9000/products`)
+  }
+  
 }

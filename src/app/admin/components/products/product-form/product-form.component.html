@@ -4,34 +4,33 @@
 
 <form [formGroup]="productForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content class="content">
+        
         <div class="row">
             <mat-form-field appearance="outline" class="wide-input">
                 <mat-label>Nom du produit</mat-label>
-                <input matInput type="text" placeholder="Ex. Smart Phone" formControlName="nomProduct">
+                <input matInput type="text" placeholder="Ex. Smart Phone" formControlName="name">
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="wide-input">
-                <mat-label>Nom du produit</mat-label>
-                <input matInput type="text" placeholder="Ex. Smart Phone">
+                <mat-label>Description</mat-label>
+                <input matInput type="text" placeholder="Ex. Smart Phone" formControlName="description">
             </mat-form-field>
         </div>
 
         <div class="row">
             <mat-form-field appearance="outline" class="wide-input">
-                <mat-label>SubCategories</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let subCategory of subCategories" [value]="subCategory">
-                        {{subCategory}}
-                    </mat-option>
-                </mat-select>
+                <mat-label>Price</mat-label>
+                <input matInput type="text" placeholder="Ex. Smart Phone" formControlName="price">
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="wide-input">
-                <mat-label>Quantité</mat-label>
-                <input matInput type="number" placeholder="Ex. 50">
+                <mat-label>Quantity</mat-label>
+                <input matInput type="text" placeholder="Ex. Smart Phone" formControlName="quantity">
             </mat-form-field>
         </div>
     </div>
+
+    
 
     <div mat-dialog-actions class="action">
         <button mat-raised-button type="button" [mat-dialog-close]="false">Annuler</button>

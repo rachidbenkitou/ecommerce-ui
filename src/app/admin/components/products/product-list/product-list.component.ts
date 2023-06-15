@@ -15,8 +15,10 @@ export class ProductListComponent implements OnInit {
   displayedColumns: string[] = [
     'id',
     'name',
-    'quantity',
+    'description',
     'price',
+    'quantity',
+    'subCategory',
     'action'
   ];
   dataSource!: MatTableDataSource<any>;
@@ -25,7 +27,7 @@ export class ProductListComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.getProducts()
   }
 
   constructor(
@@ -35,23 +37,24 @@ export class ProductListComponent implements OnInit {
   ) { }
 
   getProducts() {
-    /*
+
     this._productService.getProducts().subscribe({
-      next: (data)=>{
-        this.dataSource= new MatTableDataSource(data);
-        this.dataSource.sort=this.sort
-        this.dataSource.paginator=this.paginator
+      next: (data) => {
+        console.log(data)
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.sort = this.sort
+        this.dataSource.paginator = this.paginator
       },
       error: console.log
-      
+
     });
-    */
+
   }
   openAddProductForm(): void {
-    const dialogRef=this._dialog.open(ProductFormComponent)
+    const dialogRef = this._dialog.open(ProductFormComponent)
     dialogRef.afterClosed().subscribe({
-      next: (val) =>{
-        if(val){
+      next: (val) => {
+        if (val) {
           this.getProducts();
         }
       }
