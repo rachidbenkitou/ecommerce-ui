@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/shared/models/product';
 import { SubCategory } from 'src/app/shared/models/subCategory';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -17,7 +18,7 @@ export class ProductFormComponent implements OnInit {
 
   constructor(
     private _productService: ProductService,
-    private _subCategoryService:SubCategoryService,
+    private _subCategoryService: SubCategoryService,
     private _formBuilder: FormBuilder,
     private _dialogRef: MatDialogRef<ProductFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Product
@@ -38,42 +39,44 @@ export class ProductFormComponent implements OnInit {
     this.getSubCategories();
   }
 
-  getSubCategories(){
+  getSubCategories() {
     this._subCategoryService.getSubCategories().subscribe({
       next: (data) => {
-        this.subCategories=data
+        this.subCategories = data
       },
       error: console.log
 
     });
   }
-  //This function helps to add or update a product
-  onFormSubmit() {
-      if(this.data){
 
-        if (this.productForm.valid) {
-          this._productService.updateProduct(this.productForm.value).subscribe({
-            next: (val: any) => {
-              this._dialogRef.close(true)
-              alert('Product is updated successfully!')
-            },
-            error: (err: any) => {
-              console.log(err)
-            }
-          });
+  addorUpdateProduct(alertMessage: string): void {
+    if (this.productForm.valid) {
+      this._productService.updateProduct(this.productForm.value).subscribe({
+        next: (val: any) => {
+          this._dialogRef.close(true)
+          alert(alertMessage)
+        },
+        error: (err: any) => {
+          console.log(err)
         }
-      }else{
-        if (this.productForm.valid) {
-          this._productService.addProduct(this.productForm.value).subscribe({
-            next: (val: any) => {
-              this._dialogRef.close(true)
-              alert('Product is added successfully!')
-            },
-            error: (err: any) => {
-              console.log(err)
-            }
-          });
-        }
-      }
+      });
+    }
+  }
+
+  addProduct(): void {
+    this.addorUpdateProduct('Product is added successfully!')
+  }
+  updateProduct(): void {
+    this.addorUpdateProduct('Product is updated successfully!')
+
+  }
+
+  //This function helps to add or update a product
+  onFormSubmit(): void {
+    if (this.data) {
+      this.updateProduct();
+    } else {
+      this.addProduct();
+    }
   }
 }
