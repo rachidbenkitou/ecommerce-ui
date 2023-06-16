@@ -29,7 +29,7 @@ export class ProductFormComponent implements OnInit {
       id: '',
       name: ['', [Validators.required, Validators.maxLength(50)]],
       description: ['', [Validators.required, Validators.maxLength(100)]],
-      price: ['0', [Validators.required, Validators.min(0)]],
+      price: ['', [Validators.required, Validators.min(0)]],
       quantity: ['1', [Validators.required, Validators.min(1)]],
       subCategory: ['', [Validators.required]]
 
@@ -49,16 +49,31 @@ export class ProductFormComponent implements OnInit {
   }
   //This function helps to add or update a product
   onFormSubmit() {
-    if (this.productForm.valid) {
-      this._productService.addProduct(this.productForm.value).subscribe({
-        next: (val: any) => {
-          this._dialogRef.close(true)
-          alert('Product is added successfully!')
-        },
-        error: (err: any) => {
-          console.log(err)
+      if(this.data){
+
+        if (this.productForm.valid) {
+          this._productService.updateProduct(this.productForm.value).subscribe({
+            next: (val: any) => {
+              this._dialogRef.close(true)
+              alert('Product is updated successfully!')
+            },
+            error: (err: any) => {
+              console.log(err)
+            }
+          });
         }
-      });
-    }
+      }else{
+        if (this.productForm.valid) {
+          this._productService.addProduct(this.productForm.value).subscribe({
+            next: (val: any) => {
+              this._dialogRef.close(true)
+              alert('Product is added successfully!')
+            },
+            error: (err: any) => {
+              console.log(err)
+            }
+          });
+        }
+      }
   }
 }

@@ -19,11 +19,12 @@
             <mat-form-field appearance="outline" class="wide-input">
                 <mat-label>SubCategory</mat-label>
                 <mat-select formControlName="subCategory">
-                  <mat-option *ngFor="let subCategory of subCategories" [value]="subCategory">
-                    {{subCategory.name}}
-                  </mat-option>
+                    <mat-option *ngFor="let subCategory of subCategories" [value]="subCategory">
+                        {{ subCategory.name }}
+                    </mat-option>
                 </mat-select>
-              </mat-form-field>
+            </mat-form-field>
+
         </div>
 
         <div class="row">
@@ -38,14 +39,15 @@
             </mat-form-field>
         </div>
 
-            <mat-form-field appearance="outline" class="component-with-size">
-                <mat-label>Description</mat-label>
-                <textarea matInput formControlName="description" maxlength="10"></textarea>
-                <mat-error *ngIf="productForm.get('description')?.hasError('maxlength') && productForm.get('description')?.touched">
-                  Maximum character limit reached (10 characters).
-                </mat-error>
-              </mat-form-field>
-              
+        <mat-form-field appearance="outline" class="component-with-size">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" maxlength="10"></textarea>
+            <mat-error
+                *ngIf="productForm.get('description')?.hasError('maxlength') && productForm.get('description')?.touched">
+                Maximum character limit reached (10 characters).
+            </mat-error>
+        </mat-form-field>
+
     </div>
 
 

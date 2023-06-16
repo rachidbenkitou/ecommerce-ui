@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductFormComponent } from '../product-form/product-form.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { Product } from 'src/app/shared/models/product';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
@@ -29,11 +30,14 @@ export class ProductListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  productForm!: Product;
+  _formBuilder!: Product;
+
 
   ngOnInit(): void {
     this.getProducts()
   }
-
+  
   constructor(
     private _dialog: MatDialog,
     private _productService: ProductService,
@@ -55,27 +59,48 @@ export class ProductListComponent implements OnInit {
 
   }
 
-  deleteProduct(productId: number) {
-    this._productService.deleteProductById(productId).subscribe(
-      () => {
+  deleteProduct(productId: number):void {
+    this._productService.deleteProductById(productId).subscribe({
+      next: (data)=>{
         this.dataSource.data = this.dataSource.data.filter(product => product.id !== productId);
         alert('The product deleted successfully');
       },
-      (error) => {
-        console.log(error);
-      }
-    );
+      error: console.log
+    });
   }
 
   openAddProductForm(): void {
-    const dialogRef = this._dialog.open(ProductFormComponent)
-    dialogRef.afterClosed().subscribe({
-      next: (val) => {
-        if (val) {
-          this.getProducts();
-        }
+    this.doAfterFormClosed(true);
+  }
+
+  openEditProductForm(data: Product): void{
+    this.doAfterFormClosed(true, data);
+  }
+
+  doAfterFormClosed(isEdit: boolean, data?: Product): void {
+    let dialogRef: MatDialogRef<ProductFormComponent>;
+  
+    if (isEdit && data) {
+      dialogRef = this._dialog.open(ProductFormComponent, {
+        data,
+      });
+    } else {
+      dialogRef = this._dialog.open(ProductFormComponent);
+    }
+  
+    dialogRef.afterClosed().subscribe((val) => {
+      if (val) {
+        this.getProducts();
       }
     });
+  }
+  
+
+  data(data: any) {
+    throw new Error('Method not implemented.');
+  }
+  getSubCategories() {
+    throw new Error('Method not implemented.');
   }
 
   applyFilter(event: Event) {
