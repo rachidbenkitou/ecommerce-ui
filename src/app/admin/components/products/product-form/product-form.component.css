@@ -23,3 +23,8 @@
 .wide-input {
     width: 300px;
 }
+.component-with-size {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  

@@ -7,6 +7,8 @@ export class Product {
     description!: String
     price!: Number
     quantity!: Number
-    /*subCategory!: SubCategory;*/
-    /*images!: Image[]*/
+    subCategory!: SubCategory;
+    dateCreated!:Date;
+    dateUpdated!:Date
+    //images!: Image[]
 }

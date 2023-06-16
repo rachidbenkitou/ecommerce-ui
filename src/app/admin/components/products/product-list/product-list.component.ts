@@ -19,6 +19,8 @@ export class ProductListComponent implements OnInit {
     'price',
     'quantity',
     'subCategory',
+    'dateCreated',
+    'dateUpdated',
     'action'
   ];
   dataSource!: MatTableDataSource<any>;
@@ -36,7 +38,7 @@ export class ProductListComponent implements OnInit {
 
   ) { }
 
-  getProducts() {
+  getProducts(): void {
 
     this._productService.getProducts().subscribe({
       next: (data) => {

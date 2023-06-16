@@ -63,6 +63,16 @@
 					<td mat-cell *matCellDef="let row"> {{row.subCategory.name}} </td>
 				</ng-container>
 
+				<ng-container matColumnDef="dateCreated">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Date d'ajout</th>
+					<td mat-cell *matCellDef="let row"> {{row.dateCreated | date: 'dd-MM-yyyy' }} </td>
+				</ng-container>
+
+				<ng-container matColumnDef="dateUpdated">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Dernier modification </th>
+					<td mat-cell *matCellDef="let row"> {{row.dateUpdated | date: 'dd-MM-yyyy' }} </td>
+				</ng-container>
+
 				<ng-container matColumnDef="action">
 					<th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
 					<td mat-cell *matCellDef="let row">
