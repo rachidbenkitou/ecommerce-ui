@@ -5,6 +5,10 @@
 <form [formGroup]="productForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content class="content">
 
+        <mat-form-field appearance="outline" class="wide-input" class="wide-input hidden">
+            <mat-label>ID</mat-label>
+            <input matInput type="text" placeholder="Ex. Redmi 9C" formControlName="id">
+        </mat-form-field>
 
         <div class="row">
             <mat-form-field appearance="outline" class="wide-input">

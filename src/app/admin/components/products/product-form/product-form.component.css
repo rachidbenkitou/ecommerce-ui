@@ -12,19 +12,23 @@
     gap: 10px;
 }
 
-.action{
+.action {
     padding: 0px 25px 20px;
 }
 
-.action button{
+.action button {
     flex: 1;
 }
 
 .wide-input {
     width: 300px;
 }
+
 .component-with-size {
     width: 100%;
     box-sizing: border-box;
-  }
-  
+}
+
+.hidden {
+    display: none;
+}

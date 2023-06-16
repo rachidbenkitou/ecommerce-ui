@@ -7,17 +7,26 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
+  private baseUrl = 'http://localhost:9000/products';
+
 
   constructor(
     private _http: HttpClient
   ) { }
 
-  addProduct(product: Product): Observable<Product> {
-    return this._http.post<Product>(`http://localhost:9000/products`, product)
+  getProducts(): Observable<Product[]> {
+    return this._http.get<Product[]>(this.baseUrl)
   }
 
-  getProducts(): Observable<Product[]> {
-    return this._http.get<Product[]>(`http://localhost:9000/products`)
+  addProduct(product: Product): Observable<Product> {
+    return this._http.post<Product>(this.baseUrl, product)
   }
-  
+
+  deleteProductById(productId: Number): Observable<void> {
+    const url = `${this.baseUrl}/${productId}`;
+    return this._http.delete<void>(url)
+  }
+
+
+
 }

@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductService } from 'src/app/shared/services/product.service';
+import { Product } from 'src/app/shared/models/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -34,7 +36,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private _dialog: MatDialog,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private router: Router
 
   ) { }
 
@@ -42,7 +45,6 @@ export class ProductListComponent implements OnInit {
 
     this._productService.getProducts().subscribe({
       next: (data) => {
-        console.log(data)
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.sort = this.sort
         this.dataSource.paginator = this.paginator
@@ -52,6 +54,19 @@ export class ProductListComponent implements OnInit {
     });
 
   }
+
+  deleteProduct(productId: number) {
+    this._productService.deleteProductById(productId).subscribe(
+      () => {
+        this.dataSource.data = this.dataSource.data.filter(product => product.id !== productId);
+        alert('The product deleted successfully');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   openAddProductForm(): void {
     const dialogRef = this._dialog.open(ProductFormComponent)
     dialogRef.afterClosed().subscribe({
