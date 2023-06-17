@@ -8,8 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatIconButton} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
-import { ProductListComponent } from './admin/components/products/product-list/product-list.component';
-import { ProductFormComponent } from './admin/components/products/product-form/product-form.component';
+import { ProductListComponent } from './shared/components/products/product-list/product-list.component';
+import { ProductFormComponent } from './shared/components/products/product-form/product-form.component';
 import { StatisticsComponent } from './admin/components/statistics/statistics.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -21,8 +21,10 @@ import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
-
-
+import { CategoryFormComponent } from './shared/components/categories/category-form/category-form.component';
+import { CategoryListComponent } from './shared/components/categories/category-list/category-list.component';
+import { SubCategoryListComponent } from './shared/components/subCategories/sub-category-list/sub-category-list.component';
+import { SubCategoryFormComponent } from './shared/components/subCategories/sub-category-form/sub-category-form.component';
 
 
 
@@ -38,8 +40,10 @@ import { MatIconModule } from '@angular/material/icon';
     DashboardComponent,
     ProductFormComponent,
     StatisticsComponent,
-    
-
+    CategoryFormComponent,
+    CategoryListComponent,
+    SubCategoryListComponent,
+    SubCategoryFormComponent,
   ],
   imports: [
     BrowserModule,
