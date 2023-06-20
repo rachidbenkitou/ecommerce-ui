@@ -16,6 +16,9 @@ import { Validators } from '@angular/forms';
 })
 export class ProductListComponent implements OnInit {
   displayedColumns: string[] = [
+    'select', // Checkbox column
+
+    'image',
     'id',
     'name',
     'description',

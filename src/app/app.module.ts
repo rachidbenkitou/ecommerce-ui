@@ -25,6 +25,7 @@ import { CategoryFormComponent } from './shared/components/categories/category-f
 import { CategoryListComponent } from './shared/components/categories/category-list/category-list.component';
 import { SubCategoryListComponent } from './shared/components/subCategories/sub-category-list/sub-category-list.component';
 import { SubCategoryFormComponent } from './shared/components/subCategories/sub-category-form/sub-category-form.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -62,6 +63,7 @@ import { SubCategoryFormComponent } from './shared/components/subCategories/sub-
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
+    MatCheckboxModule,
     
 
   ],

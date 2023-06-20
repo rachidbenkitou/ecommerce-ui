@@ -21,76 +21,157 @@
 
 
 	<div class="main-body">
-		<mat-form-field appearance="outline">
-			<mat-label>nom du produit</mat-label>
-			<input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-		</mat-form-field>
+
 
 		<div class="table-container">
-			<table mat-table [dataSource]="dataSource" matSort>
+
+
+			<div class="container-dash ">
+
+				<div class="button-container">
+
+					<mat-form-field appearance="outline">
+						<mat-label>Field 1</mat-label>
+						<mat-select>
+							<mat-option value="all">All</mat-option>
+							<mat-option value="search">Search by name...</mat-option>
+						</mat-select>
+					</mat-form-field>
+
+
+					<div class="space"></div> <!-- Space between the fields -->
+
+					<mat-form-field appearance="outline">
+						<mat-label>Field 2</mat-label>
+						<input matInput placeholder="Select subCategory">
+						<button mat-icon-button matSuffix color="primary" aria-label="Search" class="main-color">
+							<mat-icon fontSet="fas" fontIcon="fa-search"></mat-icon>
+						</button>
+					</mat-form-field>
+
+				</div>
+
+
+
+				<div class="button-container">
+					<button mat-raised-button color="primary" class="custom-button main-color-bac">
+						<mat-icon fontSet="fas" fontIcon="fa-filter"></mat-icon> Filter
+					</button>
+
+					<button mat-icon-button color="primary" aria-label="Delete" class="custom-button main-color">
+						<mat-icon fontSet="fas" fontIcon="fa-trash-alt"></mat-icon>
+					</button>
+
+					<button mat-icon-button color="primary" aria-label="Download" class="custom-button main-color">
+						<mat-icon fontSet="fas" fontIcon="fa-download"></mat-icon>
+					</button>
+				</div>
+
+
+
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<table mat-table [dataSource]="dataSource" matSort class="custom-table">
+
+				<ng-container matColumnDef="image">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap black-header"> Images </th>
+					<td mat-cell *matCellDef="let row" class="nowrap ">
+						<button mat-icon-button color="primary" aria-label="View" style="color: rgb(59, 57, 57);">
+							<mat-icon>visibility</mat-icon> <!-- Replace 'visibility' with the desired icon name -->
+						</button>
+					</td>
+				</ng-container>
+
+				<!-- Checkbox Column -->
+				<ng-container matColumnDef="select">
+					<th mat-header-cell *matHeaderCellDef class="black-header">
+						<mat-checkbox></mat-checkbox>
+					</th>
+					<td mat-cell *matCellDef="let row">
+						<mat-checkbox (click)="$event.stopPropagation()"></mat-checkbox>
+					</td>
+				</ng-container>
 
 				<!-- ID Column -->
 				<ng-container matColumnDef="id">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+					<th mat-header-cell *matHeaderCellDef mat-sort-header class="black-header"> ID </th>
 					<td mat-cell *matCellDef="let row"> {{row.id}} </td>
 				</ng-container>
 
 				<!-- Progress Column -->
 				<ng-container matColumnDef="name">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap"> Nom </th>
+					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap black-header"> Nom </th>
 					<td mat-cell *matCellDef="let row" class="nowrap"> {{row.name}} </td>
 				</ng-container>
 
 				<!-- Name Column -->
 				<ng-container matColumnDef="description">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap"> Description </th>
+					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap black-header"> Description </th>
 					<td mat-cell *matCellDef="let row" class="nowrap"> {{row.description}} </td>
 				</ng-container>
 
 				<!-- Fruit Column -->
 				<ng-container matColumnDef="price">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap"> Prix </th>
+					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap black-header"> Prix </th>
 					<td mat-cell *matCellDef="let row" class="nowrap"> {{row.price}} MAD</td>
 				</ng-container>
 
 				<ng-container matColumnDef="quantity">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap"> Quantité </th>
+					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap black-header"> Quantité </th>
 					<td mat-cell *matCellDef="let row"> {{row.quantity}} </td>
 				</ng-container>
 
 				<ng-container matColumnDef="subCategory">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap"> SubCategory </th>
+					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap black-header"> SubCategory </th>
 					<td mat-cell *matCellDef="let row" class="nowrap"> {{row.subCategory.name}} </td>
 				</ng-container>
 
 				<ng-container matColumnDef="dateCreated">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap">Date d'ajout</th>
+					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap black-header">Date d'ajout</th>
 					<td mat-cell *matCellDef="let row" class="nowrap"> {{row.dateCreated | date: 'dd-MM-yyyy' }} </td>
 				</ng-container>
 
 				<ng-container matColumnDef="dateUpdated">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap">Dernier modification </th>
+					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap black-header">Dernier
+						modification </th>
 					<td mat-cell *matCellDef="let row" class="nowrap"> {{row.dateUpdated | date: 'dd-MM-yyyy' }} </td>
 				</ng-container>
 
 				<ng-container matColumnDef="action">
-					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap"> Action </th>
+					<th mat-header-cell *matHeaderCellDef mat-sort-header class="nowrap black-header"> Action </th>
 					<td mat-cell *matCellDef="let row" class="nowrap">
 						<button mat-icon-button color="primary" (click)="openEditProductForm(row)">
-							<mat-icon>edit</mat-icon>
+							<mat-icon class="main-color">edit</mat-icon>
 						</button>
 						<button mat-icon-button color="warn" (click)="deleteProduct(row.id)">
-							<mat-icon>delete</mat-icon>
+							<mat-icon class="delete-icon-color">delete</mat-icon>
+						</button>
+						<button mat-icon-button color="primary" aria-label="Download">
+							<mat-icon class="main-color">download</mat-icon>
 						</button>
 					</td>
 				</ng-container>
+
 
 				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 				<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 				<!-- Row shown when there is no matching data. -->
 				<tr class="mat-row" *matNoDataRow>
-					<td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+					<td class="mat-cell" colspan="4">No data matching the filter </td>
 				</tr>
 			</table>
 
