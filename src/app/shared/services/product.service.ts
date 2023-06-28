@@ -1,12 +1,13 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+
   private baseUrl = 'http://localhost:9000/products';
 
 
@@ -30,7 +31,4 @@ export class ProductService {
     const url = `${this.baseUrl}/${productId}`;
     return this._http.delete<void>(url)
   }
-
-
-
 }

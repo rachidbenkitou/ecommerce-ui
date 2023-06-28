@@ -1,5 +1,4 @@
-import { Image } from "./image"
-import { SubCategory } from "./subCategory"
+import { SubCategory } from "./sub-category"
 
 export class Product {
     id!: Number
