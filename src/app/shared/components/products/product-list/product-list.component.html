@@ -1,0 +1,161 @@
+<!-- MAIN -->
+<main>
+  <div class="head-title">
+    <div class="left">
+      <h1>Products</h1>
+      <ul class="breadcrumb">
+        <li>
+          <a href="#">Products</a>
+        </li>
+        <li><i class='bx bx-chevron-right'></i></li>
+        <li>
+          <a class="active" href="#">Show products</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <ul class="box-info">
+    <div class="card">
+      <p-table
+        [value]="customers"
+        [paginator]="true"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[5, 10, 15]"
+      >
+
+        <ng-template pTemplate="caption">
+
+          <div class="between-space-inputs bottom-space">
+
+            <div class="button-group left-space">
+              <button pButton label="New" class="p-button-info">
+                <i class="pi pi-plus"></i>&nbsp;&nbsp;
+              </button>
+              <button pButton label="Filter" class="p-button-info">
+                <i class="pi pi-filter"></i>&nbsp;&nbsp;
+              </button>
+            </div>
+
+            <span class="p-input-icon-left">
+                  <i class="pi pi-search"></i>
+                  <input type="text" pInputText placeholder="Search by name"/>
+            </span>
+            <div class="button-group right-space">
+              <button pButton class="p-button-danger">
+                <i class="pi pi-trash"></i>&nbsp;&nbsp;
+              </button>
+              <button pButton class="p-button-success">
+                <i class="pi pi-cloud-download"></i>&nbsp;&nbsp;
+              </button>
+            </div>
+
+
+          </div>
+
+
+          <form>
+            <div class="center-inputs">
+
+              <div class="input-container">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input type="number" pInputText placeholder="Quantity"/>
+                </span>
+              </div>
+
+              <div class="input-container">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input type="number" pInputText placeholder="Price"/>
+                </span>
+              </div>
+
+              <div class="input-container">
+                <p-dropdown [options]="customers" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true"
+                            filterBy="name" [showClear]="true" placeholder="Select a SubCategory">
+                  <ng-template pTemplate="selectedItem">
+                    <div class="flex align-items-center gap-2" *ngIf="selectedCountry">
+                      <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                           [class]="'flag flag-' + selectedCountry.code.toLowerCase()" style="width: 18px"/>
+                      <div>{{ selectedCountry.name }}</div>
+                    </div>
+                  </ng-template>
+                  <ng-template let-country pTemplate="item">
+                    <div class="flex align-items-center gap-2">
+                      <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                           [class]="'flag flag-' + country.code.toLowerCase()" style="width: 18px"/>
+                      <div>{{ country.name }}</div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+              </div>
+
+              <div class="input-container">
+                <p-dropdown [options]="customers" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true"
+                            filterBy="name" [showClear]="true" placeholder="Select a Category">
+                  <ng-template pTemplate="selectedItem">
+                    <div class="flex align-items-center gap-2" *ngIf="selectedCountry">
+                      <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                           [class]="'flag flag-' + selectedCountry.code.toLowerCase()" style="width: 18px"/>
+                      <div>{{ selectedCountry.name }}</div>
+                    </div>
+                  </ng-template>
+                  <ng-template let-country pTemplate="item">
+                    <div class="flex align-items-center gap-2">
+                      <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+                           [class]="'flag flag-' + country.code.toLowerCase()" style="width: 18px"/>
+                      <div>{{ country.name }}</div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+              </div>
+
+              <div class="input-container">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input type="date" pInputText placeholder="Before this date"/>
+                </span>
+              </div>
+
+              <div class="input-container">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input type="date" pInputText placeholder="After this date"/>
+                </span>
+              </div>
+
+            </div>
+            <div class="button-container">
+              <button pButton pRipple label="Search" class="p-button-success"></button>
+            </div>
+          </form>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width:25%">Name</th>
+            <th style="width:25%">Country</th>
+            <th style="width:25%">Company</th>
+            <th style="width:25%">Representative</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-customer>
+          <tr>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.country }}</td>
+            <td>{{ customer.company }}</td>
+            <td>{{ customer.name }}</td>
+          </tr>
+        </ng-template>
+
+      </p-table>
+    </div>
+  </ul>
+
+</main>
+<!-- MAIN -->
