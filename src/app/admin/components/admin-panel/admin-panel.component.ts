@@ -8,63 +8,58 @@ import { Component, OnInit } from '@angular/core';
 export class AdminPanelComponent implements OnInit {
 
   ngOnInit(): void {
-    const body = document.querySelector("body")!;
-    const darkLight = document.querySelector("#darkLight")!;
-    const sidebar = document.querySelector(".sidebar")!;
-    const submenuItems = document.querySelectorAll(".submenu_item");
-    const sidebarOpen = document.querySelector("#sidebarOpen")!;
-    const sidebarClose = document.querySelector(".collapse_sidebar")!;
-    const sidebarExpand = document.querySelector(".expand_sidebar")!;
+    const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
-    sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+    allSideMenu.forEach(item => {
+      const li = item.parentElement;
 
-    sidebarClose.addEventListener("click", () => {
-      sidebar.classList.add("close", "hoverable");
-    });
-    sidebarExpand.addEventListener("click", () => {
-      sidebar.classList.remove("close", "hoverable");
+      item.addEventListener('click', function () {
+        allSideMenu.forEach(i => {
+          i.parentElement?.classList.remove('active');
+        })
+        li?.classList.add('active');
+      })
     });
 
-    sidebar.addEventListener("mouseenter", () => {
-      if (sidebar.classList.contains("hoverable")) {
-        sidebar.classList.remove("close");
+    // TOGGLE SIDEBAR
+    const menuBar = document.querySelector('#content nav .bx.bx-menu');
+    const sidebar = document.getElementById('sidebar');
+
+    menuBar?.addEventListener('click', function () {
+      sidebar?.classList.toggle('hide');
+    });
+
+    const searchButton = document.querySelector('#content nav form .form-input button');
+    const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
+    const searchForm = document.querySelector('#content nav form');
+
+    searchButton?.addEventListener('click', function (e) {
+      if (window.innerWidth < 576) {
+        e.preventDefault();
+        searchForm?.classList.toggle('show');
+        if (searchForm?.classList.contains('show')) {
+          searchButtonIcon?.classList.replace('bx-search', 'bx-x');
+        } else {
+          searchButtonIcon?.classList.replace('bx-x', 'bx-search');
+        }
       }
-    });
-    sidebar.addEventListener("mouseleave", () => {
-      if (sidebar.classList.contains("hoverable")) {
-        sidebar.classList.add("close");
-      }
-    });
-
-    darkLight.addEventListener("click", () => {
-      body.classList.toggle("dark");
-      if (body.classList.contains("dark")) {
-        setTimeout(() => {
-          darkLight.classList.replace("bx-sun", "bx-moon");
-        }, 0);
-      } else {
-        setTimeout(() => {
-          darkLight.classList.replace("bx-moon", "bx-sun");
-        }, 0);
-      }
-    });
-
-
-    submenuItems.forEach((item, index) => {
-      item.addEventListener("click", () => {
-        item.classList.toggle("show_submenu");
-        submenuItems.forEach((item2, index2) => {
-          if (index !== index2) {
-            item2.classList.remove("show_submenu");
-          }
-        });
-      });
     });
 
     if (window.innerWidth < 768) {
-      sidebar.classList.add("close");
-    } else {
-      sidebar.classList.remove("close");
+      sidebar?.classList.add('hide');
+    } else if (window.innerWidth > 576) {
+      searchButtonIcon?.classList.replace('bx-x', 'bx-search');
+      searchForm?.classList.remove('show');
     }
+
+    window.addEventListener('resize', function () {
+      if (this.innerWidth > 576) {
+        searchButtonIcon?.classList.replace('bx-x', 'bx-search');
+        searchForm?.classList.remove('show');
+      }
+    });
+
+    const switchMode = document.getElementById('switch-mode');
+
   }
 }
