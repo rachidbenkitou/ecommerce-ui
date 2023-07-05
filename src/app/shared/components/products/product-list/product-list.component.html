@@ -74,6 +74,21 @@
                 </span>
               </div>
 
+
+              <div class="input-container">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input type="date" pInputText placeholder="Before this date"/>
+                </span>
+              </div>
+
+              <div class="input-container">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input type="date" pInputText placeholder="After this date"/>
+                </span>
+              </div>
+
               <div class="input-container">
                 <p-dropdown [options]="customers" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true"
                             filterBy="name" [showClear]="true" placeholder="Select a SubCategory">
@@ -112,20 +127,6 @@
                     </div>
                   </ng-template>
                 </p-dropdown>
-              </div>
-
-              <div class="input-container">
-                <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
-                    <input type="date" pInputText placeholder="Before this date"/>
-                </span>
-              </div>
-
-              <div class="input-container">
-                <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
-                    <input type="date" pInputText placeholder="After this date"/>
-                </span>
               </div>
 
             </div>

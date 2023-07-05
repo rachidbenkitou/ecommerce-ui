@@ -17,7 +17,6 @@ import {FormsModule} from "@angular/forms";
 import {FileUploadModule} from "primeng/fileupload";
 import {SliderModule} from "primeng/slider";
 import {MultiSelectModule} from "primeng/multiselect";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -40,7 +39,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FileUploadModule,
     SliderModule,
     MultiSelectModule,
-    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
