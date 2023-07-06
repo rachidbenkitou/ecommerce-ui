@@ -5,6 +5,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {TableModule} from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { ToolbarModule } from 'primeng/toolbar';
+
 
 
 import {AppRoutingModule} from './app-routing.module';
@@ -18,6 +21,7 @@ import {FileUploadModule} from "primeng/fileupload";
 import {SliderModule} from "primeng/slider";
 import {MultiSelectModule} from "primeng/multiselect";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ListProductComponent } from './admin/shared/components/list-product/list-product.component';
 
 
 
@@ -26,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     ProductListComponent,
     AdminPanelComponent,
+    ListProductComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -41,6 +46,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FileUploadModule,
     SliderModule,
     MultiSelectModule,
+    ToastModule,
+    ToolbarModule
 
   ],
   providers: [],
