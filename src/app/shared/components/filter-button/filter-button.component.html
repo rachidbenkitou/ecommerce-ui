@@ -1,0 +1,17 @@
+<div ngbDropdown class="d-inline-block ml-2" placement="bottom-right">
+    <button type="button" class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>
+      <i-feather name="filter" class="feather-sm"></i-feather>
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="links">
+      <button (click)="toggleDate(1)" ngbDropdownItem>Aujourd'hui</button>
+      <button (click)="toggleDate(2)" ngbDropdownItem>Hier</button>
+      <button (click)="toggleDate(3)" ngbDropdownItem>Cette semaine</button>
+      <button (click)="toggleDate(4)" ngbDropdownItem>Ce mois</button>
+      <div class="dropdown-divider"></div>
+      <button (click)="toggleDate(5)" ngbDropdownItem>Semaine dernière</button>
+      <button (click)="toggleDate(6)" ngbDropdownItem>mois dernièr</button>
+      <div class="dropdown-divider"></div>
+      <button (click)="toggleDate(7)" ngbDropdownItem>Cette année</button>
+      <button (click)="toggleDate(8)" ngbDropdownItem>Tous</button>
+    </div>
+  </div> 

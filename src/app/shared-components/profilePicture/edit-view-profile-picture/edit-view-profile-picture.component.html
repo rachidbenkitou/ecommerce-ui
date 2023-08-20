@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Modifier la photo de profil</h4>
+  <button type="reset"class="close" data-dismiss="modal" aria-label="Close"
+          (click)="modal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div  class="card-body">
+
+  <div class="text-center">
+
+    <img *ngIf="image!== undefined && image !== '' && image !== null" src="{{image}}" alt="Modifier la photo de profil" class="rounded-circle border p-1" width="260" height="260">
+
+  </div>
+
+  <hr>
+  <div class=" button-group text-center ">
+
+    <label *ngIf="!sppinerDeleteDisplaying" type="button" class="btn btn-primary">
+      Importer
+      <input type="file" accept="image/*" (change)="changeListener($event)" />
+    </label>
+
+    <button *ngIf="!sppinerDeleteDisplaying"  (click)="modal.dismiss('Cross click')" type="submit"  type="button" ngbAutofocus class="btn btn-dark">Annuler</button>
+    <span *ngIf="sppinerDeleteDisplaying" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+    <button type="submit"  (click)="addEditPicture()" id="submitPicture" type="button" ngbAutofocus class="btn btn-info">Valider</button>
+
+  </div>
+
+</div>
+
+

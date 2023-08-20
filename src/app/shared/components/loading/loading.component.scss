@@ -1,0 +1,42 @@
+
+
+
+
+.progress {
+  max-width: 100%;
+  margin: 0em auto;
+  overflow: hidden;
+  background: #ddd;
+}
+.indeterminate {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    transform: translateZ(0);
+    //
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      background-color: #2962ff;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    &:before { // slow
+        animation: indeterminate 3s cubic-bezier(0.195, 0.360, 0.945, 1.650) infinite;
+    }
+    &:after { // fast
+      animation: indeterminate 3s cubic-bezier(0.900, -0.590, 0.715, 1.045) infinite;
+    }
+}
+@keyframes indeterminate {
+  0% {
+      width: 0%;
+      transform: translateX(-100%);
+  }
+  100% {
+      width: 100%;
+      transform: translateX(100%);
+     }
+}

@@ -1,0 +1,580 @@
+//
+// Dark Theme
+//
+[data-theme="dark"] {
+  @import "dark-colors";
+
+  // common body settings
+  color: $theme-dark-text-color;
+  background: $theme-dark-bg-layout !important;
+
+  // -----------------------------------------
+  // basic setting of font colors
+  // -----------------------------------------
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6,
+  a.link,
+  .page-wrapper,
+  .form-control,
+  .custom-select,
+  .chat-list .chat-item .chat-content .box.bg-light-info,
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link,
+  .nav-tabs .nav-link:hover,
+  .nav-tabs .nav-link:focus,
+  .breadcrumb-item.active,
+  .input-group-text,
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link,
+  .nav-tabs .nav-link:hover,
+  .nav-tabs .nav-link:focus,
+  .custom-file-label::after,
+  .table .thead-light th,
+  .dropdown-menu,
+  ul.list-style-none li a,
+  .dropdown-item,
+  .ReactTable .rt-thead.-filters input,
+  .ReactTable .rt-thead.-filters select,
+  .ReactTable .-pagination input,
+  .ReactTable .-pagination select,
+  .ReactTable .-pagination .-btn,
+  .table,
+  .app-drawer .list-group .list-group-item .list-group-item-action,
+  .table-hover tbody tr:hover,
+  .rbc-off-range,
+  .css-esite6-singleValue,
+  .css-1wy0on6 div,
+  .css-dvua67-singleValue,
+  .react-tagsinput,
+  ol.progtrckr li.progtrckr-todo,
+  ol.progtrckr li.progtrckr-doing,
+  .css-12jo7m5,
+  .mailbox .message-center .message-item .message-title,
+  .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default,
+  .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default,
+  ol.progtrckr li span,
+  .chat-list .chat-item .chat-content .box,
+  .email-container .custom-group .list-group-item a,
+  .mailbox .message-center .message-item .mail-contnet .mail-desc,
+  .mailbox .message-center .message-item .mail-contnet .time,
+  .chat-list .chat-item .chat-time,
+  .popover-body,
+  pre,
+  .btn-light:not(:disabled):not(.disabled):active,
+  .btn-light:not(:disabled):not(.disabled).active,
+  .show > .btn-light.dropdown-toggle,
+  .btn-light:hover,
+  .form-control:focus,
+  .ngx-datatable.material .datatable-header .datatable-header-cell,
+  .ngx-datatable.material
+    .datatable-body
+    .datatable-body-row
+    .datatable-body-cell,
+  .ngx-datatable.material .datatable-footer .datatable-pager a,
+  .ngx-datatable.material .datatable-footer {
+    color: $theme-dark-text-color;
+  }
+
+  .multiselect-item-checkbox input[type="checkbox"] + div,
+  .dropdown-list .filter-textbox input,
+  .ngx-datatable.material .datatable-footer .datatable-pager li.disabled a {
+    color: $theme-dark-text-color !important;
+  }
+
+  // -----------------------------------------
+  // basic settings of background colors
+  // -----------------------------------------
+  .card,
+  .custom-select,
+  .form-control,
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link,
+  .list-group-item,
+  .custom-file-label,
+  .modal-content,
+  .page-link,
+  .page-item.disabled .page-link,
+  .jsgrid-header-row > .jsgrid-header-cell,
+  .jsgrid-row > .jsgrid-cell,
+  .tab-content,
+  .ReactTable .rt-thead.-filters input,
+  .ReactTable .rt-thead.-filters select,
+  .ReactTable .-pagination input,
+  .ReactTable .-pagination select,
+  .css-bar:after,
+  .right-part.mail-list,
+  .right-part.mail-details,
+  .right-part.mail-compose,
+  .left-part,
+  .card-footer,
+  .rdtPicker thead tr:first-child th:hover,
+  .css-1ajl57w-control,
+  .css-bg1rzq-control,
+  .footer,
+  .cal-month-view,
+  .cal-week-view,
+  .ngb-dp-weekdays,
+  .btn-light:not(:disabled):not(.disabled):active,
+  .btn-light:not(:disabled):not(.disabled).active,
+  .show > .btn-light.dropdown-toggle,
+  .btn-light:hover,
+  .ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover,
+  .ngx-datatable.material:not(.cell-selection)
+    .datatable-body-row:hover
+    .datatable-row-group,
+  .cal-week-view
+    .cal-time-events
+    .cal-day-columns:not(.cal-resize-active)
+    .cal-hour-segment:hover,
+  .cal-week-view .cal-time-events {
+    background-color: $theme-dark-card-bg !important;
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item:focus,
+  .picker__button--today,
+  .picker__button--clear,
+  .picker__button--close,
+  .rdtCounter .rdtBtn:hover,
+  td.rdtMonth:hover,
+  td.rdtYear:hover,
+  .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default,
+  .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default,
+  .rdtPicker td.rdtDay:hover,
+  .rdtPicker td.rdtHour:hover,
+  .rdtPicker td.rdtMinute:hover,
+  .rdtPicker td.rdtSecond:hover,
+  .rdtPicker .rdtTimeToggle:hover,
+  .customizer {
+    background: $theme-dark-card-bg;
+  }
+
+  #main-wrapper,
+  .page-wrapper,
+  .progress,
+  .breadcrumb,
+  .dropdown-menu,
+  .css-juf2xh-control,
+  .css-kj6f9i-menu,
+  .css-1szy77t-control,
+  ol.progtrckr li.progtrckr-doing:before,
+  ol.progtrckr li.progtrckr-todo:before,
+  .css-es53b3-multiValue,
+  .bootstrap-switch .bootstrap-switch-label,
+  .css-bar > i,
+  .rdtPicker,
+  .f-icon:hover,
+  .t-icon:hover,
+  .w-icon:hover,
+  .sl-icon:hover,
+  .if-icon:hover,
+  .m-icon:hover,
+  .app-drawer .list-group .list-group-item.bg-light,
+  .app-drawer .list-group .list-group-item .list-group-item-action:hover,
+  .app-drawer .list-group .list-group-item .list-group-item-action.active,
+  .custom-control-label::before,
+  .chat-list .chat-item .chat-content .box,
+  .rbc-today,
+  .jumbotron,
+  .modal-content,
+  .popover,
+  .popover-header,
+  .toast-header,
+  .toast,
+  .input-group-text,
+  .custom-file-label::after,
+  .react-tagsinput,
+  .feed-widget .feed-body .feed-item:hover,
+  .comment-widgets .comment-row:hover,
+  .comment-widgets .comment-row.active,
+  .feeds li:hover,
+  .tasklist .task-item.active,
+  .mailbox .message-center .message-item:hover,
+  .notes-item.selected,
+  .cal-month-view .cal-cell-row .cal-cell:hover,
+  .cal-month-view .cal-cell.cal-has-events.cal-open,
+  .cal-month-view .cal-cell-row:hover,
+  .dropdown-list,
+  .filter-textbox input,
+  .striped-rows .row:nth-child(odd),
+  .ngb-dp-header,
+  .ngb-dp-month-name,
+  .custom-day,
+  .wizard-navbar li .round-tabs,
+  .ngx-datatable.material .datatable-header .datatable-header-cell,
+  .ngx-datatable.material,
+  .timeline:before,
+  .contact-list .contact-item.active,
+  .cal-week-view .cal-hour-odd {
+    background-color: $theme-dark-bg-layout !important;
+  }
+
+  .wizard-navbar::before,
+  .mailbox .message-center .message-item:hover,
+  .mailbox .message-center .message-item.active,
+  .taskboard .taskboard-task {
+    background: $theme-dark-bg-layout;
+  }
+
+  // important
+  .chat-list .chat-item.odd .box {
+    background-color: rgba($color: $info, $alpha: 0.5) !important;
+  }
+
+  pre[class*="language-"],
+  .table .thead-light th,
+  .table-hover tbody tr:hover {
+    background: $background-alt !important;
+  }
+
+  //
+  // basic setting of border
+  //
+  .bootstrap-switch,
+  .rdtPicker,
+  .rdtPicker th,
+  .border-bottom,
+  .border-top,
+  .border-left,
+  .border-right,
+  .border,
+  .dropdown-menu,
+  .form-control,
+  .custom-select,
+  .table th,
+  .table td,
+  .modal-header,
+  .modal-footer,
+  blockquote,
+  pre[class*="language-"],
+  .card-group .card,
+  .nav-tabs .nav-link.active,
+  .nav-tabs .nav-item.show .nav-link,
+  .nav-tabs,
+  .nav-tabs .nav-link:hover,
+  .nav-tabs .nav-link:focus,
+  .list-group-item,
+  .custom-file-label,
+  .input-group-text,
+  .custom-file-label::after,
+  .left-part,
+  .page-link,
+  .profiletimeline,
+  .mailbox .message-center .message-item,
+  .mailbox .nav-link,
+  .dropdown-divider,
+  .table-bordered,
+  .table-bordered td,
+  .table-bordered th,
+  .rbc-month-view,
+  .rbc-day-bg + .rbc-day-bg,
+  .rbc-month-row + .rbc-month-row,
+  .rbc-header,
+  .rbc-time-content > * + * > *,
+  .rbc-time-view,
+  .rbc-day-slot .rbc-time-slot + .rbc-time-slot,
+  .rbc-timeslot-group,
+  .rbc-time-content,
+  .rbc-agenda-view table.rbc-agenda-table tbody > tr > td + td,
+  .rbc-agenda-view table.rbc-agenda-table,
+  .rbc-agenda-view table.rbc-agenda-table tbody > tr + tr,
+  .rdtPicker,
+  .rdtPicker th,
+  .rdtPicker tfoot,
+  .css-1ajl57w-control,
+  .css-bg1rzq-control,
+  .react-tagsinput,
+  ol.progtrckr li.progtrckr-doing,
+  ol.progtrckr li.progtrckr-todo,
+  .steamline .sl-item,
+  .steamline,
+  hr,
+  .right-left-part,
+  .react-tagsinput-tag,
+  .custom-control-label::before,
+  .custom-select,
+  .input-group-text,
+  .ReactTable .rt-thead.-filters input,
+  .ReactTable .rt-thead.-filters select,
+  .rbc-time-header-content,
+  .toast-header,
+  .react-tagsinput,
+  .btn-outline-secondary,
+  .comment-widgets .comment-row,
+  .cal-month-view .cal-day-cell:not(:last-child),
+  .cal-month-view .cal-days .cal-cell-row,
+  .cal-month-view .cal-days,
+  .cal-week-view .cal-day-headers,
+  .cal-week-view,
+  .ql-container.ql-snow,
+  .ql-toolbar.ql-snow,
+  .popover-header,
+  .multiselect-dropdown .dropdown-btn,
+  .dropdown-list,
+  .dropdown-list .filter-textbox,
+  .dropdown-list li,
+  .r-separator .form-group,
+  .b-form .row,
+  ngb-datepicker,
+  .btn-light:not(:disabled):not(.disabled):active,
+  .btn-light:not(:disabled):not(.disabled).active,
+  .show > .btn-light.dropdown-toggle,
+  .btn-light:hover .wizard-navbar li .round-tabs,
+  .wizard-navbar li .round-tabs,
+  .ngx-datatable.material,
+  .ngx-datatable.material .datatable-header .resize-handle,
+  .timeline > .timeline-item > .timeline-panel,
+  .e-campaign .c-cost,
+  .cal-week-view .cal-day-headers .cal-header:not(:last-child),
+  .cal-week-view .cal-day-headers .cal-header:not(:last-child),
+  .cal-week-view .cal-hour:not(:last-child) .cal-hour-segment,
+  .cal-week-view .cal-hour:last-child :not(:last-child) .cal-hour-segment,
+  .cal-week-view .cal-time-events,
+  .cal-week-view .cal-day-column {
+    border-color: $theme-dark-border-color !important;
+  }
+
+  .timeline > .timeline-item > .timeline-panel:after {
+    border-right: 0px solid $theme-dark-card-bg !important;
+  }
+
+  .form-control:focus,
+  .ReactTable .rt-thead.-filters input:focus,
+  .ReactTable .rt-thead.-filters select:focus {
+    border-color: $theme-dark-focus-border-color !important;
+  }
+
+  //
+  // tooltip border
+  //
+  .bs-popover-right > .arrow::after,
+  .bs-popover-auto[x-placement^="right"] > .arrow::after {
+    border-right-color: $theme-dark-border-color;
+  }
+
+  .bs-popover-left > .arrow::after,
+  .bs-popover-auto[x-placement^="left"] > .arrow::after {
+    border-left-color: $theme-dark-border-color;
+  }
+
+  .bs-popover-top > .arrow::after,
+  .bs-popover-auto[x-placement^="top"] > .arrow::after {
+    border-top-color: $theme-dark-border-color;
+  }
+
+  .bs-popover-bottom > .arrow::after,
+  .bs-popover-auto[x-placement^="bottom"] > .arrow::after {
+    border-bottom-color: $theme-dark-border-color;
+  }
+
+  //
+  // Chart stroke
+  //
+  .ct-label {
+    fill: $theme-dark-text-color;
+    color: $theme-dark-text-color;
+  }
+  .ct-grid {
+    stroke: $background-alt;
+  }
+  .c3 line,
+  .c3 path {
+    stroke: rgba(255, 255, 255, 0.1);
+  }
+  .c3 text {
+    fill: $gray-500;
+  }
+
+  //
+  // css chart
+  //
+  .css-bar-primary.css-bar-20 {
+    background-image: linear-gradient(
+        90deg,
+        $theme-dark-bg-layout 50%,
+        transparent 50%,
+        transparent
+      ),
+      linear-gradient(
+        162deg,
+        #2c63ff 50%,
+        $theme-dark-bg-layout 50%,
+        $theme-dark-bg-layout
+      );
+  }
+
+  .css-bar-danger.css-bar-20 {
+    background-image: linear-gradient(
+        90deg,
+        $theme-dark-bg-layout 50%,
+        transparent 50%,
+        transparent
+      ),
+      linear-gradient(
+        162deg,
+        #fc4b6c 50%,
+        $theme-dark-bg-layout 50%,
+        $theme-dark-bg-layout
+      );
+  }
+
+  .css-bar-success.css-bar-20 {
+    background-image: linear-gradient(
+        90deg,
+        $theme-dark-bg-layout 50%,
+        transparent 50%,
+        transparent
+      ),
+      linear-gradient(
+        162deg,
+        #26c6da 50%,
+        $theme-dark-bg-layout 50%,
+        $theme-dark-bg-layout
+      );
+  }
+
+  .css-bar-warning.css-bar-40 {
+    background-image: linear-gradient(
+        90deg,
+        $theme-dark-bg-layout 50%,
+        transparent 50%,
+        transparent
+      ),
+      linear-gradient(
+        234deg,
+        #ffbc34 50%,
+        $theme-dark-bg-layout 50%,
+        $theme-dark-bg-layout
+      );
+  }
+
+  .css-bar-info.css-bar-60 {
+    background-image: linear-gradient(
+        306deg,
+        #1e88e5 50%,
+        transparent 50%,
+        transparent
+      ),
+      linear-gradient(
+        270deg,
+        #1e88e5 50%,
+        $theme-dark-bg-layout 50%,
+        $theme-dark-bg-layout
+      );
+  }
+
+  .css-bar-primary.css-bar-50 {
+    background-image: linear-gradient(
+        270deg,
+        #2c63ff 50%,
+        transparent 50%,
+        transparent
+      ),
+      linear-gradient(
+        270deg,
+        #2c63ff 50%,
+        $theme-dark-bg-layout 50%,
+        $theme-dark-bg-layout
+      );
+  }
+
+  .css-bar-danger.css-bar-30 {
+    background-image: linear-gradient(
+        90deg,
+        $theme-dark-bg-layout 50%,
+        transparent 50%,
+        transparent
+      ),
+      linear-gradient(
+        198deg,
+        #fc4b6c 50%,
+        $theme-dark-bg-layout 50%,
+        $theme-dark-bg-layout
+      );
+  }
+
+  .css-bar-success.css-bar-10 {
+    background-image: linear-gradient(
+        90deg,
+        $theme-dark-bg-layout 50%,
+        transparent 50%,
+        transparent
+      ),
+      linear-gradient(
+        126deg,
+        #26c6da 50%,
+        $theme-dark-bg-layout 50%,
+        $theme-dark-bg-layout
+      );
+  }
+
+  .css-bar-purple.css-bar-10 {
+    background-image: linear-gradient(
+        90deg,
+        $theme-dark-bg-layout 50%,
+        transparent 50%,
+        transparent
+      ),
+      linear-gradient(
+        126deg,
+        #7266ba 50%,
+        $theme-dark-bg-layout 50%,
+        $theme-dark-bg-layout
+      );
+  }
+
+  .css-bar-primary.css-bar-45 {
+    background-image: linear-gradient(
+        90deg,
+        $theme-dark-bg-layout 50%,
+        transparent 50%,
+        transparent
+      ),
+      linear-gradient(
+        252deg,
+        #2c63ff 50%,
+        $theme-dark-bg-layout 50%,
+        $theme-dark-bg-layout
+      );
+  }
+
+  .css-bar-danger.css-bar-25 {
+    background-image: linear-gradient(
+        90deg,
+        $theme-dark-bg-layout 50%,
+        transparent 50%,
+        transparent
+      ),
+      linear-gradient(
+        180deg,
+        #fc4b6c 50%,
+        $theme-dark-bg-layout 50%,
+        $theme-dark-bg-layout
+      );
+  }
+
+  .css-bar-success.css-bar-35 {
+    background-image: linear-gradient(
+        90deg,
+        $theme-dark-bg-layout 50%,
+        transparent 50%,
+        transparent
+      ),
+      linear-gradient(
+        216deg,
+        #26c6da 50%,
+        $theme-dark-bg-layout 50%,
+        $theme-dark-bg-layout
+      );
+  }
+}

@@ -1,0 +1,34 @@
+import * as _ from "lodash";
+import * as moment from "moment";
+import { environment } from "src/environments/environment";
+// "YYYY-MM-DDTHH:mm:ss[Z]";
+
+export function buildSearchParams(formValue: any) {
+  let params:any = {};
+  _.forIn(formValue, (value:any, key:any) => {
+    if (!_.isNil(value) && value !== "") {
+      if (moment.isMoment(value)) {
+        params[key] = value.format("YYYY-MM-DD");
+      } else if (_.isDate(value)) {
+        params[key] = moment(value).format("YYYY-MM-DD");
+      } else {
+        params[key] = value;
+      }
+    }
+  });
+  return params;
+}
+
+export function buildBody(formValue: any) {
+  let body:any = {};
+  _.forIn(formValue, (value:any, key:any) => {
+    if (!_.isNil(value)) {
+      if (moment.isMoment(value)) {
+        body[key] = value.format("YYYY-MM-DD");
+      } else {
+        body[key] = value;
+      }
+    }
+  });
+  return body;
+}

@@ -1,10 +1,34 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NotfoundComponent} from './shared/components/404/not-found.component';
+import {Routes} from '@angular/router';
+import {FullComponent} from './layouts/full/full.component';
 
-const routes: Routes = [];
+export const Approutes: Routes = [
+  {
+    path: '',
+    component: FullComponent,
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+    children: [
+      {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'product',
+        loadChildren: () => import('./myDevelopementFolder/products/product.module').then(m => m.ProductModule)
+      },
+      {
+        path: 'category',
+        loadChildren: () => import('./myDevelopementFolder/products/product.module').then(m => m.ProductModule)
+      },
+    ]
+  },
+  {
+    path: '**',
+    component: NotfoundComponent
+  }
+
+
+];
+

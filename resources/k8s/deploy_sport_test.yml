@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: console-app-ui
+  namespace: wimsport-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: console-app-ui
+  template:
+    metadata:
+      labels:
+        app: console-app-ui
+    spec:
+      containers:
+        - name: console-app-ui
+          image: registry.gitlab.com/wim-tech/wimsaas/console-app-ui:sporttest
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: gitlabregistry
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: console-app-ui
+  namespace: wimsport-test
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    app: console-app-ui
+
