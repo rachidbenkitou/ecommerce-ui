@@ -1,34 +1,26 @@
-import {NotfoundComponent} from './shared/components/404/not-found.component';
-import {Routes} from '@angular/router';
-import {FullComponent} from './layouts/full/full.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { CoupensComponent } from './coupens/coupens.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MediaComponent } from './media/media.component';
+import { PagesComponent } from './pages/pages.component';
+import { ProductsComponent } from './products/products.component';
+import { SettingsComponent } from './settings/settings.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
-export const Approutes: Routes = [
-  {
-    path: '',
-    component: FullComponent,
-
-    children: [
-      {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-
-      {
-        path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-      },
-      {
-        path: 'product',
-        loadChildren: () => import('./myDevelopementFolder/products/product.module').then(m => m.ProductModule)
-      },
-      {
-        path: 'category',
-        loadChildren: () => import('./myDevelopementFolder/products/product.module').then(m => m.ProductModule)
-      },
-    ]
-  },
-  {
-    path: '**',
-    component: NotfoundComponent
-  }
-
-
+const routes: Routes = [
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'products', component: ProductsComponent},
+  {path: 'statistics', component: StatisticsComponent},
+  {path: 'coupens', component: CoupensComponent},
+  {path: 'pages', component: PagesComponent},
+  {path: 'media', component: MediaComponent},
+  {path: 'settings', component: SettingsComponent}
 ];
 
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
