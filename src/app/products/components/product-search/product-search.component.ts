@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-search.component.scss']
 })
 export class ProductSearchComponent {
+  selectedProducts!: any;
 
 }

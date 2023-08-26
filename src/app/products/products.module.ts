@@ -6,6 +6,12 @@ import { ProductAddEditComponent } from './components/product-add-edit/product-a
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
+import { TableModule } from 'primeng/table';
+import {ButtonModule} from "primeng/button";
+import {ToolbarModule} from "primeng/toolbar";
+import {ToastModule} from "primeng/toast";
+import {FileUploadModule} from "primeng/fileupload";
+import {RippleModule} from "primeng/ripple";
 
 
 @NgModule({
@@ -18,6 +24,12 @@ import { ProductSearchComponent } from './components/product-search/product-sear
   ],
   imports: [
     RouterModule.forChild(productRoutes),
+    TableModule,
+    ButtonModule,
+    ToolbarModule,
+    ToastModule,
+    FileUploadModule,
+    RippleModule
 
   ]
 })

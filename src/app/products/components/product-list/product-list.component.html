@@ -1,1 +1,77 @@
-<p>product-list works!</p>
+<div class="card">
+  <div class="card-body">
+
+
+    <!---------------------------------------------------------------->
+    <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }"
+             [paginator]="true"
+             [rows]="5"
+             [showCurrentPageReport]="true"
+             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+             [rowsPerPageOptions]="[5, 10, 25, 50]"
+             [(selection)]="selectedProducts"
+             [scrollable]="false"
+             dataKey="code"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 4rem">
+            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+          </th>
+          <th pSortableColumn="code"><span>Code <p-sortIcon field="code"></p-sortIcon></span>
+
+          </th>
+          <th>Image</th>
+          <th pSortableColumn="name"><span>Name <p-sortIcon field="name"></p-sortIcon></span>
+
+          </th>
+          <th pSortableColumn="category"><span>Category <p-sortIcon field="category"></p-sortIcon></span>
+
+          </th>
+          <th pSortableColumn="quantity"><span>Quantity <p-sortIcon field="quantity"></p-sortIcon></span>
+
+          </th>
+
+          <th>Action
+
+          </th>
+
+
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td>
+            <p-tableCheckbox [value]="product"></p-tableCheckbox>
+          </td>
+          <td>{{ product.code }}</td>
+          <td><img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/'" [alt]="product.name" width="50"
+                   class="shadow-4"/></td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>
+            <i class="fa-solid fa-eye cursor-poniter right-margin"></i>
+            <i class="fa-solid fa-pen-to-square cursor-poniter right-margin"></i>
+            <i class="fa-solid fa-trash cursor-poniter right-margin"></i>
+          </td>
+
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="paginatorleft">
+        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+      </ng-template>
+      <ng-template pTemplate="paginatorright">
+        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+      </ng-template>
+
+    </p-table>
+
+
+    <!---------------------------------------------------------------->
+
+
+  </div>
+</div>
+
