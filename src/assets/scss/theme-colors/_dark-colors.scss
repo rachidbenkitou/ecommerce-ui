@@ -1,0 +1,259 @@
+//
+// Font Colors
+//
+.text-orange {
+  color: rgba($color: $orange, $alpha: 0.5) !important;
+}
+
+.text-cyan {
+  color: rgba($color: $cyan, $alpha: 0.5) !important;
+}
+
+.text-info {
+  color: rgba($color: $info, $alpha: 0.7) !important;
+}
+
+.text-primary {
+  color: rgba($color: $primary, $alpha: 0.7) !important;
+}
+
+.text-success {
+  color: rgba($color: $success, $alpha: 0.5) !important;
+}
+
+.text-dark {
+  color: $gray-200 !important;
+}
+
+//
+// Button and Background colors
+//
+.bg-cyan,
+.card.bg-cyan,
+.btn-cyan {
+  background-color: rgba($color: $cyan, $alpha: 0.5) !important;
+}
+
+.btn-info,
+.bg-info,
+.card.bg-info,
+.badge-info,
+.label-info {
+  background-color: rgba($color: $info, $alpha: 0.5) !important;
+}
+
+.btn-secondary,
+.bg-secondary,
+.card.bg-secondary,
+.badge-secondary {
+  background-color: rgba($color: $secondary, $alpha: 0.5) !important;
+}
+
+.btn-primary,
+.bg-primary,
+.card.bg-primary,
+.badge-primary,
+.label-primary {
+  background-color: rgba($color: $primary, $alpha: 0.5) !important;
+}
+
+.btn-orange,
+.bg-orange,
+.card.bg-orange {
+  background-color: rgba($color: $orange, $alpha: 0.5) !important;
+}
+
+.btn-success,
+.bg-success,
+.card.bg-success,
+.badge-success,
+.label-success {
+  background-color: rgba($color: $success, $alpha: 0.5) !important;
+}
+
+.btn-danger,
+.bg-danger,
+.card.bg-danger,
+.card.bg-danger,
+.badge-danger,
+.label-danger {
+  background-color: rgba($color: $danger, $alpha: 0.5) !important;
+}
+
+.bg-warning,
+.card.bg-warning,
+.btn-warning,
+.badge-warning,
+.round.round-warning {
+  background-color: rgba($color: $warning, $alpha: 0.5) !important;
+}
+
+.bg-white {
+  background-color: $theme-dark-card-bg !important;
+}
+
+.bg-dark {
+  background-color: $gray-600 !important;
+}
+
+.round.round-danger {
+  background: rgba($color: $danger, $alpha: 0.5);
+}
+
+.table-danger,
+.table-danger > th,
+.table-danger > td {
+  background-color: rgba($color: $danger, $alpha: 0.2) !important;
+}
+
+.table-success,
+.table-success > th,
+.table-success > td {
+  background-color: rgba($color: $success, $alpha: 0.2) !important;
+}
+
+.table-primary,
+.table-primary > th,
+.table-primary > td {
+  background-color: rgba($color: $primary, $alpha: 0.2) !important;
+}
+
+.table-info,
+.table-info > th,
+.table-info > td {
+  background-color: rgba($color: $info, $alpha: 0.2) !important;
+}
+
+.table-warning,
+.table-warning > th,
+.table-warning > td {
+  background-color: rgba($color: $warning, $alpha: 0.2) !important;
+}
+
+.bg-light {
+  background-color: $theme-dark-bg-light !important;
+}
+
+.bg-light-info {
+  background-color: #31556b !important;
+}
+
+.bg-light-success {
+  background-color: #2d6134 !important;
+}
+
+.bg-light-warning {
+  background-color: #6f6045 !important;
+}
+
+.bg-light-danger {
+  background-color: #884a58 !important;
+}
+
+.bg-light-inverse {
+  background-color: #544f4f !important;
+}
+
+.bg-light-primary {
+  background-color: #413873 !important;
+}
+
+.badge-light {
+  background-color: $gray-800;
+  color: $theme-dark-text-color;
+}
+
+.btn-light {
+  background-color: $gray-800;
+  border-color: $gray-800;
+  color: $theme-dark-text-color;
+}
+
+.badge-light-success {
+  background-color: #516d55;
+}
+
+.badge-light-info {
+  background-color: #27546f;
+}
+
+.badge-light-danger {
+  background-color: #583a41;
+}
+
+.alert-primary {
+  background-color: rgba($color: #443c69, $alpha: 0.7);
+  border-color: rgba($color: #d2d8f7, $alpha: 0.3);
+  color: $purple;
+}
+
+.alert-secondary {
+  background-color: rgba($color: #475667, $alpha: 0.7);
+  border-color: rgba($color: #dee2e7, $alpha: 0.3);
+  color: $gray-600;
+}
+
+.alert-success {
+  background-color: rgba($color: #608e81, $alpha: 0.9);
+  border-color: rgba($color: #c4f1de, $alpha: 0.3);
+}
+
+.alert-danger {
+  background-color: rgba($color: #a25765, $alpha: 0.7);
+  border-color: rgba($color: #fcc4ce, $alpha: 0.3);
+}
+
+.alert-warning {
+  background-color: rgba($color: #69522ab3, $alpha: 0.7);
+  border-color: rgba($color: #fed3ca, $alpha: 0.3);
+}
+
+.alert-info {
+  background-color: rgba($color: #5c71a7b3, $alpha: 0.7);
+  border-color: rgba($color: #c3d3ff, $alpha: 0.3);
+}
+
+.alert-light {
+  background-color: rgba($color: #fdfefe, $alpha: 0.7);
+  border-color: rgba($color: #fcfdfe, $alpha: 0.3);
+}
+
+.alert-dark {
+  background-color: rgba($color: #626269b3, $alpha: 0.7);
+  border-color: rgba($color: #c6c6d2, $alpha: 0.3);
+}
+
+//   calendar app
+.rbc-toolbar button {
+  background-color: rgba($color: $info, $alpha: 0.5);
+  border-color: rgba($color: $info, $alpha: 0.5);
+  color: $white;
+  &:hover {
+    background-color: rgba($color: $info, $alpha: 0.7);
+    border-color: rgba($color: $info, $alpha: 0.5);
+    color: $white;
+  }
+}
+
+.rbc-toolbar button.active,
+.rbc-toolbar button.rbc-active {
+  background-color: rgba($color: $info, $alpha: 0.8);
+  border-color: rgba($color: $info, $alpha: 0.8);
+}
+
+.rbc-event.event-default {
+  background-color: rgba($color: $info, $alpha: 0.5);
+}
+
+.rbc-event.event-azure {
+  background-color: rgba($color: $cyan, $alpha: 0.5);
+}
+.rbc-event.event-orange {
+  background-color: rgba($color: $warning, $alpha: 0.5);
+}
+.rbc-event.event-green {
+  background-color: rgba($color: $success, $alpha: 0.5);
+}
+.rbc-event.event-red {
+  background-color: rgba($color: $danger, $alpha: 0.5);
+}

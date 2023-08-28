@@ -1,19 +1,30 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {NotfoundComponent} from './shared/components/404/not-found.component';
+import {Routes} from '@angular/router';
+import {FullComponent} from './layouts/full/full.component';
 
-export const routes: Routes = [
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  {path: 'dashboard', component: DashboardComponent},
+export const Approutes: Routes = [
   {
-    path: 'products',
-    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+    path: '',
+    component: FullComponent,
+
+    children: [
+      {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'products',
+        loadChildren: () => import('./products/product.module').then(m => m.ProductModule)
+      },
+    ]
   },
+  {
+    path: '**',
+    component: NotfoundComponent
+  }
+
+
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {
-}

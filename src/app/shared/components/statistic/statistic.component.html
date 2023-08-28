@@ -1,0 +1,120 @@
+<form novalidate="" [formGroup]="freamSearch" class="search mt-2">
+    <div class="row">
+        <div class="col-md col-lg col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title d-flex align-items-center"><span>Aujourd'hui</span></h5>
+                    <input type="date" formControlName="day" class="form-control"
+                    (change)="search('day', $event)">
+                    <!-- row -->
+                    <div class="my-2 py-2">
+                        <!-- column -->
+                        <div *ngFor="let item of dataDisplay" class="pb-1">
+                            <div [ngClass]="{'d-flex flex-row-reverse justify-content-end': labelsDirection==='left'}" *ngIf="dayData?.hasOwnProperty(item?.key)">
+                                <span [ngClass]="{'mr-1 bold': labelsDirection!=='left'}">{{dayData[item?.key] || 0}}
+                                    <span *ngIf="labelsDirection==='left' && item?.unit">{{item?.unit}}</span>
+                                </span>
+                                <span [ngClass]="{'mr-1 bold': labelsDirection==='left'}">{{item?.label}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-md col-lg col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title d-flex align-items-center"><span>Cette semaine</span></h5>
+              
+                    <input type="date" formControlName="week" class="form-control"
+                    (change)="search('week', $event)">
+                    <!-- row -->
+                    <div class="my-2 py-2">
+                        <!-- column -->
+                        <div *ngFor="let item of dataDisplay" class="pb-1">
+                            <div [ngClass]="{'d-flex flex-row-reverse justify-content-end': labelsDirection==='left'}" *ngIf="weekData?.hasOwnProperty(item?.key)">
+                                <span [ngClass]="{'mr-1 bold': labelsDirection!=='left'}">{{weekData[item?.key] || 0}}
+                                    <span *ngIf="labelsDirection==='left' && item?.unit">{{item?.unit}}</span>
+                                </span>
+                                <span [ngClass]="{'mr-1 bold': labelsDirection==='left'}">{{item?.label}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-md col-lg col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title d-flex align-items-center"><span>Ce mois</span></h5>
+         
+                    <input type="date" formControlName="month" class="form-control"
+                    (change)="search('month', $event)">
+                    <!-- row -->
+                    <div class="my-2 py-2">
+                        <!-- column -->
+                        <div *ngFor="let item of dataDisplay" class="pb-1">
+                            <div [ngClass]="{'d-flex flex-row-reverse justify-content-end': labelsDirection==='left'}" *ngIf="monthData?.hasOwnProperty(item?.key)">
+                                <span [ngClass]="{'mr-1 bold': labelsDirection!=='left'}">{{monthData[item?.key] || 0}}
+                                    <span *ngIf="labelsDirection==='left' && item?.unit">{{item?.unit}}</span>
+                                </span>
+                                <span [ngClass]="{'mr-1 bold': labelsDirection==='left'}">{{item?.label}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md col-lg col-sm-12">
+            <div class="card p-0">
+                <div class="card-body">
+                    <h5 class="card-title d-flex align-items-center"><span>Cette année</span></h5>
+                    <div class="form-group mb-0">
+                        <ng-select formControlName="selectedYear" [items]="yearsList" [virtualScroll]="true"
+                           (change)="search('year', $event)">
+                        </ng-select>
+                      </div>
+                    <!-- row -->
+                    <div class="my-2 py-2">
+                        <!-- column -->
+                        <div *ngFor="let item of dataDisplay" class="pb-1">
+                            <div [ngClass]="{'d-flex flex-row-reverse justify-content-end': labelsDirection==='left'}" *ngIf="yearData?.hasOwnProperty(item?.key)">
+                                <span [ngClass]="{'mr-1 bold': labelsDirection!=='left'}">{{yearData[item?.key] || 0}}
+                                    <span *ngIf="labelsDirection==='left' && item?.unit">{{item?.unit}}</span>
+                                </span>
+                                <span [ngClass]="{'mr-1 bold': labelsDirection==='left'}">{{item?.label}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-md col-lg col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title d-flex align-items-center"><span>Tous</span></h5>
+                    <!-- <input type="month" formControlName="month" class="form-control"
+                    [value]="thisMonth" -->
+                    <input type="date" formControlName="all" class="form-control"
+                    (change)="search('tous', $event)">
+                    <!-- row -->
+                    <div class="my-2 py-2">
+                        <!-- column -->
+                        <div *ngFor="let item of dataDisplay" class="pb-1">
+                            <div [ngClass]="{'d-flex flex-row-reverse justify-content-end': labelsDirection==='left'}" *ngIf="allData?.hasOwnProperty(item?.key)">
+                                <span [ngClass]="{'mr-1 bold': labelsDirection!=='left'}">{{allData[item?.key] || 0}}
+                                    <span *ngIf="labelsDirection==='left' && item?.unit">{{item?.unit}}</span>
+                                </span>
+                                <span [ngClass]="{'mr-1 bold': labelsDirection==='left'}">{{item?.label}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>

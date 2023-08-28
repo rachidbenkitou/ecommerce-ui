@@ -1,16 +1,30 @@
-import {NgModule} from '@angular/core';
-import {RouterModule} from "@angular/router";
-import {ProductPageComponent} from "../products/containers/product-page/product-page.component";
-import {dashboardRoutes} from "./dashboard-routing.module";
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { RouterModule } from '@angular/router';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FeatherModule } from 'angular-feather';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardRoutes } from './dashboard.routing';
+import { CountToModule } from 'angular-count-to';
+import { SharedModule } from '../shared/shared.module';
+
 
 
 @NgModule({
   declarations: [
-    ProductPageComponent
+    DashboardComponent,
   ],
   imports: [
-    RouterModule.forChild(dashboardRoutes),
+    CommonModule,
+    RouterModule.forChild(DashboardRoutes),
+    FeatherModule,
+    NgxDatatableModule,
+    NgbModule,
+    NgSelectModule,
+    CountToModule,
+    SharedModule
   ]
 })
-export class DashboardModule {
-}
+export class DashboardModule { }
