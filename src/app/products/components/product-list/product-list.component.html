@@ -1,0 +1,106 @@
+<ngx-datatable class="material" [headerHeight]="50" [limit]="tableLimit" [columnMode]="'force'"
+               [footerHeight]="50" [rowHeight]="'auto'" [scrollbarH]="false" [sorts]="[{prop: 'id', dir: 'desc'}]"
+               [rows]="discountCouponList">
+
+  <ngx-datatable-column [width]="70" [maxWidth]="100" name="Id" prop="id">
+    <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
+      {{row?.id}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column [width]="100" [maxWidth]="150" name="Code" prop="code">
+    <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
+      {{row?.code}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column [width]="130" [maxWidth]="250" name="Package/Service" prop="tntPackageDto.name">
+    <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
+
+      <span *ngIf="row?.packageId!==null && row?.packageId!==undefined ">
+        <i-feather name="package"class="feather-sm"></i-feather>
+        {{row?.packageName}}
+        </span>
+
+      <span *ngIf="row?.serviceOptionId!==null && row?.serviceOptionId!==undefined ">
+        <i-feather name="list" class="feather-sm"></i-feather>
+        {{row?.serviceOptionName}}
+      </span>
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column [width]="140" [maxWidth]="220" name="Type de reduction" prop="discountType">
+    <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
+      {{row?.discountType}}
+
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column [width]="140" [maxWidth]="220" name="Réduction" prop="discount">
+    <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
+      {{row?.discount || 0}}
+
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column [width]="140" [maxWidth]="220" name="Statut" prop="active">
+    <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
+      <ng-container *ngIf="row?.active === 'Y'; else noTemplate">
+        <span class="badge badge-success px-1" style="font-size: 12px"> Active</span>
+      </ng-container>
+      <ng-template #noTemplate>
+        <span class="badge badge-danger px-1" style="font-size: 12px"> Inactive </span>
+      </ng-template>
+    </ng-template>
+  </ngx-datatable-column>
+
+
+  <ngx-datatable-column name="Action" prop="name" [sortable]="false" [width]="110" [maxWidth]="400">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <a class="link cursor-pointer mr-2" ngbTooltip="Afficher" (click)="onDisplay(row)">
+        <i-feather name="eye" class="feather-sm"></i-feather> <!-- <i class="icon-eye"></i> -->
+      </a>
+      <ng-container>
+        <a class="link cursor-pointer mr-2" ngbTooltip="Modifier" (click)="onEdit(row)">
+          <i-feather name="edit-3" class="feather-sm"></i-feather> <!--<i class="fas fa-pencil-alt"></i> -->
+        </a>
+      </ng-container>
+      <ng-container>
+        <a class="link cursor-pointer mr-2" ngbTooltip="Supprimer"
+           (click)="onOpenModal(deleteVehicleModal,row, 'delete')">
+          <i-feather name="trash-2" class="feather-sm"></i-feather> <!-- <i class="far fa-trash-alt"></i> -->
+        </a>
+      </ng-container>
+
+    </ng-template>
+  </ngx-datatable-column>
+
+
+</ngx-datatable>
+
+
+<!-- Delete Modal -->
+<ng-template #deleteVehicleModal>
+  <div>
+    <div class="modal-header">
+      <h5 class="modal-title" id="deleteModelLabel">Attention </h5>
+      <button type="button"  class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Voulez vous supprimer le coupon de reduction  ? </p>
+      <div class="modal-footer">
+        <span  class="spinner-grow spinner-grow-sm" role="status"
+              aria-hidden="true"></span>
+        <button id="submitDelete"
+                class="btn btn-primary"
+                data-dismiss="modal">Supprimer
+        </button>
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+

@@ -2,10 +2,17 @@
 
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800');
 
+@import "~@swimlane/ngx-datatable/index.css";
+@import "~@swimlane/ngx-datatable/themes/material.css";
+@import "~@swimlane/ngx-datatable/assets/icons.css";
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
 //angular calendar ajouter par DK
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 
 //leaflet style pour mapStreetOpen
+@import "~leaflet/dist/leaflet.css";
 @import "@runette/leaflet-fullscreen/dist/leaflet.fullscreen.css";
 
 div .table-padding {
@@ -90,7 +97,7 @@ span.colorBoxSelect {
 }
 
 @media (min-width: 1024px) {
-  #main-wrapper[data-layout="horizontal"] .sidebar-nav #sidebarnav > .sidebar-item > .sidebar-link .hide-menu {
+  #main-wrapper[data-layout="horizontal"] .sidebar-nav #sidebarnav>.sidebar-item>.sidebar-link .hide-menu {
     max-width: 65px;
   }
 }
@@ -200,6 +207,7 @@ span.colorBoxSelect {
 }
 
 
+
 .search .ng-touched.ng-valid {
   border-color: #e9ecef;
 }
@@ -232,13 +240,11 @@ datatable-scroller {
 /////////////////////////
 .accordion > .card {
   padding: 0%;
-
-  > .card-header {
+  >.card-header {
     padding: 0%;
   }
 
 }
-
 .ngx-datatable .datatable-header .datatable-header-cell.sortable .datatable-header-cell-wrapper {
   font-weight: 700;
   font-size: 0.875rem;
@@ -248,7 +254,6 @@ datatable-scroller {
 .search-group {
   display: flex;
   gap: 4px;
-
   input {
     padding: 6px 8px;
   }
@@ -306,7 +311,6 @@ label {
     border-bottom: 1px solid #dee2e6;
 
   }
-
   .nav-item .nav-link.active {
     color: #0080FF;
     border-bottom: 1px solid #fff;
@@ -315,7 +319,7 @@ label {
 }
 
 // background color for ng-select disabled
-.ng-select.ng-select-disabled > .ng-select-container {
+.ng-select.ng-select-disabled>.ng-select-container {
   background-color: #E9ECEF !important;
 }
 
@@ -359,7 +363,6 @@ label {
     display: flex;
     justify-content: center;
     margin-bottom: 12px;
-
     button {
       padding: 3px;
 

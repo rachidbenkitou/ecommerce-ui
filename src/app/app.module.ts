@@ -21,9 +21,11 @@ import {HorizontalNavigationComponent} from './shared/horizontal-header/horizont
 import {HorizontalSidebarComponent} from './shared/horizontal-sidebar/horizontal-sidebar.component';
 
 
+
 import {Approutes} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SpinnerComponent} from './shared/spinner.component';
+
 // import { AuthGuard } from './auth.guard';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 

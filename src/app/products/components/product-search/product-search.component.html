@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body px-0 py-1">
+
+        <div class="table">
+          <div class="modal-body pt-0">
+            <form novalidate="" [formGroup]="productForm" class="search">
+              <div class="form-body">
+                <!-- Row of search items -->
+                <div class="row">
+
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label for="id">ID</label>
+                      <input type="number" formControlName="id" id="id" class="form-control"
+                             placeholder="Ex. 12"/>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" formControlName="name" id="name" class="form-control"
+                             placeholder="Ex. Lenovo thinkpad"/>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Category</label>
+                      <ng-select
+                        id="categoryId"
+                        name="categoryId"
+                        formControlName="categoryId"
+                        [items]="categoryList"
+                        bindValue="id"
+                        bindLabel="name"
+                        notFoundText="no product found"
+                        placeholder="Choose a category">
+                      </ng-select>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Visibility</label>
+                      <ng-select
+                        id="visibility"
+                        name="visibility"
+                        formControlName="visibility"
+                        [items]="visibilityList"
+                        bindValue="id"
+                        bindLabel="name"
+                        notFoundText="no element found"
+                        placeholder="Choose an element">
+                      </ng-select>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-2 search-actions justify-content-md-end">
+                    <div class="form-group">
+                      <button class="btn btn-dark mr-2 button-reset">
+                        <i-feather name="refresh-cw" class="feather-sm"></i-feather>
+                      </button>
+                      <button type="submit" class="btn btn-info button-search" id="find-discount-coupon-form"
+                      >
+                        <i class="mdi mdi-search"></i>Chercher
+                      </button>
+
+                    </div>
+                  </div>
+
+
+                </div>
+
+              </div>
+            </form>
+
+            <div class="table">
+              <div class="col-lg-12 col-md-12 col-xl-12">
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                  <i-feather name="alert-circle"></i-feather>
+                  <strong class=" h4 alert-heading"> &nbsp;&nbsp;No product found !</strong>
+
+                </div>
+              </div>
+
+              <app-product-list>
+              </app-product-list>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
