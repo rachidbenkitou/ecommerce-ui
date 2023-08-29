@@ -3,8 +3,9 @@ import {Subject, Subscription} from 'rxjs';
 import {Title} from "@angular/platform-browser";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Router} from "@angular/router";
-import { DataService } from 'src/app/shared/services/data.service';
-import { ActionsService } from 'src/app/shared/services/actions.service';
+import {DataService} from 'src/app/shared/services/data.service';
+import {ActionsService} from 'src/app/shared/services/actions.service';
+import {ProductService} from "../../services/product.service";
 
 
 @Component({
@@ -21,7 +22,8 @@ export class ProductPageComponent implements OnInit {
   permissions: any
   lang!: string
 
-  constructor(private titleService: Title,
+  constructor(private productService: ProductService,
+              private titleService: Title,
               public dataService: DataService,
               private modalService: NgbModal,
               private actionsService: ActionsService,
@@ -85,14 +87,11 @@ export class ProductPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*
-    this.supplierService.loading$.subscribe(event => {
+
+    this.productService.loading$.subscribe(event => {
       this.loading = event;
       this.changeDetectorRef.detectChanges()
-
     })
-
-     */
     this.isActiveRoute()
   }
 

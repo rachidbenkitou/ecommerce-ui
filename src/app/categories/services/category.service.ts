@@ -2,35 +2,34 @@ import {EventEmitter, Injectable, Output} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
-import {Product} from "../models/product";
+import {Product} from "../../products/models/product";
+import {Category} from "../models/category";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class CategoryService {
+
   @Output() reload = new EventEmitter<any>();
-  Url: string = `${environment.appUrl}api/products`;
+  Url: string = `${environment.appUrl}api/categories`;
 
   constructor(private http: HttpClient) {
   }
 
-  public findProduct(productId?: number, productName?: string, categoryId?: number, visibilty?: string): Observable<Product[]> {
+  public findCategories(categoryId?: number, categoryName?: string, visibilty?: string): Observable<Category[]> {
     let params: any = new HttpParams();
 
-    if (productName != null && productName !== '') {
-      params = params.set("productName", productName);
-    }
-    if (productId != null) {
-      params = params.set("productId", productId);
+    if (categoryName != null && categoryName !== '') {
+      params = params.set("categoryName", categoryName);
     }
     if (categoryId != null) {
       params = params.set("categoryId", categoryId);
     }
     if (visibilty != null && visibilty !== '') {
-      params = params.set("productVisibility", visibilty);
+      params = params.set("categoryVisbility", visibilty);
     }
 
-    return this.http.get<Product[]>(`${this.Url}`, {params});
+    return this.http.get<Category[]>(`${this.Url}`, {params});
   }
 
   public findProductById(id: number): Observable<Product> {

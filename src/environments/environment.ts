@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  appUrl: 'http://wimdrive.wimsolutions.net',
+  appUrl: 'http://localhost:9090/',
   siteUrl: 'http://wimdrive-site.wimsolutions.net',
   wimAppServiceUrl: 'http://wimdrive-wimapp-service.wimsolutions.net/',
   wimSaasServiceUrl: 'http://wimdrive-wimsaas-service.wimsolutions.net/'

@@ -13,10 +13,10 @@ import {ProductDetailsComponent} from "../product-details/product-details.compon
 })
 export class ProductListComponent implements OnInit {
 
-  @Input() discountCouponList: any[] = []
-  @Output() getDiscountCoupons: EventEmitter<any> = new EventEmitter();
+  @Input() productList: any[] = []
+  @Output() getProducts: EventEmitter<any> = new EventEmitter();
   tableLimit: number = 10
-  deleteDiscountCoupon: any;
+  deletedProduct: any;
 
   // @ts-ignore
   constructor(private dataService: DataService,
@@ -58,7 +58,7 @@ export class ProductListComponent implements OnInit {
     dialogRef.componentInstance.data = data;
     dialogRef.componentInstance.onAddEdit.subscribe((event: any) => {
       this.OncloseModal()
-      this.getDiscountCoupons.emit()
+      this.getProducts.emit()
 
     });
   }
@@ -66,7 +66,7 @@ export class ProductListComponent implements OnInit {
 
   onOpenModal(target: TemplateRef<any>, vehicle: any, mode: string): void {
     if (mode === 'delete') {
-      this.deleteDiscountCoupon = vehicle;
+      this.deletedProduct = vehicle;
     }
     this.modalService.open(target, {
       centered: true,

@@ -52,7 +52,7 @@
                         name="visibility"
                         formControlName="visibility"
                         [items]="visibilityList"
-                        bindValue="id"
+                        bindValue="name"
                         bindLabel="name"
                         notFoundText="no element found"
                         placeholder="Choose an element">
@@ -63,11 +63,11 @@
 
                   <div class="col-md-2 search-actions justify-content-md-end">
                     <div class="form-group">
-                      <button class="btn btn-dark mr-2 button-reset">
+                      <button class="btn btn-dark mr-2 button-reset" (click)="reset()">
                         <i-feather name="refresh-cw" class="feather-sm"></i-feather>
                       </button>
-                      <button type="submit" class="btn btn-info button-search" id="find-discount-coupon-form"
-                      >
+                      <button type="submit" class="btn btn-info button-search" id="find-product-form"
+                              (click)="search()">
                         <i class="mdi mdi-search"></i>Chercher
                       </button>
 
@@ -81,7 +81,7 @@
             </form>
 
             <div class="table">
-              <div class="col-lg-12 col-md-12 col-xl-12">
+              <div class="col-lg-12 col-md-12 col-xl-12" *ngIf="productList===null">
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
                   <i-feather name="alert-circle"></i-feather>
                   <strong class=" h4 alert-heading"> &nbsp;&nbsp;No product found !</strong>
@@ -89,7 +89,8 @@
                 </div>
               </div>
 
-              <app-product-list>
+              <app-product-list *ngIf="productList!==null"
+                                [productList]="productList" (getProducts)="getProducts()">
               </app-product-list>
 
             </div>
