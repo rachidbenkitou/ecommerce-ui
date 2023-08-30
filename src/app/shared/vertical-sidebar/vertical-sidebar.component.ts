@@ -1,9 +1,9 @@
-import { DataService } from './../services/data.service';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { RouteInfo } from './vertical-sidebar.metadata';
-import { VerticalSidebarService } from './vertical-sidebar.service';
-import { ConfigService } from '../services/config.service';
+import {DataService} from './../services/data.service';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Router} from '@angular/router';
+import {RouteInfo} from './vertical-sidebar.metadata';
+import {VerticalSidebarService} from './vertical-sidebar.service';
+import {ConfigService} from '../services/config.service';
 
 
 @Component({
@@ -17,10 +17,11 @@ export class VerticalSidebarComponent {
   showSubMenu = '';
   public sidebarnavItems: RouteInfo[] = [];
   path = '';
-  fullName:string ="";
-  username:string ="";
-  basesaasConfig:any
-  constructor(private menuServise: VerticalSidebarService, private router: Router, private dataService: DataService,private configService: ConfigService) {
+  fullName: string = "";
+  username: string = "";
+  basesaasConfig: any
+
+  constructor(private menuServise: VerticalSidebarService, private router: Router, private dataService: DataService, private configService: ConfigService) {
     this.fullName = dataService.currentUser.firstName + " " + dataService.currentUser.lastName
     this.username = dataService.currentUser.username
     this.menuServise.items.subscribe(menuItems => {
@@ -37,6 +38,7 @@ export class VerticalSidebarComponent {
       this.addExpandClass(this.path);
     });
 
+    /*
     this.configService.getConfig().subscribe(data =>{
       this.basesaasConfig = data
       this.sidebarnavItems = this.sidebarnavItems.filter(item => !this.basesaasConfig?.hideMenu.includes(item.path));
@@ -49,6 +51,7 @@ export class VerticalSidebarComponent {
       });
 
     })
+     */
   }
 
   addExpandClass(element: any) {

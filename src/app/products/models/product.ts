@@ -7,6 +7,10 @@ export class Product {
 
   price!: number;
 
+  comparePrice!: number;
+
+  visibility!: string;
+
   quantity!: number;
 
   categoryId!: number;

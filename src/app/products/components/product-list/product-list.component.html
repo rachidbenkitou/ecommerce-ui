@@ -8,21 +8,21 @@
     </ng-template>
   </ngx-datatable-column>
 
-  <ngx-datatable-column [width]="100" [maxWidth]="150" name="Name" prop="name">
+  <ngx-datatable-column [width]="140" [maxWidth]="220" name="Name" prop="name">
     <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
       {{row?.name}}
     </ng-template>
   </ngx-datatable-column>
 
 
-  <ngx-datatable-column [width]="140" [maxWidth]="220" name="Price" prop="price">
+  <ngx-datatable-column [width]="100" [maxWidth]="150" name="Price" prop="price">
     <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
-      {{row?.price}}
+      {{row?.price || 0}} dh
 
     </ng-template>
   </ngx-datatable-column>
 
-  <ngx-datatable-column [width]="140" [maxWidth]="220" name="Quantity" prop="quantity">
+  <ngx-datatable-column [width]="120" [maxWidth]="150" name="Quantity" prop="quantity">
     <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
       {{row?.quantity || 0}}
 
@@ -36,7 +36,21 @@
     </ng-template>
   </ngx-datatable-column>
 
-  <ngx-datatable-column [width]="140" [maxWidth]="220" name="Visbility" prop="visbility">
+
+  <ngx-datatable-column [width]="150" [maxWidth]="220" name="Date" prop="dateCreated">
+    <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
+      <span>
+           <i class="far fa-calendar-plus"></i>
+        {{row?.dateCreated | date : 'dd/MM/yyyy'}}
+      </span>
+      <span class="text-warning">
+           <br><i class="far fa-edit"></i>
+        {{row?.dateUpdated | date : 'dd/MM/yyyy'}}
+      </span>
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column [width]="120" [maxWidth]="180" name="Visbility" prop="visbility">
     <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
       <ng-container *ngIf="row?.visibility === 'visible'; else noTemplate">
         <span class="badge badge-success px-1" style="font-size: 12px"> Visible</span>
@@ -48,7 +62,7 @@
   </ngx-datatable-column>
 
 
-  <ngx-datatable-column name="Action" [sortable]="false" [width]="110" [maxWidth]="400">
+  <ngx-datatable-column name="Action" [sortable]="false" [width]="150" [maxWidth]="250">
     <ng-template let-row="row" ngx-datatable-cell-template>
       <a class="link cursor-pointer mr-2" ngbTooltip="Afficher" (click)="onDisplay(row)">
         <i-feather name="eye" class="feather-sm"></i-feather> <!-- <i class="icon-eye"></i> -->
@@ -60,8 +74,8 @@
       </ng-container>
       <ng-container>
         <a class="link cursor-pointer mr-2" ngbTooltip="Supprimer"
-           (click)="onOpenModal(deleteVehicleModal,row, 'delete')">
-          <i-feather name="trash-2" class="feather-sm"></i-feather> <!-- <i class="far fa-trash-alt"></i> -->
+           (click)="onOpenModal(deleteProductModal,row, 'delete')">
+          <i-feather name="trash-2" class="feather-sm"></i-feather>
         </a>
       </ng-container>
 
@@ -73,7 +87,7 @@
 
 
 <!-- Delete Modal -->
-<ng-template #deleteVehicleModal>
+<ng-template #deleteProductModal>
   <div>
     <div class="modal-header">
       <h5 class="modal-title" id="deleteModelLabel">Attention </h5>
@@ -82,15 +96,15 @@
       </button>
     </div>
     <div class="modal-body">
-      <p>Voulez vous supprimer le coupon de reduction ? </p>
+      <p>Do you want to delete the product #{{deletedProduct?.id}}? </p>
       <div class="modal-footer">
-        <span class="spinner-grow spinner-grow-sm" role="status"
+        <span *ngIf="sppinerDeleteDisplaying" class="spinner-grow spinner-grow-sm" role="status"
               aria-hidden="true"></span>
         <button id="submitDelete"
                 class="btn btn-primary"
-                data-dismiss="modal">Supprimer
+                data-dismiss="modal" (click)="deleteProductFunction(deletedProduct?.id)">Supprimer
         </button>
-        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="OncloseModal()">Fermer</button>
       </div>
     </div>
   </div>

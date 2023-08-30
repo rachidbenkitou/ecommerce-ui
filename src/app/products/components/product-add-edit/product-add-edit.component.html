@@ -1,1 +1,119 @@
-<p>product-add-edit works!</p>
+<div class="modal-header">
+  <h5 class="modal-title"
+      id="addCandidateModalLabel">{{data.operation === 'add' ? "Add product " : "Update the product : #" + this?.productId || 0}}</h5>
+  <button type="reset" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="OncloseModal('html')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div *ngIf="loadingCategory  "
+     class="progress indeterminate"></div>
+
+<div class="card-body">
+  <form [formGroup]="productForm" (ngSubmit)="addEditProduct()">
+
+    <div class="form-row">
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="name">Name
+            <span class="text-danger">*</span>
+          </label>
+          <input type="text" formControlName="name" name="name" class="form-control" id="name"
+                 placeholder="ex. Lenovo thinkpad">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group" style="min-width: 150px;">
+          <label for="categoryId">Category<span class="text-danger">*</span> </label>
+          <ng-select id="categoryId" [items]="categoryies" formControlName="categoryId"
+                     bindValue="id" bindLabel="name" placeholder="ex. Phones">
+          </ng-select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="quantity">Quantity
+            <span class="text-danger">*</span>
+          </label>
+          <input type="number" formControlName="quantity" class="form-control" id="quantity"
+                 placeholder="ex. 200">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="price">Price
+            <span class="text-danger">*</span>
+          </label>
+          <div class="input-group mb-3">
+            <input type="number" formControlName="price" class="form-control"
+                   id="price" placeholder="ex. 199 ">
+            <span class="input-group-text">DH</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="comparePrice">Compare price
+            <span class="text-danger">*</span>
+          </label>
+          <div class="input-group mb-3">
+            <input type="number" formControlName="comparePrice" class="form-control"
+                   id="comparePrice" placeholder="ex. 299 ">
+            <span class="input-group-text">DH</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4" style="display: flex; justify-content: space-around; margin-top: 20px">
+        <div class="custom-control custom-radio m-2 mr-3">
+          <input value="visible" type="radio" id="customRadio1"
+                 class="custom-control-input cursor-pointer" formControlName="visibility"
+                 checked mdbInput>
+          <label class="custom-control-label cursor-pointer" for="customRadio1"> Visible </label>
+        </div>
+
+        <div class="custom-control custom-radio m-2 ml-3">
+          <input value="invisible" type="radio" id="customRadio2"
+                 class="custom-control-input cursor-pointer" formControlName="visibility"
+                 mdbInput>
+          <label class="custom-control-label cursor-pointer" for="customRadio2">Invisible</label>
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="description">Description
+          </label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    formControlName="description" name="description" class="form-control"
+                    id="description"></textarea>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="col align-self-center">
+      <div class="text-right modal-footer">
+        <span *ngIf="sppinerDeleteDisplaying" class="spinner-grow spinner-grow-sm" role="status"
+              aria-hidden="true"></span>
+        <button type="button" (click)="OncloseModal('html')" id="add-candidate-form" class="btn btn-outline-dark"
+                data-dismiss="modal">
+          Fermer
+        </button>
+        <button [disabled]="productForm.invalid" type="submit" id="submitProduct"
+                class="btn btn-info">{{buttonName}} </button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+

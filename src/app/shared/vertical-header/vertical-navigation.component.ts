@@ -127,11 +127,13 @@ export class VerticalNavigationComponent implements OnInit, AfterViewInit {
   constructor(private modalService: NgbModal, private translate: TranslateService, private authService: AuthService, private router: Router, private dataService: DataService, private menuService: MenuService,private configService: ConfigService) {
     this.fullName = dataService.currentUser.firstName + " " + dataService.currentUser.lastName
     this.username = dataService.currentUser.username
-    translate.setDefaultLang('en');
+    //translate.setDefaultLang('en');
 
+    /*
     this.configService.getConfig().subscribe(data =>{
       this.basesaasConfig = data
     })
+     */
   }
 
   ngOnInit(): void {
@@ -148,6 +150,7 @@ export class VerticalNavigationComponent implements OnInit, AfterViewInit {
   }
 
   logout() {
+    /*
     this.authService.logout().subscribe((data: any) => {
       this.authService.currentUser = {};
       if (environment.production) {
@@ -156,6 +159,7 @@ export class VerticalNavigationComponent implements OnInit, AfterViewInit {
         window.location.href = "http://localhost:60645"
       }
     });
+     */
   }
 
 }

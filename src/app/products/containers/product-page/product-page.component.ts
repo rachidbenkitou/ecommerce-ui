@@ -2,10 +2,11 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Subject, Subscription} from 'rxjs';
 import {Title} from "@angular/platform-browser";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {DataService} from 'src/app/shared/services/data.service';
 import {ActionsService} from 'src/app/shared/services/actions.service';
 import {ProductService} from "../../services/product.service";
+import {ProductAddEditComponent} from "../../components/product-add-edit/product-add-edit.component";
 
 
 @Component({
@@ -17,10 +18,10 @@ export class ProductPageComponent implements OnInit {
 
   clickActionSubscription: Subscription;
   eventProspSubject: Subject<void> = new Subject<void>();
+  screenMode: string | undefined
   loading: boolean = false
   currentRoute!: string
-  permissions: any
-  lang!: string
+  active: number = 1;
 
   constructor(private productService: ProductService,
               private titleService: Title,
@@ -30,22 +31,21 @@ export class ProductPageComponent implements OnInit {
               private router: Router,
               private changeDetectorRef: ChangeDetectorRef) {
 
-    /*    this.clickActionSubscription = this.actionsService.getAddEvent().subscribe((ev) => {
-          if (ev === 'supplier') {
-            this.addSupplier();
-          }
-        })
+    this.clickActionSubscription = this.actionsService.getAddEvent().subscribe((ev) => {
 
-        router.events.subscribe((event => {
-          if (event instanceof NavigationEnd) {
-            this.currentRoute = event.url;
-          }
-        }));*/
+      if (ev === 'product') {
+        this.addProduct();
+      }
+    })
+    router.events.subscribe((event => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.url;
+      }
+    }));
 
   }
 
   addProduct() {
-    /*
     const dialogRef = this.modalService.open(ProductAddEditComponent, {
       size: "xl",
       backdrop: 'static',
@@ -60,34 +60,22 @@ export class ProductPageComponent implements OnInit {
       if (event.source === "close") {
         dialogRef.close()
       }
-      this.supplierService.reload.emit()
+      this.productService.reload.emit()
     });
-
-     */
   }
-
-
-  screenMode: string | undefined
-
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnDestroy(): void {
-    /*
     this.clickActionSubscription.unsubscribe()
-     */
   }
 
-  active: number = 1;
-
   isActiveRoute() {
-
     if (this.currentRoute === '/product/search') {
       this.active = 1
     }
   }
 
   ngOnInit(): void {
-
     this.productService.loading$.subscribe(event => {
       this.loading = event;
       this.changeDetectorRef.detectChanges()

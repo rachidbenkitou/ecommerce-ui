@@ -5,6 +5,8 @@ import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
 import {ProductAddEditComponent} from "../product-add-edit/product-add-edit.component";
 import {ProductDetailsComponent} from "../product-details/product-details.component";
+import {ProductService} from "../../services/product.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-product-list',
@@ -19,11 +21,13 @@ export class ProductListComponent implements OnInit {
   deletedProduct: any;
 
   // @ts-ignore
-  constructor(private dataService: DataService,
-              private modalService: NgbModal,
-              private toastr: ToastrService,
-              private route: Router,
-              private changeDetectorRef: ChangeDetectorRef) {
+  constructor(
+    private productService: ProductService,
+    private dataService: DataService,
+    private modalService: NgbModal,
+    private toastr: ToastrService,
+    private route: Router,
+    private changeDetectorRef: ChangeDetectorRef) {
   }
 
   OncloseModal() {
@@ -52,7 +56,7 @@ export class ProductListComponent implements OnInit {
     });
     const data = {
       operation: "edit",
-      tntDiscountCoupon: row,
+      product: row,
       item: {}
     }
     dialogRef.componentInstance.data = data;
@@ -64,9 +68,9 @@ export class ProductListComponent implements OnInit {
   }
 
 
-  onOpenModal(target: TemplateRef<any>, vehicle: any, mode: string): void {
+  onOpenModal(target: TemplateRef<any>, product: any, mode: string): void {
     if (mode === 'delete') {
-      this.deletedProduct = vehicle;
+      this.deletedProduct = product;
     }
     this.modalService.open(target, {
       centered: true,
@@ -77,7 +81,27 @@ export class ProductListComponent implements OnInit {
   submitButton: any
   sppinerDeleteDisplaying: boolean = false
 
-  deleteDiscountCouponsFunction(vehicleId: number): void {
+  deleteProductFunction(productId: number): void {
+
+    this.submitButton = (document.getElementById('submitDelete') as HTMLInputElement);
+    this.submitButton.disabled = true
+    this.sppinerDeleteDisplaying = true
+    this.productService.deleteProduct(productId).subscribe(
+      (response: void) => {
+      },
+      (error: HttpErrorResponse) => {
+        this.sppinerDeleteDisplaying = false
+        this.submitButton.disabled = false
+        this.OncloseModal();
+      },
+      () => {
+        this.sppinerDeleteDisplaying = false
+        this.submitButton.disabled = false
+        this.getProducts.emit();
+        this.OncloseModal();
+        this.toastr.success('Supprimé avec succès', 'Succès!');
+      }
+    );
 
   }
 
