@@ -25,14 +25,14 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
-/*
+
   {
-    path: '/category',
+    path: '/categories',
     title: 'Categories',
     icon: 'codepen',
     class: '',
     extralink: false,
     submenu: []
   },
-* */
+
 ];

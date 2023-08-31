@@ -45,7 +45,7 @@ export class ProductAddEditComponent implements OnInit {
       categoryId: [, Validators.required],
       quantity: [, Validators.required],
       price: [, Validators.required],
-      comparePrice: [, Validators.required],
+      comparePrice: [,],
       visibility: ["visible", Validators.required],
       description: [],
     })

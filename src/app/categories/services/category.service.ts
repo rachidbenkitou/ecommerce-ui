@@ -2,7 +2,6 @@ import {EventEmitter, Injectable, Output} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
-import {Product} from "../../products/models/product";
 import {Category} from "../models/category";
 
 @Injectable({
@@ -32,19 +31,19 @@ export class CategoryService {
     return this.http.get<Category[]>(`${this.Url}`, {params});
   }
 
-  public findProductById(id: number): Observable<Product> {
-    return this.http.get<Product>(`${this.Url}/` + id);
+  public findCategoryById(id: number): Observable<Category> {
+    return this.http.get<Category>(`${this.Url}/` + id);
   }
 
-  public addProduct(product: Product): Observable<any> {
-    return this.http.post<any>(`${this.Url}`, product);
+  public addCategory(category: Category): Observable<any> {
+    return this.http.post<any>(`${this.Url}`, category);
   }
 
-  public updateProduct(id: number, product: any): Observable<Product> {
-    return this.http.put<Product>(`${this.Url}/${id}`, product);
+  public updateCategory(id: number, category: Category): Observable<Category> {
+    return this.http.put<Category>(`${this.Url}/${id}`, category);
   }
 
-  public deleteProduct(id: number): Observable<void> {
+  public deleteCategory(id: number): Observable<void> {
     return this.http.delete<void>(`${this.Url}/${id}`);
   }
 
@@ -56,13 +55,13 @@ export class CategoryService {
     this.loading.next(loading)
   }
 
-  private tntProductId: number;
+  private categoryId: number;
 
-  setProductId(id: number) {
-    this.tntProductId = id;
+  setCategoryId(id: number) {
+    this.categoryId = id;
   }
 
-  getProductId(): number {
-    return this.tntProductId;
+  getCategoryId(): number {
+    return this.categoryId;
   }
 }

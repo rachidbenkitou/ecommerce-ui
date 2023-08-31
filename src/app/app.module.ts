@@ -39,6 +39,7 @@ import {adapterFactory} from "angular-calendar/date-adapters/date-fns";
 import {FeatherModule} from 'angular-feather';
 import {allIcons} from 'angular-feather/icons';
 import localeFr from '@angular/common/locales/fr';
+import { GuestOrderPageComponent } from './guestOrders/containers/guest-order-page/guest-order-page.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -65,7 +66,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BreadcrumbComponent,
     VerticalSidebarComponent,
     HorizontalNavigationComponent,
-    HorizontalSidebarComponent
+    HorizontalSidebarComponent,
+    GuestOrderPageComponent
 
 
   ],

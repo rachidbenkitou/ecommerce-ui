@@ -25,6 +25,9 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
     ProductPageComponent,
     ProductInfoComponent
   ],
+  exports: [
+    ProductListComponent
+  ],
   imports: [
     RouterModule.forChild(ProductRoutes),
     NgbModule,

@@ -1,0 +1,53 @@
+<div class="figure-container">
+  <ng-container *ngFor="let category of categoryList">
+    <figure class="snip1418">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample85.jpg" alt="sample85"/>
+      <div class="add-to-cart cursor-style"><i class="ion-android-add"></i><span>Add category</span></div>
+      <figcaption>
+        <h3>#{{ category?.id }} {{ category?.name }}</h3>
+        <div class="actions-container">
+          <span class="badge badge-success" *ngIf="category?.visbility==='visible'">{{category?.visbility}}</span>
+          <span class="badge badge-danger" *ngIf="category?.visbility==='invisible'">{{category?.visbility}}]</span>
+          <div class="icons-container">
+
+            <a class="link cursor-pointer mr-2" ngbTooltip="View products" (click)="onDisplay(category)">
+              <i-feather name="eye" class="feather-sm"></i-feather>
+            </a>
+            <a class="link cursor-pointer mr-2" ngbTooltip="Edit" (click)="onEdit(category)">
+              <i-feather name="edit-3" class="feather-sm"></i-feather>
+            </a>
+            <a class="link cursor-pointer mr-2" ngbTooltip="Delete"
+               (click)="onOpenModal(deleteCategoryModal,category, 'delete')">
+              <i-feather name="trash-2" class="feather-sm"></i-feather>
+            </a>
+          </div>
+        </div>
+      </figcaption>
+      <a href="#"></a>
+    </figure>
+  </ng-container>
+</div>
+
+
+<ng-template #deleteCategoryModal>
+  <div>
+    <div class="modal-header">
+      <h5 class="modal-title" id="deleteModelLabel">Attention </h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Do you want to delete the category #{{deletedCategory?.id}}? </p>
+      <div class="modal-footer">
+        <span *ngIf="sppinerDeleteDisplaying" class="spinner-grow spinner-grow-sm" role="status"
+              aria-hidden="true"></span>
+        <button id="submitDelete"
+                class="btn btn-primary"
+                data-dismiss="modal" (click)="deleteCategoryFunction(deletedCategory?.id)">Supprimer
+        </button>
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="OncloseModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
