@@ -35,17 +35,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onDisplay(row: any) {
-    const dialogRef = this.modalService.open(ProductDetailsComponent, {
-      size: "xl",
-      backdrop: 'static',
-      keyboard: false,
-    });
-    const data = {
-      operation: "view",
-      tntDiscountCoupon: row,
-      item: {}
-    }
-    dialogRef.componentInstance.data = data;
+    this.route.navigate(['/products', row.id]);
   }
 
   onEdit(row) {

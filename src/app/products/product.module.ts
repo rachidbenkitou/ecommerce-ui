@@ -13,6 +13,7 @@ import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {FeatherModule} from "angular-feather";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgSelectModule} from "@ng-select/ng-select";
+import { ProductInfoComponent } from './components/product-info/product-info.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {NgSelectModule} from "@ng-select/ng-select";
     ProductListComponent,
     ProductSearchComponent,
     ProductAddEditComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    ProductInfoComponent
   ],
   imports: [
     RouterModule.forChild(ProductRoutes),

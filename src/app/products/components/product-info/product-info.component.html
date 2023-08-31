@@ -1,0 +1,116 @@
+<div class="col-12 px-0">
+  <form class="form-horizontal">
+    <div class="form-body">
+      <div class="container-fluid">
+
+        <div class="pb-0 row row-cols-1 row-cols-lg-2 row-cols-md-1 g-2 g-lg-3">
+
+          <div class="col mb-3 text-nowrap">
+            <div class="row text-nowrap">
+
+              <label for="id" class="h6 col control-label pl-0 m-2 mr-2"> Id</label>
+              <span class="col form-control-static text-nowrap m-2" id="id" name="id">
+                            {{this.product?.id}}
+                        </span>
+            </div>
+          </div>
+
+          <div class="col mb-3 text-nowrap">
+            <div class="row text-nowrap">
+
+              <label for="name" class="h6 col control-label pl-0 m-2 mr-2"> Name</label>
+              <span class="col form-control-static text-nowrap m-2" id="name" name="name">
+                            {{this.product?.name}}
+                        </span>
+            </div>
+          </div>
+
+          <div class="col mb-3 text-nowrap">
+            <div class="row text-nowrap">
+
+              <label for="categoryName" class="h6 col control-label pl-0 m-2 mr-2"> Category</label>
+              <span class="col form-control-static text-nowrap m-2" id="categoryName" name="categoryName">
+                            {{this.product?.categoryName}}
+                        </span>
+            </div>
+          </div>
+
+          <div class="col mb-3 text-nowrap">
+            <div class="row text-nowrap">
+
+              <label for="quantity" class="h6 col control-label pl-0 m-2 mr-2"> Quantity</label>
+              <span class="col form-control-static text-nowrap m-2" id="quantity" name="quantity">
+                            {{this.product?.quantity || 0}}
+                        </span>
+            </div>
+          </div>
+
+          <div class="col mb-3 text-nowrap">
+            <div class="row text-nowrap">
+
+              <label for="price" class="h6 col control-label pl-0 m-2 mr-2">Price</label>
+              <span class="col form-control-static text-nowrap m-2" id="price" name="price">
+                            {{this.product?.price || 0}} dh
+                        </span>
+            </div>
+          </div>
+
+          <div class="col mb-3 text-nowrap">
+            <div class="row text-nowrap">
+
+              <label for="comparePrice" class="h6 col control-label pl-0 m-2 mr-2">Compare price</label>
+              <span class="col form-control-static text-nowrap m-2" id="comparePrice" name="comparePrice">
+                            {{this.product?.comparePrice || 0}} dh
+                        </span>
+            </div>
+          </div>
+
+          <div class="col mb-3 text-nowrap">
+            <div class="row text-nowrap">
+
+              <label for="dateCreated" class="h6 col control-label pl-0 m-2 mr-2">Date created</label>
+              <span class="col form-control-static text-nowrap m-2" id="dateCreated" name="dateCreated">
+                            {{this.product?.dateCreated}}
+                        </span>
+            </div>
+          </div>
+
+          <div class="col mb-3 text-nowrap">
+            <div class="row text-nowrap">
+
+              <label for="dateUpdated" class="h6 col control-label pl-0 m-2 mr-2">Date updated</label>
+              <span class="col form-control-static text-nowrap m-2" id="dateUpdated" name="dateUpdated">
+                            {{this.product?.dateUpdated}}
+                        </span>
+            </div>
+          </div>
+
+
+          <div class="col mb-3 text-nowrap">
+            <div class="row text-nowrap">
+
+              <label for="description" class="h6 col control-label pl-0 m-2 mr-2">Description</label>
+              <span class="col form-control-static text-nowrap m-2" id="description" name="description">
+                            {{this.product?.description}}
+                        </span>
+            </div>
+          </div>
+
+          <div class="col mb-3 text-nowrap">
+            <div class="row text-nowrap">
+              <label for="subscriptionServiceStatusName" class="h6 col control-label pl-0 m-2 mr-2"> Visibility</label>
+              <span class="col form-control-static text-nowrap m-2" id="subscriptionServiceStatusName" name="subscriptionServiceStatusName">
+                          <span *ngIf="this.product?.visibility==='visible'" class="badge badge-success px-1" style="font-size: 12px">{{this.product?.visibility}}</span>
+                          <span *ngIf="this.product?.visibility==='invisible'" class="badge badge-danger px-1" style="font-size: 12px">{{this.product?.visibility}}</span>
+                        </span>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </form>
+</div>

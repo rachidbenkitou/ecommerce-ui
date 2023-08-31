@@ -1,1 +1,45 @@
-<p>product-details works!</p>
+<!-- view -->
+<div class="card">
+  <div class="progress indeterminate" *ngIf="loadingProduct === true ||  loading === true"></div>
+
+  <div *ngIf="active !== undefined" class="card-body">
+    <div *ngIf="screenMode !== 'small'" class="details-buttons">
+      <button type="button" (click)="editPage()" class="btn btn-info px-3 mr-2 button"
+              style="min-width: 90px">
+        <i-feather name="edit-3" class="feather-sm icon"></i-feather>
+        <span class="text">Modifier</span></button>
+      <button type="button" class="btn btn-outline-dark mr-3 button" style="min-width: 90px"
+              (click)="navigateToProductPage()">
+        <!-- <i-feather name="arrow-left" class="feather-sm icon"></i-feather> -->
+        <span class="text">Retour</span></button>
+    </div>
+
+    <div class="row">
+
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs w-100 d-flex flex-nowrap ">
+        <!--------------------------------------Details  candidate----------------------------------- -->
+        <li [ngbNavItem]="1">
+          <a ngbNavLink class="d-flex flex-nowrap">
+            <i-feather name="file-text" class="feather-sm mr-1"></i-feather>
+            <span *ngIf="active === 1 && screenMode === 'small'">Fiche</span>
+            <span *ngIf="screenMode !== 'small'">Fiche</span>
+          </a>
+          <ng-template ngbNavContent>
+            <app-product-info [product]="product"></app-product-info>
+          </ng-template>
+        </li>
+
+
+      </ul>
+    </div>
+
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  </div>
+</div>
+
+
+
+
+
+
+
