@@ -5,7 +5,9 @@ import {DataService} from "../../../shared/services/data.service";
 import {ActionsService} from "../../../shared/services/actions.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {ProductAddEditComponent} from "../../../products/components/product-add-edit/product-add-edit.component";
+import {CategoryAddEditComponent} from "../category-add-edit/category-add-edit.component";
+import {CategoryService} from "../../services/category.service";
+import {Category} from "../../models/category";
 
 @Component({
   selector: 'app-category-details',
@@ -15,12 +17,14 @@ import {ProductAddEditComponent} from "../../../products/components/product-add-
 export class CategoryDetailsComponent implements OnInit {
 
   products: any[] = []
+  category: Category;
   categoryId !: number;
   loadingProduct: boolean = true;
   active = 1
 
   constructor(
     private productService: ProductService,
+    private categoryService: CategoryService,
     private titleService: Title,
     public dataService: DataService,
     private actionsService: ActionsService,
@@ -34,7 +38,7 @@ export class CategoryDetailsComponent implements OnInit {
     });
   }
 
-  getProduct() {
+  getProducts() {
     this.loadingProduct = true;
     this.productService.findProduct(null, null, this?.categoryId, null)
       .subscribe(
@@ -47,6 +51,19 @@ export class CategoryDetailsComponent implements OnInit {
         },
         () => {
           this.loadingProduct = false
+        }
+      );
+  }
+
+  getCategory() {
+    this.categoryService.findCategoryById(this.categoryId)
+      .subscribe(
+        (response) => {
+          this.category = response
+        },
+        (errorGettingByCode) => {
+        },
+        () => {
         }
       );
   }
@@ -100,25 +117,25 @@ export class CategoryDetailsComponent implements OnInit {
     }
   }
 
-  navigateToProductPage(): void {
-    this.router.navigate(['/products']);
+  navigateToCategoryPage(): void {
+    this.router.navigate(['/categories']);
   }
 
   editPage(): void {
-    const dialogRef = this.modalService.open(ProductAddEditComponent, {
+    const dialogRef = this.modalService.open(CategoryAddEditComponent, {
       size: "xl",
       backdrop: 'static',
       keyboard: false,
     });
     const data = {
       operation: "edit",
-      products: this.products,
+      category: this.category,
       item: {}
     }
     dialogRef.componentInstance.data = data;
     dialogRef.componentInstance.onAddEdit.subscribe((event: any) => {
       this.OncloseModal()
-      this.getProduct()
+      this.getProducts()
     });
   }
 
@@ -131,7 +148,8 @@ export class CategoryDetailsComponent implements OnInit {
 
     })
     this.onResize()
-    this.getProduct()
+    this.getProducts()
+    this.getCategory()
 
   }
 

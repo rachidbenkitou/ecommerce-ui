@@ -12,6 +12,8 @@ import {CategoryListComponent} from './components/category-list/category-list.co
 import {CategorySearchComponent} from './components/category-search/category-search.component';
 import {CategoryPageComponent} from './containers/category-page/category-page.component';
 import {CategoryRoutes} from "./category-routing.module";
+import {SharedComponentsModule} from "../shared-components/shared-components.module";
+import { ProductsOfACategoryComponent } from './components/products-of-a-category/products-of-a-category.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import {CategoryRoutes} from "./category-routing.module";
     CategoryDetailsComponent,
     CategoryListComponent,
     CategorySearchComponent,
-    CategoryPageComponent
+    CategoryPageComponent,
+    ProductsOfACategoryComponent
   ],
   imports: [
     RouterModule.forChild(CategoryRoutes),
@@ -29,6 +32,7 @@ import {CategoryRoutes} from "./category-routing.module";
     NgSelectModule,
     FeatherModule,
     NgxDatatableModule,
+    SharedComponentsModule,
   ]
 })
 export class CategoryModule {

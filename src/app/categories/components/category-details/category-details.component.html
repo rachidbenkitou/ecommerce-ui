@@ -9,7 +9,7 @@
         <i-feather name="edit-3" class="feather-sm icon"></i-feather>
         <span class="text">Modifier</span></button>
       <button type="button" class="btn btn-outline-dark mr-3 button" style="min-width: 90px"
-              (click)="navigateToProductPage()">
+              (click)="navigateToCategoryPage()">
         <!-- <i-feather name="arrow-left" class="feather-sm icon"></i-feather> -->
         <span class="text">Retour</span></button>
     </div>
@@ -21,11 +21,11 @@
         <li [ngbNavItem]="1">
           <a ngbNavLink class="d-flex flex-nowrap">
             <i-feather name="file-text" class="feather-sm mr-1"></i-feather>
-            <span *ngIf="active === 1 && screenMode === 'small'">Fiche</span>
-            <span *ngIf="screenMode !== 'small'">Fiche</span>
+            <span *ngIf="active === 1 && screenMode === 'small'">Products of a category</span>
+            <span *ngIf="screenMode !== 'small'">Products of a category</span>
           </a>
           <ng-template ngbNavContent>
-            <app-product-list [productList]="products"></app-product-list>
+            <app-products-of-a-category [categoryId]="categoryId"></app-products-of-a-category>
           </ng-template>
         </li>
 

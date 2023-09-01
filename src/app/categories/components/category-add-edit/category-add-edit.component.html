@@ -1,1 +1,74 @@
-<p>category-add-edit works!</p>
+<div class="modal-header">
+  <h5 class="modal-title"
+      id="addCandidateModalLabel">{{data.operation === 'add' ? "Add category " : "Update the category : #" + this?.categoryId || 0}}</h5>
+  <button type="reset" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="OncloseModal('html')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!--
+<div *ngIf="loadingCategory  "
+     class="progress indeterminate"></div>
+-->
+
+<div class="card-body">
+  <form [formGroup]="categoryForm" (ngSubmit)="addEditCategory()">
+
+    <div class="form-row">
+
+      <div class="col-md-4">
+        <label for="name">Nom </label>
+        <span class="text-danger">*</span>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <!-- <label for="description">Note</label> -->
+          <input type="text" formControlName="name" class="form-control" id="name" placeholder="ex. Phones">
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <label>
+          Visiblity
+        </label>
+        <span class="text-danger">*</span>
+      </div>
+      <div class="col-md-6">
+        <div class="form-check form-check-inline">
+          <input value="visible" class="form-check-input cursor-pointer" type="radio" formControlName="visbility"
+                 id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Visible
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input value="invisible" class="form-check-input cursor-pointer" type="radio" formControlName="visbility"
+                 id="flexRadioDefault2">
+          <label class="form-check-label" for="flexRadioDefault2">
+            Invisile
+          </label>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="col align-self-center">
+      <div class="text-right modal-footer">
+        <span *ngIf="sppinerDeleteDisplaying" class="spinner-grow spinner-grow-sm" role="status"
+              aria-hidden="true"></span>
+        <button type="button" (click)="OncloseModal('html')" id="add-candidate-form" class="btn btn-outline-dark"
+                data-dismiss="modal">
+          Fermer
+        </button>
+        <button [disabled]="categoryForm.invalid" type="submit" id="submitCategory"
+                class="btn btn-info">{{buttonName}} </button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+

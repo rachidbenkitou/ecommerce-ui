@@ -37,6 +37,24 @@ export class CategoryListComponent implements OnInit {
     this.route.navigate(['/categories', row.id]);
   }
 
+  addCategory() {
+    const dialogRef = this.modalService.open(CategoryAddEditComponent, {
+      size: "xl",
+      backdrop: 'static',
+      keyboard: false,
+    });
+    const data = {
+      operation: "add",
+      item: {}
+    }
+    dialogRef.componentInstance.data = data;
+    dialogRef.componentInstance.onAddEdit.subscribe((event: any) => {
+      if (event.source === "close") {
+        dialogRef.close()
+      }
+      this.categoryService.reload.emit()
+    });
+  }
   onEdit(row) {
     const dialogRef = this.modalService.open(CategoryAddEditComponent, {
       size: "xl",

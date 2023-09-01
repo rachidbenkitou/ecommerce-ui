@@ -5,7 +5,7 @@
 
         <div class="table">
           <div class="modal-body pt-0">
-            <form novalidate="" [formGroup]="categoryForm" class="search">
+            <form novalidate="" [formGroup]="productForm" class="search">
               <div class="form-body">
                 <!-- Row of search items -->
                 <div class="row">
@@ -32,7 +32,7 @@
                       <ng-select
                         id="visibility"
                         name="visibility"
-                        formControlName="visbility"
+                        formControlName="visibility"
                         [items]="visibilityList"
                         bindValue="name"
                         bindLabel="name"
@@ -48,7 +48,7 @@
                       <button type="reset" class="btn btn-dark mr-2 button-reset" (click)="reset()">
                         <i-feather name="refresh-cw" class="feather-sm"></i-feather>
                       </button>
-                      <button type="submit" class="btn btn-info button-search" id="find-category-form"
+                      <button type="submit" class="btn btn-info button-search" id="find-product-form"
                               (click)="search()">
                         <i-feather name="search" class="feather-sm"></i-feather>
                       </button>
@@ -62,18 +62,18 @@
             </form>
 
             <div class="table">
-              <div class="col-lg-12 col-md-12 col-xl-12" *ngIf="categoryList.length===0 && loading===false">
+              <div class="col-lg-12 col-md-12 col-xl-12" *ngIf="productList.length===0 && loading===false">
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
                   <i-feather name="alert-circle"></i-feather>
-                  <strong class=" h4 alert-heading"> &nbsp;&nbsp;No category found !</strong>
+                  <strong class=" h4 alert-heading"> &nbsp;&nbsp;No product found !</strong>
 
                 </div>
               </div>
 
-              <app-category-list
-                *ngIf="(categoryList.length!==0 && loading===false) || (categoryList.length !== 0 && loading===true)"
-                [categoryList]="categoryList" (getCategories)="getCategories()">
-              </app-category-list>
+              <app-product-list
+                *ngIf="(productList.length!==0 && loading===false) || (productList.length !== 0 && loading===true)"
+                [productList]="productList" (getProducts)="getProducts()">
+              </app-product-list>
 
             </div>
 

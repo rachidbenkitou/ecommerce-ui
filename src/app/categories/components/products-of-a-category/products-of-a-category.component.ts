@@ -1,19 +1,22 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Product} from "../../../products/models/product";
 import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
-import {ProductService} from "../../services/product.service";
+import {CategoryService} from "../../services/category.service";
 import {HttpErrorResponse} from "@angular/common/http";
-import {Product} from "../../models/product";
-import {Category} from "../../../categories/models/category";
-import {CategoryService} from "../../../categories/services/category.service";
+import {Category} from "../../models/category";
+import {ProductService} from "../../../products/services/product.service";
 
 @Component({
-  selector: 'app-product-search',
-  templateUrl: './product-search.component.html',
-  styleUrls: ['./product-search.component.scss']
+  selector: 'app-products-of-a-category',
+  templateUrl: './products-of-a-category.component.html',
+  styleUrls: ['./products-of-a-category.component.scss']
 })
-export class ProductSearchComponent implements OnInit {
+export class ProductsOfACategoryComponent implements OnInit {
+
+  @Input() categoryId: number;
 
   @Output() loadingState: EventEmitter<any> = new EventEmitter();
+
   loading: boolean = true
 
   public isCollapsed1 = false;
@@ -44,7 +47,6 @@ export class ProductSearchComponent implements OnInit {
     this.productForm = this.formBuilder.group({
       id: [],
       name: [],
-      categoryId: [],
       visibility: [],
     });
   }
@@ -55,7 +57,7 @@ export class ProductSearchComponent implements OnInit {
     submitButton.disabled = true
     this.productService.changeLoadingState(true)
     this.isCollapsed1 = false
-    this.productService.findProduct(id, name, categoryId, visibility).subscribe(
+    this.productService.findProduct(id, name, this.categoryId, visibility).subscribe(
       (response: any[]) => {
         this.productList = response;
       },
@@ -73,17 +75,6 @@ export class ProductSearchComponent implements OnInit {
     );
   }
 
-  getCategoryList() {
-    //this.loadingState.emit(true)
-    this.productService.changeLoadingState(true)
-    this.categoryService.findCategories().subscribe(
-      (response: any[]) => {
-        this.categoryList = response;
-        //this.loadingState.emit(false)
-        this.productService.changeLoadingState(false)
-      }
-    );
-  }
 
   reset(): void {
     this.productForm.reset()
@@ -94,14 +85,13 @@ export class ProductSearchComponent implements OnInit {
     this.getProducts(
       this?.productForm.value?.id,
       this?.productForm.value?.name,
-      this?.productForm.value?.categoryId,
+      null,
       this?.productForm.value?.visibility)
   }
 
   ngOnInit(): void {
     this.initForm()
     this.getProducts()
-    this.getCategoryList()
   }
 
 }

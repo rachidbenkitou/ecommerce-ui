@@ -11,6 +11,7 @@ import {FeatherModule} from "angular-feather";
 import {JsonFormatPipePipe} from "./pipe/jsonFormat.pipe";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {TranslateModule} from "@ngx-translate/core";
+import {ProductListComponent} from "./product-list/product-list.component";
 
 
 @NgModule({
@@ -20,12 +21,14 @@ import {TranslateModule} from "@ngx-translate/core";
     EditViewProfilePictureComponent,
     AlertInfoComponent,
     JsonFormatPipePipe,
+    ProductListComponent
   ],
   exports: [
     PhonePipe,
     JsonFormatPipePipe,
     AlertInfoComponent,
     JsonFormatPipePipe,
+    ProductListComponent,
   ],
 
   imports: [

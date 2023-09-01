@@ -41,7 +41,7 @@ export class CategorySearchComponent implements OnInit {
     this.categoryForm = this.formBuilder.group({
       id: [],
       name: [],
-      visibility: [],
+      visbility: [],
     });
   }
 
@@ -77,7 +77,8 @@ export class CategorySearchComponent implements OnInit {
   search(): void {
     this.getCategories(
       this?.categoryForm.value?.id,
-      this?.categoryForm.value?.visibility)
+      this?.categoryForm.value?.name,
+      this?.categoryForm.value?.visbility)
   }
 
   ngOnInit(): void {
