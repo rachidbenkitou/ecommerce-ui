@@ -1,0 +1,55 @@
+/***************************************************/
+h1 {
+  margin: 0 auto;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.preview {
+  /*
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+
+   */
+}
+
+.image-preview-container {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 20px;
+}
+
+.image-preview-container img {
+  width: 50%;
+  height: 150px;
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.image-preview-container input {
+  display: none;
+}
+
+.image-preview-container label {
+  display: block;
+  width: 50%;
+  height: 45px;
+  margin-left: 25%;
+  text-align: center;
+  background: #2098a8;
+  color: #fff;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 400;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

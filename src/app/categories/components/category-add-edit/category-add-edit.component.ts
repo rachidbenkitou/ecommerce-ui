@@ -63,6 +63,7 @@ export class CategoryAddEditComponent implements OnInit {
     this.submitButton.disabled = true
     this.categoryService.addCategory(this.categoryForm.value).subscribe(
       (response: any) => {
+        this.uploadFile(response?.id);
       },
       (error: HttpErrorResponse) => {
         this.submitButton.disabled = false
@@ -110,6 +111,27 @@ export class CategoryAddEditComponent implements OnInit {
     this.categoryForm.controls.visbility.setValue(this.category?.visbility);
 
 
+  }
+
+  selectedFile: any;
+
+  uploadFile(categoryId: number): void {
+    if (this.selectedFile) {
+      // Replace 'productId' with the actual product ID
+      this.categoryService.uploadCategoryImage(categoryId, this.selectedFile).subscribe(
+        (response) => {
+          console.log('Image uploaded successfully:', response);
+        },
+        (error) => {
+          console.error('Error uploading image:', error);
+        }
+      );
+    }
+  }
+
+  handleImageSelected(image: any): void {
+    this.selectedFile = image.target.files[0];
+    console.log(this.selectedFile)
   }
 
   ngOnInit(): void {

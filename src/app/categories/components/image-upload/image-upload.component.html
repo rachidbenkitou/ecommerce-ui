@@ -1,0 +1,17 @@
+<div class="image-preview-container">
+
+  <div class="alert alert-success" role="alert">
+
+    <span>
+      <i-feather name="alert-circle" class="feather-sm"></i-feather> &nbsp;
+     Note: For best visual appearance, use a category image with a size of 300x300.
+    </span>
+  </div>
+
+  <div class="preview">
+    <img id="preview-selected-image"/>
+  </div>
+
+  <label for="file-upload">Upload Image</label>
+  <input type="file" id="file-upload"  accept="image/*" (change)="previewImage($event)"/>
+</div>

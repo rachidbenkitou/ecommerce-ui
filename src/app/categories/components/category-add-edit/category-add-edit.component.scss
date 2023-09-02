@@ -1,3 +1,30 @@
 .cursor-pointer{
   cursor: pointer;
 }
+.triangle_down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #2f2f2f;
+  font-size: 0;
+  line-height: 0;
+  float: left;
+}
+
+.button-tog {
+  background-color: white;
+  border: 0;
+}
+
+.is-open {
+  transform: rotate(180deg);
+  /* Equal to rotateZ(45deg) */
+}
+
+.button-clr {
+  background-color: #4fc3f7;
+  color: white;
+}
+
+

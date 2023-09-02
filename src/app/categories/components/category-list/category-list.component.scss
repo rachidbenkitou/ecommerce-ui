@@ -3,21 +3,16 @@
 
 .snip1418 {
   font-family: 'Raleway', Arial, sans-serif;
-  position: relative;
+  background: #ffffff;
+  /*
+    position: relative;
   overflow: hidden;
   margin: 10px;
   min-width: 230px;
   max-width: 315px;
   width: 100%;
-  background: #ffffff;
-  text-align: left;
-  color: #000000;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-  font-size: 16px;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-perspective: 20em;
-  perspective: 20em;
+   */
+
 }
 
 .snip1418 * {
@@ -117,43 +112,6 @@
   flex-wrap: wrap;
   margin: -10px; /* Adjust the margin as needed */
 }
-
-/* Use CSS grid layout for the figure container */
-.figure-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  grid-gap: 20px; /* Adjust the gap as needed */
-}
-
-/* Media query for larger screens */
-@media (min-width: 1200px) {
-  .figure-container {
-    grid-template-columns: repeat(4, minmax(240px, 1fr)); /* Display four columns */
-  }
-}
-
-/* Media query for medium screens */
-@media (max-width: 1199px) and (min-width: 768px) {
-  .figure-container {
-    grid-template-columns: repeat(3, minmax(240px, 1fr)); /* Display three columns */
-  }
-}
-
-/* Media query for smaller screens */
-@media (max-width: 767px) and (min-width: 576px) {
-  .figure-container {
-    grid-template-columns: repeat(2, minmax(240px, 1fr)); /* Display two columns */
-  }
-}
-
-/* Media query for smallest screens */
-@media (max-width: 575px) {
-  .figure-container {
-    grid-template-columns: repeat(1, minmax(240px, 1fr)); /* Display one column */
-  }
-}
-
-
 
 /* Style the custom element as a link */
 .delete-icon:hover {

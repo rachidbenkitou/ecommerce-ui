@@ -1,32 +1,34 @@
-<div class="figure-container">
-  <ng-container *ngFor="let category of categoryList">
-    <figure class="snip1418">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample85.jpg" alt="sample85"/>
-      <div class="add-to-cart cursor-style" (click)="addCategory()"><i
-        class="ion-android-add"></i><span>Add category</span></div>
-      <figcaption>
-        <h3>#{{ category?.id }} {{ category?.name }}</h3>
-        <div class="actions-container">
-          <span class="badge badge-success" *ngIf="category?.visbility==='visible'">{{category?.visbility}}</span>
-          <span class="badge badge-danger" *ngIf="category?.visbility==='invisible'">{{category?.visbility}}</span>
-          <div class="icons-container">
-
-            <a class="link cursor-pointer mr-2" ngbTooltip="View products" (click)="onDisplay(category)">
-              <i-feather name="eye" class="feather-sm"></i-feather>
-            </a>
-            <a class="link cursor-pointer mr-2" ngbTooltip="Edit" (click)="onEdit(category)">
-              <i-feather name="edit-3" class="feather-sm"></i-feather>
-            </a>
-            <a class="link cursor-pointer mr-2" ngbTooltip="Delete"
-               (click)="onOpenModal(deleteCategoryModal,category, 'delete')">
-              <i-feather name="trash-2" class="feather-sm"></i-feather>
-            </a>
+<!-- Your HTML structure with Bootstrap classes -->
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let category of categoryList">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+        <div class="card mb-4 snip1418">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample85.jpg" alt="sample85" class="card-img-top">
+          <div class="card-body">
+            <h3 class="card-title">#{{ category?.id }} {{ category?.name }}</h3>
+            <div class="actions-container">
+              <span class="badge badge-success" *ngIf="category?.visbility==='visible'">{{ category?.visbility }}</span>
+              <span class="badge badge-danger" *ngIf="category?.visbility==='invisible'">{{ category?.visbility }}</span>
+              <div class="icons-container">
+                <a class="link cursor-pointer mr-2" ngbTooltip="View products" (click)="onDisplay(category)">
+                  <i-feather name="eye" class="feather-sm"></i-feather>
+                </a>
+                <a class="link cursor-pointer mr-2" ngbTooltip="Edit" (click)="onEdit(category)">
+                  <i-feather name="edit-3" class="feather-sm"></i-feather>
+                </a>
+                <a class="link cursor-pointer mr-2" ngbTooltip="Delete"
+                   (click)="onOpenModal(deleteCategoryModal, category, 'delete')">
+                  <i-feather name="trash-2" class="feather-sm"></i-feather>
+                </a>
+              </div>
+            </div>
           </div>
+          <a href="#"></a>
         </div>
-      </figcaption>
-      <a href="#"></a>
-    </figure>
-  </ng-container>
+      </div>
+    </ng-container>
+  </div>
 </div>
 
 

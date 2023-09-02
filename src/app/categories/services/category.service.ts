@@ -47,6 +47,18 @@ export class CategoryService {
     return this.http.delete<void>(`${this.Url}/${id}`);
   }
 
+  uploadCategoryImage(categoryId: number, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    const options = {
+      params: new HttpParams().set('categoryId', categoryId.toString()) // Set categoryId as a query parameter
+    };
+
+    return this.http.post(`${this.Url}/uploadImage`, formData, options);
+  }
+
+
   //loading in router outlet
   public loading = new BehaviorSubject(false);
   loading$ = this.loading.asObservable();
