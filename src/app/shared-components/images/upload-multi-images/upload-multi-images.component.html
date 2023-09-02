@@ -1,0 +1,9 @@
+<div id="dropBox">
+  <p>Drag & Drop Images Here...</p>
+  <form class="imgUploader">
+    <!-- Use (change) event to handle file input changes -->
+    <input type="file" id="imgUpload" multiple accept="image/*" (change)="handleFileInput($event)">
+    <label class="button" for="imgUpload">Upload From Your Computer</label>
+  </form>
+  <div id="gallery"></div>
+</div>

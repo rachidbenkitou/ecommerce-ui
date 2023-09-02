@@ -1,0 +1,77 @@
+body {
+  font-family: sans-serif;
+}
+
+#dropBox {
+  min-width: 400px;
+  max-width: 100%;
+  min-height: 300px;
+  border: 3px dashed #3278ad;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.34);
+  padding: 3em;
+  margin: auto;
+  border-radius: 30px;
+
+  &.hover {
+    border-color: darkslateblue;
+    background: aliceblue;
+  }
+}
+
+.button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background: #2384af;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #2384af;
+  color: #fff;
+  transition: 0.4s;
+
+  &:hover {
+    background: #44a9d5;
+    border: 1px solid #44a9d5;
+
+  }
+}
+
+#imgUpload {
+  display: none;
+}
+
+#gallery {
+  text-align: center;
+  margin-top: 1.5em;
+
+  div {
+    display: inline-block;
+    margin: 0.5em 1em;
+
+    img {
+      max-height: 150px;
+    }
+  }
+
+  ::ng-deep {
+    .fName,
+    .fSize {
+      display: block;
+
+      &.fName {
+        color: #156c91;
+      }
+
+      &.fSize {
+        font-size: 0.8em;
+      }
+    }
+
+    .fType {
+      font-size: 0.7em;
+    }
+  }
+
+}
+
+

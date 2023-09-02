@@ -12,6 +12,7 @@ import {JsonFormatPipePipe} from "./pipe/jsonFormat.pipe";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {TranslateModule} from "@ngx-translate/core";
 import {ProductListComponent} from "./product-list/product-list.component";
+import { UploadMultiImagesComponent } from './images/upload-multi-images/upload-multi-images.component';
 
 
 @NgModule({
@@ -21,15 +22,17 @@ import {ProductListComponent} from "./product-list/product-list.component";
     EditViewProfilePictureComponent,
     AlertInfoComponent,
     JsonFormatPipePipe,
-    ProductListComponent
-  ],
-  exports: [
-    PhonePipe,
-    JsonFormatPipePipe,
-    AlertInfoComponent,
-    JsonFormatPipePipe,
     ProductListComponent,
+    UploadMultiImagesComponent
   ],
+    exports: [
+        PhonePipe,
+        JsonFormatPipePipe,
+        AlertInfoComponent,
+        JsonFormatPipePipe,
+        ProductListComponent,
+        UploadMultiImagesComponent,
+    ],
 
   imports: [
     CommonModule,
