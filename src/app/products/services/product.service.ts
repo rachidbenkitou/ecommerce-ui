@@ -49,6 +49,15 @@ export class ProductService {
     return this.http.delete<void>(`${this.Url}/${id}`);
   }
 
+  uploadProductImages(productId: number, files: File[]): Observable<any> {
+    const formData = new FormData();
+
+    for (const file of files) {
+      formData.append('images', file);
+    }
+    return this.http.post(`${this.Url}/${productId}/uploadImages`, formData);
+  }
+
   //loading in router outlet
   public loading = new BehaviorSubject(false);
   loading$ = this.loading.asObservable();

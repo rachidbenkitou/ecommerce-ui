@@ -131,7 +131,6 @@ export class CategoryAddEditComponent implements OnInit {
 
   handleImageSelected(image: any): void {
     this.selectedFile = image.target.files[0];
-    console.log(this.selectedFile)
   }
 
   ngOnInit(): void {

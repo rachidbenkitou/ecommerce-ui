@@ -1,4 +1,4 @@
-import {Component, OnInit, Renderer2} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'app-upload-multi-images',
@@ -6,6 +6,8 @@ import {Component, OnInit, Renderer2} from '@angular/core';
   styleUrls: ['./upload-multi-images.component.scss']
 })
 export class UploadMultiImagesComponent implements OnInit {
+  @Output() selectedImages: EventEmitter<any> = new EventEmitter<any>();
+
   constructor(private renderer: Renderer2) {
   }
 
@@ -129,5 +131,7 @@ export class UploadMultiImagesComponent implements OnInit {
   handleFileInput(event: any) {
     const files: FileList = event.target.files;
     this.filesManager(files);
+    // Emit the image source to the parent component
+    this.selectedImages.emit(event);
   }
 }

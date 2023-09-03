@@ -18,6 +18,7 @@ export class ProductAddEditComponent implements OnInit {
 
 
   @Input() data: any
+  selectedImages: any;
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onAddEdit: EventEmitter<any> = new EventEmitter();
   productForm!: UntypedFormGroup;
@@ -74,6 +75,8 @@ export class ProductAddEditComponent implements OnInit {
     this.submitButton.disabled = true
     this.productService.addProduct(this.productForm.value).subscribe(
       (response: any) => {
+        alert(response?.id)
+        this.uploadFiles(response?.id)
       },
       (error: HttpErrorResponse) => {
         this.submitButton.disabled = false
@@ -140,6 +143,24 @@ export class ProductAddEditComponent implements OnInit {
         this.loadingCategory = false;
       }
     );
+  }
+
+  getSelectedImages(images: any) {
+    this.selectedImages = images.target.files;
+    console.log(this.selectedImages)
+  }
+
+  uploadFiles(productId: number): void {
+    if (this.selectedImages.length!==0) {
+      this.productService.uploadProductImages(productId, this.selectedImages).subscribe(
+        (response) => {
+          console.log('Images uploaded successfully:', response);
+        },
+        (error) => {
+          console.error('Error uploading images:', error);
+        }
+      );
+    }
   }
 
   ngOnInit(): void {
