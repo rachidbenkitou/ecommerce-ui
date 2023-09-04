@@ -8,6 +8,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {CategoryService} from "../../../categories/services/category.service";
 import {Product} from "../../models/product";
 import {Category} from "../../../categories/models/category";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-add-edit',
@@ -17,7 +18,7 @@ import {Category} from "../../../categories/models/category";
 export class ProductAddEditComponent implements OnInit {
 
 
-  @Input() data: any
+  @Input() data: any = {};
   selectedImages: any;
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onAddEdit: EventEmitter<any> = new EventEmitter();
@@ -36,7 +37,12 @@ export class ProductAddEditComponent implements OnInit {
               private categoryService: CategoryService,
               private modalService: NgbModal,
               private dataService: DataService,
-              private toastr: ToastrService,) {
+              private toastr: ToastrService,
+              private activatedRouter: ActivatedRoute,
+              private router: Router) {
+    if (activatedRouter.snapshot.data.addAction) {
+      this.data.operation = "add"
+    }
   }
 
   initForm() {
@@ -53,7 +59,8 @@ export class ProductAddEditComponent implements OnInit {
   }
 
   OncloseModal(from?: string) {
-    this.modalService.dismissAll();
+    //this.modalService.dismissAll();
+    this.router.navigate(['products/search'])
   }
 
 
@@ -75,8 +82,8 @@ export class ProductAddEditComponent implements OnInit {
     this.submitButton.disabled = true
     this.productService.addProduct(this.productForm.value).subscribe(
       (response: any) => {
-        alert(response?.id)
         this.uploadFiles(response?.id)
+        this.router.navigate(['products/search'])
       },
       (error: HttpErrorResponse) => {
         this.submitButton.disabled = false
@@ -96,6 +103,7 @@ export class ProductAddEditComponent implements OnInit {
     this.submitButton.disabled = true
     this.productService.updateProduct(this.productId, this.productForm.value).subscribe(
       (response: any) => {
+        this.router.navigate(['products/search'])
       },
       (error: HttpErrorResponse) => {
         this.submitButton.disabled = false
@@ -151,7 +159,7 @@ export class ProductAddEditComponent implements OnInit {
   }
 
   uploadFiles(productId: number): void {
-    if (this.selectedImages.length!==0) {
+    if (this.selectedImages.length !== 0) {
       this.productService.uploadProductImages(productId, this.selectedImages).subscribe(
         (response) => {
           console.log('Images uploaded successfully:', response);

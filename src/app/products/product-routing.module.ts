@@ -2,6 +2,7 @@ import {Routes} from '@angular/router';
 import {ProductSearchComponent} from "./components/product-search/product-search.component";
 import {ProductPageComponent} from "./containers/product-page/product-page.component";
 import {ProductDetailsComponent} from "./components/product-details/product-details.component";
+import {ProductAddEditComponent} from "./components/product-add-edit/product-add-edit.component";
 
 
 export const ProductRoutes: Routes = [
@@ -23,6 +24,14 @@ export const ProductRoutes: Routes = [
           addButton: true
         },
       },
+      {
+        path: 'add',
+        component: ProductAddEditComponent,
+        data: {
+          title: 'Add product',
+          addAction: true,
+        }
+      },
     ],
   },
   {
@@ -32,4 +41,5 @@ export const ProductRoutes: Routes = [
       title: 'Product details',
     }
   },
+
 ];

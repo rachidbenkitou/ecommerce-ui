@@ -34,7 +34,9 @@ export class ProductPageComponent implements OnInit {
     this.clickActionSubscription = this.actionsService.getAddEvent().subscribe((ev) => {
 
       if (ev === 'product') {
-        this.addProduct();
+        //this.addProduct();
+        this.router.navigate([`/products/add`]);
+
       }
     })
     router.events.subscribe((event => {
