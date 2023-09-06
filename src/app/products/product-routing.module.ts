@@ -25,13 +25,23 @@ export const ProductRoutes: Routes = [
         },
       },
       {
+        path: 'edit/:id',
+        component: ProductAddEditComponent,
+        data: {
+          title: 'Edit product',
+          addAction: false,
+        }
+      },
+      {
         path: 'add',
         component: ProductAddEditComponent,
         data: {
           title: 'Add product',
           addAction: true,
-        }
+        },
+
       },
+
     ],
   },
   {

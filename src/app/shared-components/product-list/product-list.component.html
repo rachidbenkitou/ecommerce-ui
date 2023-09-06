@@ -17,7 +17,7 @@
 
   <ngx-datatable-column [width]="100" [maxWidth]="150" name="Price" prop="price">
     <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
-      {{row?.price || 0}} dh
+      {{row?.price || 0}} dhs
 
     </ng-template>
   </ngx-datatable-column>
@@ -68,7 +68,7 @@
         <i-feather name="eye" class="feather-sm"></i-feather> <!-- <i class="icon-eye"></i> -->
       </a>
       <ng-container>
-        <a class="link cursor-pointer mr-2" ngbTooltip="Modifier" (click)="onEdit(row)">
+        <a class="link cursor-pointer mr-2" ngbTooltip="Modifier" (click)="navigateToEditPage(row)">
           <i-feather name="edit-3" class="feather-sm"></i-feather> <!--<i class="fas fa-pencil-alt"></i> -->
         </a>
       </ng-container>

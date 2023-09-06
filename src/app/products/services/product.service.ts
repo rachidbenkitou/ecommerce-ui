@@ -58,6 +58,11 @@ export class ProductService {
     return this.http.post(`${this.Url}/${productId}/uploadImages`, formData);
   }
 
+  public product=new BehaviorSubject(false)
+  editFormList(product: any){
+    this.product.next(product)
+  }
+
   //loading in router outlet
   public loading = new BehaviorSubject(false);
   loading$ = this.loading.asObservable();

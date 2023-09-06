@@ -6,9 +6,9 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ToastrService} from "ngx-toastr";
 import {HttpErrorResponse} from "@angular/common/http";
 import {CategoryService} from "../../../categories/services/category.service";
-import {Product} from "../../models/product";
 import {Category} from "../../../categories/models/category";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ImageService} from "../../../images/services/image.service";
 
 @Component({
   selector: 'app-product-add-edit',
@@ -19,22 +19,25 @@ export class ProductAddEditComponent implements OnInit {
 
 
   @Input() data: any = {};
+  @Input() product: any
   selectedImages: any;
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onAddEdit: EventEmitter<any> = new EventEmitter();
   productForm!: UntypedFormGroup;
   loadingStates: boolean = false
+  updateState: boolean = false
   loadingCategory: boolean = false
   sppinerDeleteDisplaying: boolean = false
-  product: Product
   categoryies: Category[] = [];
   titre: any
   buttonName: string = 'Enregistrer'
   productId: number;
+  editFormList: boolean = false;
 
   constructor(private formBuilder: UntypedFormBuilder,
               private productService: ProductService,
               private categoryService: CategoryService,
+              private imageService: ImageService,
               private modalService: NgbModal,
               private dataService: DataService,
               private toastr: ToastrService,
@@ -98,9 +101,19 @@ export class ProductAddEditComponent implements OnInit {
     );
   }
 
+  deleteAndUploadImagesIfSelected(): void {
+    if (this.selectedImages !== null && this.selectedImages !== undefined) {
+      //this.imageService.deleteImageByProductId(this.productId)
+      //this.uploadFiles(this.productId)
+      // call api to delete images by product Id
+      // Upload new images
+    }
+  }
+
   editProduct() {
     this.sppinerDeleteDisplaying = true
     this.submitButton.disabled = true
+    this.deleteAndUploadImagesIfSelected()
     this.productService.updateProduct(this.productId, this.productForm.value).subscribe(
       (response: any) => {
         this.router.navigate(['products/search'])
@@ -120,13 +133,10 @@ export class ProductAddEditComponent implements OnInit {
   }
 
   addForm() {
-    //this.form.controls.startDate.setValue(this.today);
   }
 
   editForm() {
-    this.product = this?.data?.product
-    this.productId = this?.product?.id
-
+    this.updateState = true
     this.productForm.controls.id.setValue(this.product?.id);
     this.productForm.controls.name.setValue(this.product?.name);
     this.productForm.controls.categoryId.setValue(this.product?.categoryId);
@@ -135,7 +145,6 @@ export class ProductAddEditComponent implements OnInit {
     this.productForm.controls.comparePrice.setValue(this.product?.comparePrice);
     this.productForm.controls.visibility.setValue(this.product?.visibility);
     this.productForm.controls.description.setValue(this.product?.description);
-
   }
 
   getCategories(): void {
@@ -155,7 +164,6 @@ export class ProductAddEditComponent implements OnInit {
 
   getSelectedImages(images: any) {
     this.selectedImages = images.target.files;
-    console.log(this.selectedImages)
   }
 
   uploadFiles(productId: number): void {
@@ -177,6 +185,10 @@ export class ProductAddEditComponent implements OnInit {
     if (this.data.operation === 'add') {
       this.addForm()
     } else {
+      if (this.productService.product.getValue()) {
+        this.product = this.productService.product.getValue()
+        this.editFormList = true
+      }
       this.editForm()
     }
 

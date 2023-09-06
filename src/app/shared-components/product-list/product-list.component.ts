@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {ProductAddEditComponent} from "../../products/components/product-add-edit/product-add-edit.component";
 import {ProductService} from "../../products/services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Product} from "../../products/models/product";
 
 @Component({
   selector: 'app-product-list',
@@ -25,7 +26,7 @@ export class ProductListComponent implements OnInit {
     private dataService: DataService,
     private modalService: NgbModal,
     private toastr: ToastrService,
-    private route: Router,
+    private router: Router,
     private changeDetectorRef: ChangeDetectorRef) {
   }
 
@@ -34,7 +35,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onDisplay(row: any) {
-    this.route.navigate(['/products', row.id]);
+    this.router.navigate(['/products', row.id]);
   }
 
   onEdit(row) {
@@ -101,4 +102,8 @@ export class ProductListComponent implements OnInit {
     this.tableLimit = this.dataService.tableLimit
   }
 
+  navigateToEditPage(row: Product) {
+    this.productService.editFormList(row)
+    this.router.navigate(['/products/edit', row?.id]);
+  }
 }
