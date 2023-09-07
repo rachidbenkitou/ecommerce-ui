@@ -7,6 +7,7 @@ import {ProductAddEditComponent} from "../../products/components/product-add-edi
 import {ProductService} from "../../products/services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Product} from "../../products/models/product";
+import {ImageService} from "../../images/services/image.service";
 
 @Component({
   selector: 'app-product-list',
@@ -23,6 +24,7 @@ export class ProductListComponent implements OnInit {
   // @ts-ignore
   constructor(
     private productService: ProductService,
+    private imageService: ImageService,
     private dataService: DataService,
     private modalService: NgbModal,
     private toastr: ToastrService,
@@ -71,6 +73,17 @@ export class ProductListComponent implements OnInit {
   submitButton: any
   sppinerDeleteDisplaying: boolean = false
 
+  deleteProductImages(productId: number): void {
+    this.imageService.deleteImageByProductId(productId).subscribe(
+      (response: void) => {
+      },
+      (error: HttpErrorResponse) => {
+      },
+      () => {
+      }
+    );
+
+  }
   deleteProductFunction(productId: number): void {
 
     this.submitButton = (document.getElementById('submitDelete') as HTMLInputElement);
@@ -78,6 +91,7 @@ export class ProductListComponent implements OnInit {
     this.sppinerDeleteDisplaying = true
     this.productService.deleteProduct(productId).subscribe(
       (response: void) => {
+        this.deleteProductImages(productId)
       },
       (error: HttpErrorResponse) => {
         this.sppinerDeleteDisplaying = false

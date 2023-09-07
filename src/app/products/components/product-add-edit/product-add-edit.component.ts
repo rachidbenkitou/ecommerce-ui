@@ -73,7 +73,7 @@ export class ProductAddEditComponent implements OnInit {
     this.sppinerDeleteDisplaying = true
     this.submitButton = (document.getElementById('submitProduct') as HTMLInputElement);
     this.submitButton.disabled = true
-    if (this.data.operation !== "edit") {
+    if (this.data.operation === "add") {
       this.addProduct()
     } else {
       this.editProduct()
@@ -85,13 +85,15 @@ export class ProductAddEditComponent implements OnInit {
     this.submitButton.disabled = true
     this.productService.addProduct(this.productForm.value).subscribe(
       (response: any) => {
-        this.uploadFiles(response?.id)
+        if (this.selectedImages !== null && this.selectedImages !== undefined) {
+          this.uploadFiles(response?.id)
+        }
+
         this.router.navigate(['products/search'])
       },
       (error: HttpErrorResponse) => {
         this.submitButton.disabled = false
         this.sppinerDeleteDisplaying = false
-        this.toastr.error('Problème lors de l\'ajout', 'Oops!');
       },
       () => {
         this.toastr.success('Ajouté avec succès', 'Succès!');
@@ -101,12 +103,22 @@ export class ProductAddEditComponent implements OnInit {
     );
   }
 
+  deleteProductImages(): void {
+    this.imageService.deleteImageByProductId(this.productForm.value?.id).subscribe(
+      (response: void) => {
+        this.uploadFiles(this.productForm.value?.id)
+      },
+      (error: HttpErrorResponse) => {
+      },
+      () => {
+      }
+    );
+
+  }
+
   deleteAndUploadImagesIfSelected(): void {
     if (this.selectedImages !== null && this.selectedImages !== undefined) {
-      //this.imageService.deleteImageByProductId(this.productId)
-      //this.uploadFiles(this.productId)
-      // call api to delete images by product Id
-      // Upload new images
+      this.deleteProductImages()
     }
   }
 
@@ -114,7 +126,7 @@ export class ProductAddEditComponent implements OnInit {
     this.sppinerDeleteDisplaying = true
     this.submitButton.disabled = true
     this.deleteAndUploadImagesIfSelected()
-    this.productService.updateProduct(this.productId, this.productForm.value).subscribe(
+    this.productService.updateProduct(this.productForm.value?.id, this.productForm.value).subscribe(
       (response: any) => {
         this.router.navigate(['products/search'])
       },

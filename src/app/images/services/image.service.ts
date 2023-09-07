@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class ImageService {
   @Output() reload = new EventEmitter<any>();
-  Url: string = `${environment.appUrl}api/products`;
+  Url: string = `${environment.appUrl}api/images`;
 
   constructor(private http: HttpClient) {
   }
