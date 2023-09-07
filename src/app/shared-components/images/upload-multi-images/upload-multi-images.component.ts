@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output, Renderer2} from '@angular/core';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-upload-multi-images',
@@ -8,7 +9,7 @@ import {Component, EventEmitter, OnInit, Output, Renderer2} from '@angular/core'
 export class UploadMultiImagesComponent implements OnInit {
   @Output() selectedImages: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -62,10 +63,12 @@ export class UploadMultiImagesComponent implements OnInit {
     this.filesManager(files);
   }
 
+
   upFile(file) {
     // Only allow images to be dropped
     const imageType = /image.*/;
     if (file.type.match(imageType)) {
+      this.checkImageDimensions(file, 300, 300)
       this.previewFile(file);
     } else {
       console.error('Only images are allowed!', file);
@@ -130,8 +133,32 @@ export class UploadMultiImagesComponent implements OnInit {
 
   handleFileInput(event: any) {
     const files: FileList = event.target.files;
+    const fileArray = Array.from(files);
+    for (const file of fileArray) {
+      this.checkImageDimensions(file,300,300)
+    }
     this.filesManager(files);
     // Emit the image source to the parent component
     this.selectedImages.emit(event);
   }
+
+  checkImageDimensions(imageFile: File, width: number, height: number): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = URL.createObjectURL(imageFile);
+
+      img.onload = () => {
+        if (img.width === width && img.height === height) {
+          resolve();
+        } else {
+          this.toastr.error(`Image should be ${width}x${height} pixels.`, 'Image Size Error');
+        }
+      };
+
+      img.onerror = () => {
+        this.toastr.error('Error loading image.', 'Image Loading Error');
+      };
+    });
+  }
+
 }
