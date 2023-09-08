@@ -142,6 +142,7 @@ export class UploadMultiImagesComponent implements OnInit {
         for (const file of fileArray) {
             try {
                 const isCorrect = await this.checkImageDimensions(file, 300, 400);
+                console.log(isCorrect)
                 if (!isCorrect) {
                     this.isSizeRespected = false;
                     return;
