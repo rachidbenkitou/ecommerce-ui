@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 import {CategoryService} from "../../services/category.service";
 import {CategoryAddEditComponent} from "../category-add-edit/category-add-edit.component";
+import {ImageService} from "../../../images/services/image.service";
 
 @Component({
   selector: 'app-category-list',
@@ -22,6 +23,7 @@ export class CategoryListComponent implements OnInit {
   // @ts-ignore
   constructor(
     private categoryService: CategoryService,
+    private imageService: ImageService,
     private dataService: DataService,
     private modalService: NgbModal,
     private toastr: ToastrService,
@@ -88,12 +90,23 @@ export class CategoryListComponent implements OnInit {
   submitButton: any
   sppinerDeleteDisplaying: boolean = false
 
+  deleteCategoryImages(categoryId: number): void {
+    this.imageService.deleteImageByProductId(categoryId).subscribe(
+        (response: void) => {
+        },
+        (error: HttpErrorResponse) => {
+        },
+        () => {
+        }
+    );
+  }
   deleteCategoryFunction(categoryId: number): void {
     this.submitButton = (document.getElementById('submitDelete') as HTMLInputElement);
     this.submitButton.disabled = true
     this.sppinerDeleteDisplaying = true
     this.categoryService.deleteCategory(categoryId).subscribe(
       (response: void) => {
+        this.deleteCategoryImages(categoryId)
       },
       (error: HttpErrorResponse) => {
         this.sppinerDeleteDisplaying = false

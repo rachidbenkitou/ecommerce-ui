@@ -12,8 +12,10 @@ export class ImageService {
 
   constructor(private http: HttpClient) {
   }
-
+  public deleteImageByCategory(categoryId: number): Observable<void> {
+    return this.http.delete<void>(`${this.Url}/byProduct/${categoryId}`);
+  }
   public deleteImageByProductId(productId: number): Observable<void> {
-    return this.http.delete<void>(`${this.Url}/byProduct/${productId}`);
+    return this.http.delete<void>(`${this.Url}/byCategory/${productId}`);
   }
 }

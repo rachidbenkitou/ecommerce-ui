@@ -86,7 +86,10 @@ export class ProductAddEditComponent implements OnInit {
     this.productService.addProduct(this.productForm.value).subscribe(
       (response: any) => {
         if (this.selectedImages !== null && this.selectedImages !== undefined) {
-          this.uploadFiles(response?.id)
+            this.uploadFiles(response?.id)
+        }
+        if(!this.isSizeRespected){
+            this.toastr.info('Images are not added because they are out of size, click Edit and choose the correct size images.', 'Info!');
         }
 
         this.router.navigate(['products/search'])
@@ -96,11 +99,15 @@ export class ProductAddEditComponent implements OnInit {
         this.sppinerDeleteDisplaying = false
       },
       () => {
-        this.toastr.success('Ajouté avec succès', 'Succès!');
+        if(this.isSizeRespected){
+          this.toastr.success('Added successfully', 'Success!');
+        }
         this.sppinerDeleteDisplaying = false
         this.onAddEdit.emit({source: "close"});
       }
     );
+
+
   }
 
   deleteProductImages(): void {
@@ -120,6 +127,7 @@ export class ProductAddEditComponent implements OnInit {
     if (this.selectedImages !== null && this.selectedImages !== undefined) {
       this.deleteProductImages()
     }
+
   }
 
   editProduct() {
@@ -133,10 +141,11 @@ export class ProductAddEditComponent implements OnInit {
       (error: HttpErrorResponse) => {
         this.submitButton.disabled = false
         this.sppinerDeleteDisplaying = false
-        this.toastr.error('Problème lors de la modification', 'Oops!');
       },
       () => {
-        this.toastr.success('Modifié avec succès', 'Succès!');
+        if(this.isSizeRespected){
+          this.toastr.success('Edited successfully', 'Success!');
+        }
         this.sppinerDeleteDisplaying = false
         this.onAddEdit.emit()
         this.OncloseModal()
@@ -174,8 +183,11 @@ export class ProductAddEditComponent implements OnInit {
     );
   }
 
-  getSelectedImages(images: any) {
-    this.selectedImages = images.target.files;
+  isSizeRespected: boolean = false;
+
+  getSelectedImages(event: any) {
+    this.selectedImages = event.selectedImages.target.files;
+    this.isSizeRespected = event.isSizeRespected
   }
 
   uploadFiles(productId: number): void {
