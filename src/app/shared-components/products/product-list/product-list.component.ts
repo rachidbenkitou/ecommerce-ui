@@ -1,13 +1,13 @@
 import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
-import {DataService} from "../../shared/services/data.service";
+import {DataService} from "../../../shared/services/data.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
-import {ProductAddEditComponent} from "../../products/components/product-add-edit/product-add-edit.component";
-import {ProductService} from "../../products/services/product.service";
+import {ProductAddEditComponent} from "../../../products/components/product-add-edit/product-add-edit.component";
+import {ProductService} from "../../../products/services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
-import {Product} from "../../products/models/product";
-import {ImageService} from "../../images/services/image.service";
+import {Product} from "../../../products/models/product";
+import {ImageService} from "../../../images/services/image.service";
 
 @Component({
   selector: 'app-product-list',

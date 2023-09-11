@@ -2,10 +2,10 @@
 <div class="container">
   <div class="row">
     <ng-container *ngFor="let category of categoryList">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-        <div class="card mb-4 snip1418">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12" >
+        <div class="card mb-4 snip1418 ">
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample85.jpg" alt="sample85" class="card-img-top">
-          <div class="card-body">
+          <div class="card-body" >
             <h3 class="card-title">#{{ category?.id }} {{ category?.name }}</h3>
             <div class="actions-container">
               <span class="badge badge-success" *ngIf="category?.visbility==='visible'">{{ category?.visbility }}</span>
@@ -24,6 +24,9 @@
               </div>
             </div>
           </div>
+
+
+
           <a href="#"></a>
         </div>
       </div>

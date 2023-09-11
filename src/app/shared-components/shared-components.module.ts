@@ -11,7 +11,7 @@ import {FeatherModule} from "angular-feather";
 import {JsonFormatPipePipe} from "./pipe/jsonFormat.pipe";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {TranslateModule} from "@ngx-translate/core";
-import {ProductListComponent} from "./product-list/product-list.component";
+import {ProductListComponent} from "./products/product-list/product-list.component";
 import { UploadMultiImagesComponent } from './images/upload-multi-images/upload-multi-images.component';
 
 

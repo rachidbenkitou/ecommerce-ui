@@ -4,8 +4,12 @@
 .snip1418 {
   font-family: 'Raleway', Arial, sans-serif;
   background: #fff7ff;
+  overflow: hidden;
+  position: relative;
+  height: 250px;
+
   /*
-    position: relative;
+   position: relative;
   overflow: hidden;
   margin: 10px;
   min-width: 230px;
@@ -137,3 +141,4 @@
 .cursor-style {
   cursor: pointer;
 }
+

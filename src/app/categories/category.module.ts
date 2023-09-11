@@ -14,7 +14,7 @@ import {CategoryPageComponent} from './containers/category-page/category-page.co
 import {CategoryRoutes} from "./category-routing.module";
 import {SharedComponentsModule} from "../shared-components/shared-components.module";
 import { ProductsOfACategoryComponent } from './components/products-of-a-category/products-of-a-category.component';
-import { ImageUploadComponent } from './components/image-upload/image-upload.component';
+import { ImageUploadComponent } from '../shared-components/images/image-upload/image-upload.component';
 
 @NgModule({
   declarations: [

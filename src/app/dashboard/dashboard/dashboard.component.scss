@@ -14,7 +14,7 @@
          top: calc(10px);
 
       }
-      
+
       .datatable-body .datatable-body-row .datatable-body-cell {
          font-weight: 600;
          font-size: 0.79rem;
@@ -86,7 +86,8 @@
 
 @media screen and (min-width: 1000px) {
    .row {
-      justify-content: space-around;
+      //justify-content: space-around;
+      justify-content: flex-start;
    }
 
 }

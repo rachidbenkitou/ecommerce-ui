@@ -123,11 +123,7 @@ export class CategoryListComponent implements OnInit {
     );
 
   }
-
-  loading: boolean = false
-
   ngOnInit(): void {
-
     this.tableLimit = this.dataService.tableLimit
   }
 
