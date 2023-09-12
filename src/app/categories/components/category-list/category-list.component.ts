@@ -125,6 +125,7 @@ export class CategoryListComponent implements OnInit {
   }
   ngOnInit(): void {
     this.tableLimit = this.dataService.tableLimit
+
   }
 
 }

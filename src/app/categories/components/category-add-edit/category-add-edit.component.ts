@@ -65,7 +65,7 @@ export class CategoryAddEditComponent implements OnInit {
     this.submitButton.disabled = true
     this.categoryService.addCategory(this.categoryForm.value).subscribe(
       (response: any) => {
-        this.uploadFile(response?.id);
+        this.uploadFile(response?.id)
       },
       (error: HttpErrorResponse) => {
         this.submitButton.disabled = false
@@ -75,7 +75,8 @@ export class CategoryAddEditComponent implements OnInit {
       () => {
         this.toastr.success('Ajouté avec succès', 'Succès!');
         this.sppinerDeleteDisplaying = false
-        this.onAddEdit.emit({source: "close"});
+        //this.onAddEdit.emit({source: "close"});
+        this.OncloseModal()
       }
     );
   }
@@ -122,10 +123,12 @@ export class CategoryAddEditComponent implements OnInit {
       // Replace 'productId' with the actual product ID
       this.imageService.uploadCategoryImage(categoryId, this.selectedFile).subscribe(
         (response) => {
-          console.log('Image uploaded successfully:', response);
         },
         (error) => {
           console.error('Error uploading image:', error);
+        },
+        () => {
+          this.onAddEdit.emit({source: "close"});
         }
       );
     }

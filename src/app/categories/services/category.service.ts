@@ -1,8 +1,9 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {environment} from "../../../environments/environment";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {Category} from "../models/category";
+import {ImageService} from "../../images/services/image.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class CategoryService {
   @Output() reload = new EventEmitter<any>();
   Url: string = `${environment.appUrl}api/categories`;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private imageService: ImageService) {
   }
 
   public findCategories(categoryId?: number, categoryName?: string, visibilty?: string): Observable<Category[]> {
@@ -34,9 +36,8 @@ export class CategoryService {
   public findCategoryById(id: number): Observable<Category> {
     return this.http.get<Category>(`${this.Url}/` + id);
   }
-
-  public addCategory(category: Category): Observable<any> {
-    return this.http.post<any>(`${this.Url}`, category);
+  addCategory(category: Category): Observable<any> {
+    return this.http.post<Category>(`${this.Url}`, category);
   }
 
   public updateCategory(id: number, category: Category): Observable<Category> {

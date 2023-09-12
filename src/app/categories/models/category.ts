@@ -4,4 +4,9 @@ export class Category {
   name: string;
 
   visbility: string;
+
+  categoryImagePath: string;
+
+  categoryUrl: string;
+
 }

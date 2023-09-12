@@ -1,7 +1,7 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +36,13 @@ export class ImageService {
       formData.append('images', file);
     }
     return this.http.post(`${this.Url}/${productId}/uploadImages`, formData);
+  }
+
+  //loading in router outlet
+  public loading = new BehaviorSubject(false);
+  loading$ = this.loading.asObservable();
+
+  changeLoadingState(loading: boolean) {
+    this.loading.next(loading)
   }
 }

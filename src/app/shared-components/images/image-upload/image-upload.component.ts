@@ -41,7 +41,7 @@ export class ImageUploadComponent implements OnInit {
 
     for (const file of fileArray) {
       try {
-        const isCorrect = await this.checkImageDimensions(file, 300, 400);
+        const isCorrect = await this.checkImageDimensions(file, 440, 320);
         if (!isCorrect) {
           return;
         }

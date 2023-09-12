@@ -54,6 +54,7 @@ export class CategorySearchComponent implements OnInit {
     this.categoryService.findCategories(id, name, visibility).subscribe(
       (response: any[]) => {
         this.categoryList = response;
+        console.log(this.categoryList)
       },
       (error: HttpErrorResponse) => {
         this.loading = false;
@@ -84,6 +85,8 @@ export class CategorySearchComponent implements OnInit {
   ngOnInit(): void {
     this.initForm()
     this.getCategories()
+
+
   }
 
 }
