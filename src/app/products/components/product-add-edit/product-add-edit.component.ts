@@ -192,7 +192,7 @@ export class ProductAddEditComponent implements OnInit {
 
   uploadFiles(productId: number): void {
     if (this.selectedImages.length !== 0) {
-      this.productService.uploadProductImages(productId, this.selectedImages).subscribe(
+      this.imageService.uploadProductImages(productId, this.selectedImages).subscribe(
         (response) => {
           console.log('Images uploaded successfully:', response);
         },

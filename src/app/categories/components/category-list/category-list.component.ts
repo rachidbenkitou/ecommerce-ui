@@ -91,7 +91,7 @@ export class CategoryListComponent implements OnInit {
   sppinerDeleteDisplaying: boolean = false
 
   deleteCategoryImages(categoryId: number): void {
-    this.imageService.deleteImageByProductId(categoryId).subscribe(
+    this.imageService.deleteImageByCategoryId(categoryId).subscribe(
         (response: void) => {
         },
         (error: HttpErrorResponse) => {

@@ -49,15 +49,6 @@ export class ProductService {
     return this.http.delete<void>(`${this.Url}/${id}`);
   }
 
-  uploadProductImages(productId: number, files: File[]): Observable<any> {
-    const formData = new FormData();
-
-    for (const file of files) {
-      formData.append('images', file);
-    }
-    return this.http.post(`${this.Url}/${productId}/uploadImages`, formData);
-  }
-
   public product=new BehaviorSubject(false)
   editFormList(product: any){
     this.product.next(product)

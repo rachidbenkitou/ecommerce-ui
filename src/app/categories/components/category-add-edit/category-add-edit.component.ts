@@ -6,6 +6,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {DataService} from "../../../shared/services/data.service";
 import {ToastrService} from "ngx-toastr";
 import {HttpErrorResponse} from "@angular/common/http";
+import {ImageService} from "../../../images/services/image.service";
 
 @Component({
   selector: 'app-category-add-edit',
@@ -28,6 +29,7 @@ export class CategoryAddEditComponent implements OnInit {
 
   constructor(private formBuilder: UntypedFormBuilder,
               private categoryService: CategoryService,
+              private imageService: ImageService,
               private modalService: NgbModal,
               private dataService: DataService,
               private toastr: ToastrService,) {
@@ -118,7 +120,7 @@ export class CategoryAddEditComponent implements OnInit {
   uploadFile(categoryId: number): void {
     if (this.selectedFile) {
       // Replace 'productId' with the actual product ID
-      this.categoryService.uploadCategoryImage(categoryId, this.selectedFile).subscribe(
+      this.imageService.uploadCategoryImage(categoryId, this.selectedFile).subscribe(
         (response) => {
           console.log('Image uploaded successfully:', response);
         },

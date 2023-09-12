@@ -1,6 +1,6 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -12,10 +12,29 @@ export class ImageService {
 
   constructor(private http: HttpClient) {
   }
-  public deleteImageByCategory(categoryId: number): Observable<void> {
-    return this.http.delete<void>(`${this.Url}/byProduct/${categoryId}`);
-  }
   public deleteImageByProductId(productId: number): Observable<void> {
-    return this.http.delete<void>(`${this.Url}/byCategory/${productId}`);
+    return this.http.delete<void>(`${this.Url}/byProduct/${productId}`);
+  }
+  public deleteImageByCategoryId(categoryId: number): Observable<void> {
+    return this.http.delete<void>(`${this.Url}/byCategory/${categoryId}`);
+  }
+  uploadCategoryImage(categoryId: number, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    const options = {
+      params: new HttpParams().set('categoryId', categoryId.toString()) // Set categoryId as a query parameter
+    };
+
+    return this.http.post(`${this.Url}/uploadImage`, formData, options);
+  }
+
+  uploadProductImages(productId: number, files: File[]): Observable<any> {
+    const formData = new FormData();
+
+    for (const file of files) {
+      formData.append('images', file);
+    }
+    return this.http.post(`${this.Url}/${productId}/uploadImages`, formData);
   }
 }
