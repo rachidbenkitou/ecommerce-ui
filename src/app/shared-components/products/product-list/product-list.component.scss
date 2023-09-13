@@ -1,0 +1,23 @@
+/* Style the circular container */
+.image-container {
+  cursor: pointer;
+  width: 45px; /* Set the width */
+  height: 45px; /* Set the height */
+  overflow: hidden; /* Hide the overflow */
+  border-radius: 50%; /* Create a circular shape */
+  display: inline-block; /* Make the container inline-block to fit the content */
+  border: 2px solid #ccc; /* Add a border for visual effect */
+
+}
+
+/* Style the image within the container */
+.image-container img {
+  width: 100%; /* Make the image take up 100% of the container's width */
+  height: auto; /* Allow the image to scale proportionally */
+  display: block; /* Remove any extra spacing caused by inline elements */
+}
+
+.image{
+  background-repeat: no-repeat;
+  background-size: contain;
+}

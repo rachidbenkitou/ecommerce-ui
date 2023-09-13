@@ -8,6 +8,7 @@ import {ProductService} from "../../../products/services/product.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Product} from "../../../products/models/product";
 import {ImageService} from "../../../images/services/image.service";
+import {ProductImagesComponent} from "../../../products/components/product-images/product-images.component";
 
 @Component({
   selector: 'app-product-list',
@@ -119,5 +120,23 @@ export class ProductListComponent implements OnInit {
   navigateToEditPage(row: Product) {
     this.productService.editFormList(row)
     this.router.navigate(['/products/edit', row?.id]);
+  }
+
+  showProductImages(productImagePath: string, id: number) {
+    // Extract the part you want by splitting the string and taking the first two segments
+    const parts = productImagePath.split('/');
+    const folderName = parts.slice(0, 2).join('_');
+    const dialogRef = this.modalService.open(ProductImagesComponent, {
+      size: "xl",
+      backdrop: 'static',
+      keyboard: false,
+    });
+    const data = {
+      operation: "view",
+      productFolderImages: folderName,
+      productId: id,
+      item: {}
+    }
+    dialogRef.componentInstance.data = data;
   }
 }

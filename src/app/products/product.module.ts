@@ -14,6 +14,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {NgSelectModule} from "@ng-select/ng-select";
 import {ProductInfoComponent} from './components/product-info/product-info.component';
 import {SharedComponentsModule} from "../shared-components/shared-components.module";
+import { ProductImagesComponent } from './components/product-images/product-images.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {SharedComponentsModule} from "../shared-components/shared-components.mod
     ProductSearchComponent,
     ProductAddEditComponent,
     ProductPageComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    ProductImagesComponent
   ],
   exports: [],
   imports: [

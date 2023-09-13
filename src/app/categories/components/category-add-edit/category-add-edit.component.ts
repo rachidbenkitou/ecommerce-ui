@@ -74,9 +74,30 @@ export class CategoryAddEditComponent implements OnInit {
       },
       () => {
         this.toastr.success('Ajouté avec succès', 'Succès!');
-        this.sppinerDeleteDisplaying = false
-        //this.onAddEdit.emit({source: "close"});
-        this.OncloseModal()
+        if (!this.selectedFile){
+          this.sppinerDeleteDisplaying = false
+          this.onAddEdit.emit({source: "close"});
+        }
+        //this.OncloseModal()
+      }
+    );
+  }
+
+  deleteAndUploadImagesIfSelected(): void {
+    if (this.selectedFile !== null && this.selectedFile !== undefined) {
+      this.deleteCategoryImages()
+    }
+
+  }
+
+  deleteCategoryImages(): void {
+    this.imageService.deleteImageByCategoryId(this.categoryForm.value?.id).subscribe(
+      (response: void) => {
+        this.uploadFile(this.categoryForm.value?.id)
+      },
+      (error: HttpErrorResponse) => {
+      },
+      () => {
       }
     );
   }
@@ -84,6 +105,7 @@ export class CategoryAddEditComponent implements OnInit {
   editCategory() {
     this.sppinerDeleteDisplaying = true
     this.submitButton.disabled = true
+    this.deleteAndUploadImagesIfSelected()
     this.categoryService.updateCategory(this.categoryId, this.categoryForm.value).subscribe(
       (response: any) => {
       },
@@ -94,8 +116,12 @@ export class CategoryAddEditComponent implements OnInit {
       },
       () => {
         this.toastr.success('Modifié avec succès', 'Succès!');
-        this.sppinerDeleteDisplaying = false
-        this.onAddEdit.emit()
+        //this.sppinerDeleteDisplaying = false
+        //this.onAddEdit.emit()
+        if (!this.selectedFile){
+          this.sppinerDeleteDisplaying = false
+          this.onAddEdit.emit({source: "close"});
+        }
         this.OncloseModal()
       }
     );
@@ -128,6 +154,7 @@ export class CategoryAddEditComponent implements OnInit {
           console.error('Error uploading image:', error);
         },
         () => {
+          this.sppinerDeleteDisplaying = false
           this.onAddEdit.emit({source: "close"});
         }
       );

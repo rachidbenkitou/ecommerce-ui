@@ -66,6 +66,9 @@ export class ProductAddEditComponent implements OnInit {
     this.router.navigate(['products/search'])
   }
 
+  OncloseModal1(from?: string) {
+    this.modalService.dismissAll();
+  }
 
   submitButton: any
 
@@ -86,24 +89,26 @@ export class ProductAddEditComponent implements OnInit {
     this.productService.addProduct(this.productForm.value).subscribe(
       (response: any) => {
         if (this.selectedImages !== null && this.selectedImages !== undefined) {
-            this.uploadFiles(response?.id)
+          this.uploadFiles(response?.id)
         }
-        if(!this.isSizeRespected){
-            this.toastr.info('Images are not added because they are out of size, click Edit and choose the correct size images.', 'Info!');
+        if (!this.isSizeRespected) {
+          this.toastr.info('Images are not added because they are out of size, click Edit and choose the correct size images.', 'Info!');
         }
 
-        this.router.navigate(['products/search'])
       },
       (error: HttpErrorResponse) => {
         this.submitButton.disabled = false
         this.sppinerDeleteDisplaying = false
       },
       () => {
-        if(this.isSizeRespected){
+        if (this.isSizeRespected) {
           this.toastr.success('Added successfully', 'Success!');
         }
-        this.sppinerDeleteDisplaying = false
-        this.onAddEdit.emit({source: "close"});
+
+        if (!this.selectedImages){
+          this.sppinerDeleteDisplaying = false
+          this.router.navigate(['products/search'])
+        }
       }
     );
 
@@ -127,7 +132,6 @@ export class ProductAddEditComponent implements OnInit {
     if (this.selectedImages !== null && this.selectedImages !== undefined) {
       this.deleteProductImages()
     }
-
   }
 
   editProduct() {
@@ -136,19 +140,20 @@ export class ProductAddEditComponent implements OnInit {
     this.deleteAndUploadImagesIfSelected()
     this.productService.updateProduct(this.productForm.value?.id, this.productForm.value).subscribe(
       (response: any) => {
-        this.router.navigate(['products/search'])
       },
       (error: HttpErrorResponse) => {
         this.submitButton.disabled = false
         this.sppinerDeleteDisplaying = false
       },
       () => {
-        if(this.isSizeRespected){
+        if (this.isSizeRespected) {
           this.toastr.success('Edited successfully', 'Success!');
         }
-        this.sppinerDeleteDisplaying = false
-        this.onAddEdit.emit()
-        this.OncloseModal()
+        if (!this.selectedImages){
+          this.sppinerDeleteDisplaying = false
+          this.router.navigate(['products/search'])
+        }
+
       }
     );
   }
@@ -198,6 +203,11 @@ export class ProductAddEditComponent implements OnInit {
         },
         (error) => {
           console.error('Error uploading images:', error);
+        },
+        () => {
+          this.sppinerDeleteDisplaying = false
+          this.router.navigate(['products/search'])
+
         }
       );
     }
