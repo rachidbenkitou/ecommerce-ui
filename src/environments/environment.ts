@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   appUrl: 'http://localhost:9090/',
-  siteUrl: 'http://wimdrive-site.wimsolutions.net',
-  wimAppServiceUrl: 'http://wimdrive-wimapp-service.wimsolutions.net/',
-  wimSaasServiceUrl: 'http://wimdrive-wimsaas-service.wimsolutions.net/'
+  siteUrl: 'http://wimdrive-site.wimsolutions.nettt',
+  wimAppServiceUrl: 'http://wimdrive-wimapp-service.wimsolutions.nettt/',
+  wimSaasServiceUrl: 'http://wimdrive-wimsaas-service.wimsolutions.netttt/'
 };
 /*
  * In development mode, to ignore zone related error stack frames such as

@@ -21,7 +21,6 @@ import {HorizontalNavigationComponent} from './shared/horizontal-header/horizont
 import {HorizontalSidebarComponent} from './shared/horizontal-sidebar/horizontal-sidebar.component';
 
 
-
 import {Approutes} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SpinnerComponent} from './shared/spinner.component';
@@ -39,7 +38,7 @@ import {adapterFactory} from "angular-calendar/date-adapters/date-fns";
 import {FeatherModule} from 'angular-feather';
 import {allIcons} from 'angular-feather/icons';
 import localeFr from '@angular/common/locales/fr';
-import { GuestOrderPageComponent } from './guestOrders/containers/guest-order-page/guest-order-page.component';
+import { ClientOrderDetailsListComponent } from './clientOrders/components/client-order-details-list/client-order-details-list.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -67,9 +66,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     VerticalSidebarComponent,
     HorizontalNavigationComponent,
     HorizontalSidebarComponent,
-    GuestOrderPageComponent
-
-
+    ClientOrderDetailsListComponent,
   ],
   imports: [
     CommonModule,

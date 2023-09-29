@@ -18,6 +18,14 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
+    path: '/categories',
+    title: 'Categories',
+    icon: 'codepen',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+  {
     path: '/products',
     title: 'Products',
     icon: 'archive',
@@ -25,11 +33,10 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
-
   {
-    path: '/categories',
-    title: 'Categories',
-    icon: 'codepen',
+    path: '/clientOrders',
+    title: 'Orders',
+    icon: 'codesandbox',
     class: '',
     extralink: false,
     submenu: []

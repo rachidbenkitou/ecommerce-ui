@@ -10,14 +10,14 @@
 
 }
 
-/* Style the image within the container */
 .image-container img {
-  width: 100%; /* Make the image take up 100% of the container's width */
-  height: auto; /* Allow the image to scale proportionally */
-  display: block; /* Remove any extra spacing caused by inline elements */
+  width: 140%;
+  height: auto;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .image{
-  background-repeat: no-repeat;
-  background-size: contain;
+
 }

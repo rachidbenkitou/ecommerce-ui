@@ -1,6 +1,5 @@
 import {Routes} from '@angular/router';
 import {CategoryDetailsComponent} from "./components/category-details/category-details.component";
-import {GuestOrderPageComponent} from "../guestOrders/containers/guest-order-page/guest-order-page.component";
 import {CategorySearchComponent} from "./components/category-search/category-search.component";
 import {CategoryPageComponent} from "./containers/category-page/category-page.component";
 
@@ -34,6 +33,4 @@ export const CategoryRoutes: Routes = [
       title: 'Category details',
     }
   },
-
-
 ];
