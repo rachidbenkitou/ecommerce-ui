@@ -2,6 +2,7 @@ import {Routes} from '@angular/router';
 import {ClientOrderPageComponent} from "./containers/client-order-page/client-order-page.component";
 import {ClientOrderSearchComponent} from "./components/client-order-search/client-order-search.component";
 import {SaleSearchComponent} from "./components/sale-search/sale-search.component";
+import {ClientOrderDetailsListComponent} from "./components/client-order-details-list/client-order-details-list.component";
 
 export const ClientOrderRoutes: Routes = [
   {
@@ -32,5 +33,12 @@ export const ClientOrderRoutes: Routes = [
         },
       },
     ],
+  },
+  {
+    path: ':id',
+    component: ClientOrderDetailsListComponent,
+    data: {
+      title: 'Client order details',
+    }
   },
 ];

@@ -39,6 +39,7 @@ import {FeatherModule} from 'angular-feather';
 import {allIcons} from 'angular-feather/icons';
 import localeFr from '@angular/common/locales/fr';
 import { ClientOrderDetailsListComponent } from './clientOrders/components/client-order-details-list/client-order-details-list.component';
+import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 
 registerLocaleData(localeFr, 'fr');
 
@@ -68,37 +69,38 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HorizontalSidebarComponent,
     ClientOrderDetailsListComponent,
   ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgbModule,
-    FeatherModule,
-    FeatherModule.pick(allIcons),
-    RouterModule.forRoot(Approutes, {useHash: true}),
-    PerfectScrollbarModule,
-    HttpClientModule,
-    ToastrModule.forRoot(),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
+    imports: [
+        CommonModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        NgbModule,
+        FeatherModule,
+        FeatherModule.pick(allIcons),
+        RouterModule.forRoot(Approutes, {useHash: true}),
+        PerfectScrollbarModule,
+        HttpClientModule,
+        ToastrModule.forRoot(),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
 
-    NgSelectModule,
-    // calendar par Dk
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory,
-    }),
-    //ProspectionModule,
+        NgSelectModule,
+        // calendar par Dk
+        CalendarModule.forRoot({
+            provide: DateAdapter,
+            useFactory: adapterFactory,
+        }),
+        NgxDatatableModule,
+        //ProspectionModule,
 
-  ],
+    ],
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
