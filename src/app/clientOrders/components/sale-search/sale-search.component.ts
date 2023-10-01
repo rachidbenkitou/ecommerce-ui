@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
 import {SaleService} from "../../services/sale.service";
+import {StatusService} from "../../services/status.service";
 
 @Component({
   selector: 'app-sale-search',
@@ -17,15 +18,13 @@ export class SaleSearchComponent implements OnInit {
   saleForm!: UntypedFormGroup;
 
   saleList: any[] = [];
-  saleStatusList: any[] = [
-    {id: 1, name: "PROCESSING"},
-    {id: 2, name: "PENDING"},
-  ];
+  saleStatusList: any[] = [];
 
 
   constructor(
     private formBuilder: UntypedFormBuilder,
     private saleService: SaleService,
+    private statusService: StatusService,
   ) {
     saleService.reload.subscribe(ev => {
       this.reset()
@@ -38,6 +37,19 @@ export class SaleSearchComponent implements OnInit {
       id: [],
       saleStatus: [],
     });
+  }
+
+  getSaleStatusList() {
+    //this.loadingState.emit(true)
+    this.statusService.changeLoadingState(true)
+    this.statusService.findSales().subscribe(
+      (response: any[]) => {
+        this.saleStatusList = response;
+        //this.loadingState.emit(false)
+        this.statusService.changeLoadingState(false)
+      }
+    );
+
   }
 
   public getSales(id?: number, ordersStatus?: string): void {
@@ -78,6 +90,7 @@ export class SaleSearchComponent implements OnInit {
   ngOnInit(): void {
     this.initForm()
     this.getSales()
+    this.getSaleStatusList();
   }
 
 }

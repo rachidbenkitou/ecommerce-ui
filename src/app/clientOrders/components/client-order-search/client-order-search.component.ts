@@ -3,6 +3,7 @@ import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import {CategoryService} from "../../../categories/services/category.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ClientOrderService} from "../../services/client-order.service";
+import {StatusService} from "../../services/status.service";
 
 @Component({
   selector: 'app-client-order-search',
@@ -19,16 +20,12 @@ export class ClientOrderSearchComponent implements OnInit {
   clientOrderForm!: UntypedFormGroup;
 
   clientOrderList: any[] = [];
-  orderStatusList: any[] = [
-    {id: 1, name: "PROCESSING"},
-    {id: 2, name: "PENDING"},
-  ];
-
-  clientOrderDetailsList: any[] = [];
+  clientOrderStatusList: any[] = [];
 
   constructor(
     private formBuilder: UntypedFormBuilder,
     private clientOrderService: ClientOrderService,
+    private statusService: StatusService,
     private categoryService: CategoryService
   ) {
     clientOrderService.reload.subscribe(ev => {
@@ -69,20 +66,18 @@ export class ClientOrderSearchComponent implements OnInit {
     );
   }
 
-  /*
-    getCategoryList() {
-      //this.loadingState.emit(true)
-      this.productService.changeLoadingState(true)
-      this.categoryService.findCategories().subscribe(
-        (response: any[]) => {
-          this.categoryList = response;
-          //this.loadingState.emit(false)
-          this.productService.changeLoadingState(false)
-        }
-      );
+  getClientOrderStatusList() {
+    //this.loadingState.emit(true)
+    this.statusService.changeLoadingState(true)
+    this.statusService.findSales().subscribe(
+      (response: any[]) => {
+        this.clientOrderStatusList = response;
+        //this.loadingState.emit(false)
+        this.statusService.changeLoadingState(false)
+      }
+    );
 
-    }
-   */
+  }
 
   reset(): void {
     this.clientOrderForm.reset()
@@ -99,6 +94,7 @@ export class ClientOrderSearchComponent implements OnInit {
   ngOnInit(): void {
     this.initForm()
     this.getClientOrders()
+    this.getClientOrderStatusList()
   }
 
 }

@@ -55,12 +55,9 @@
 
   <ngx-datatable-column [width]="100" [maxWidth]="170" name="Status" prop="orderStatus">
     <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
-      <ng-container *ngIf="row?.orderStatus === 'PENDING'; else noTemplate">
-        <span class="badge badge-success px-1" style="font-size: 12px"> PENDING</span>
+      <ng-container >
+        <span [ngClass]="row?.clientOrderStatusColor" class="px-1" style="font-size: 12px"> {{row?.clientOrderStatusName}}</span>
       </ng-container>
-      <ng-template #noTemplate>
-        <span class="badge badge-danger px-1" style="font-size: 12px"> PROCESSING </span>
-      </ng-template>
     </ng-template>
   </ngx-datatable-column>
 
