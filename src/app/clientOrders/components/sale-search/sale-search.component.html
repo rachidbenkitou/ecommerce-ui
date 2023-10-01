@@ -1,1 +1,78 @@
-<p>sale-search works!</p>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body px-0 py-1">
+
+        <div class="table">
+          <div class="modal-body pt-0">
+            <form novalidate="" [formGroup]="saleForm" class="search">
+              <div class="form-body">
+                <!-- Row of search items -->
+                <div class="row">
+
+                  <div class="col-md-2 ">
+                    <div class="form-group">
+                      <label for="id">ID</label>
+                      <input type="number" formControlName="id" id="id" class="form-control"
+                             placeholder="Ex. 12"/>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3 px-md-1">
+                    <div class="form-group">
+                      <label>Status</label>
+                      <ng-select
+                        id="saleStatus"
+                        name="saleStatus"
+                        formControlName="saleStatus"
+                        [items]="saleStatusList"
+                        bindValue="name"
+                        bindLabel="name"
+                        notFoundText="no status found"
+                        placeholder="Choose a status">
+                      </ng-select>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-2 search-actions px-0">
+                    <div class="form-group">
+                      <button type="reset" class="btn btn-dark mr-2 button-reset" (click)="reset()">
+                        <i-feather name="refresh-cw" class="feather-sm"></i-feather>
+                      </button>
+                      <button type="submit" class="btn btn-info button-search" id="find-sale-form"
+                              (click)="search()">
+                        <i-feather name="search" class="feather-sm"></i-feather>
+                      </button>
+                    </div>
+                  </div>
+
+
+                </div>
+
+              </div>
+            </form>
+
+            <div class="table">
+              <div class="col-lg-12 col-md-12 col-xl-12" *ngIf="saleList.length===0 && loading===false">
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                  <i-feather name="alert-circle"></i-feather>
+                  <strong class=" h4 alert-heading"> &nbsp;&nbsp;No sale found !</strong>
+
+                </div>
+              </div>
+
+              <app-sale-list
+                *ngIf="(saleList.length!==0 && loading===false) || (saleList.length !== 0 && loading===true)"
+                [saleList]="saleList">
+              </app-sale-list>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

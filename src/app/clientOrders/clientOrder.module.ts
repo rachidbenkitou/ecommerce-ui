@@ -13,6 +13,7 @@ import {ClientOrderSearchComponent} from './components/client-order-search/clien
 import { ClientOrderPageComponent } from './containers/client-order-page/client-order-page.component';
 import { SaleListComponent } from './components/sale-list/sale-list.component';
 import { SaleSearchComponent } from './components/sale-search/sale-search.component';
+import { SaleDetailsListComponent } from './components/sale-details-list/sale-details-list.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SaleSearchComponent } from './components/sale-search/sale-search.compon
     ClientOrderSearchComponent,
     ClientOrderPageComponent,
     SaleListComponent,
-    SaleSearchComponent
+    SaleSearchComponent,
+    SaleDetailsListComponent
   ],
   exports: [],
   imports: [

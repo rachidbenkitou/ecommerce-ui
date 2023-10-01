@@ -1,0 +1,82 @@
+<!-- view -->
+<div class="card">
+  <div class="progress indeterminate" *ngIf="loadingSaleDetails === true ||  loading === true"></div>
+
+  <div *ngIf="active !== undefined" class="card-body">
+    <div *ngIf="screenMode !== 'small'" class="details-buttons">
+      <button type="button" class="btn btn-outline-dark mr-3 button" style="min-width: 90px"
+              (click)="navigateToSalPage()">
+        <!-- <i-feather name="arrow-left" class="feather-sm icon"></i-feather> -->
+        <span class="text">Retour</span></button>
+    </div>
+
+    <div class="row">
+
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs w-100 d-flex flex-nowrap ">
+        <!--------------------------------------Details  candidate----------------------------------- -->
+        <li [ngbNavItem]="1">
+          <a ngbNavLink class="d-flex flex-nowrap">
+            <i-feather name="file-text" class="feather-sm mr-1"></i-feather>
+            <span *ngIf="active === 1 && screenMode === 'small'">Order details</span>
+            <span *ngIf="screenMode !== 'small'">Fiche</span>
+          </a>
+
+          <ng-template ngbNavContent>
+            <ngx-datatable class="material" [headerHeight]="50" [limit]="tableLimit" [columnMode]="'force'"
+                           [footerHeight]="50" [rowHeight]="'auto'" [scrollbarH]="false"
+                           [sorts]="[{prop: 'id', dir: 'desc'}]"
+                           [rows]="saleDetailsList">
+
+              <ngx-datatable-column [width]="100" [maxWidth]="150" name="Id" prop="id">
+                <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
+                  {{row?.id}}
+                </ng-template>
+              </ngx-datatable-column>
+
+
+              <ngx-datatable-column [width]="150" [maxWidth]="190" name="Sale" prop="saleId">
+                <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
+                  #-{{row?.saleId}}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column [width]="190" [maxWidth]="220" name="Product" prop="productId">
+                <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
+
+      <span>
+        #{{row?.productId}}-{{row?.productName}}
+      </span>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column [width]="170" [maxWidth]="190" name="Price" prop="price">
+                <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
+                  {{row?.price}} dhs
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column [width]="120" [maxWidth]="150" name="Quantity" prop="quantity">
+                <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
+                  {{row?.productQuantity}}
+                </ng-template>
+              </ngx-datatable-column>
+
+            </ngx-datatable>
+          </ng-template>
+        </li>
+
+
+      </ul>
+    </div>
+
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
