@@ -41,5 +41,13 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
+  {
+    path: '/clients',
+    title: 'Clients',
+    icon: 'user',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
 
 ];

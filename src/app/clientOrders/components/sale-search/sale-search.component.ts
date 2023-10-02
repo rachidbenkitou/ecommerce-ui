@@ -35,14 +35,14 @@ export class SaleSearchComponent implements OnInit {
   initForm() {
     this.saleForm = this.formBuilder.group({
       id: [],
-      saleStatus: [],
+      saleStatusId: [],
     });
   }
 
   getSaleStatusList() {
     //this.loadingState.emit(true)
     this.statusService.changeLoadingState(true)
-    this.statusService.findSales().subscribe(
+    this.statusService.findStatuses().subscribe(
       (response: any[]) => {
         this.saleStatusList = response;
         //this.loadingState.emit(false)
@@ -52,13 +52,13 @@ export class SaleSearchComponent implements OnInit {
 
   }
 
-  public getSales(id?: number, ordersStatus?: string): void {
+  public getSales(id?: number, saleStatusId?: number): void {
     this.loading = true
     const submitButton = (document.getElementById('find-sale-form') as HTMLInputElement);
     submitButton.disabled = true
     this.saleService.changeLoadingState(true)
     this.isCollapsed1 = false
-    this.saleService.findSales(id, ordersStatus).subscribe(
+    this.saleService.findSales(id, saleStatusId).subscribe(
       (response: any[]) => {
         this.saleList = response;
       },
@@ -84,7 +84,7 @@ export class SaleSearchComponent implements OnInit {
   search(): void {
     this.getSales(
       this?.saleForm.value?.id,
-      this?.saleForm.value?.orderStatus)
+      this?.saleForm.value?.saleStatusId)
   }
 
   ngOnInit(): void {

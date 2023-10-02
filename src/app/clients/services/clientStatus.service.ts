@@ -6,13 +6,13 @@ import {BehaviorSubject, Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class StatusService {
-  Url: string = `${environment.appUrl}api/orderStatuses`;
+export class ClientStatusService {
+  Url: string = `${environment.appUrl}api/clientStatuses`;
 
   constructor(private http: HttpClient) {
   }
 
-  public findStatuses(): Observable<any[]> {
+  public findClientStatuses(): Observable<any[]> {
     return this.http.get<any[]>(`${this.Url}`);
   }
 

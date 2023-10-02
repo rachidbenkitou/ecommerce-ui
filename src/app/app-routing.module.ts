@@ -26,6 +26,10 @@ export const Approutes: Routes = [
         path: 'clientOrders',
         loadChildren: () => import('./clientOrders/clientOrder.module').then(m => m.ClientOrderModule)
       },
+      {
+        path: 'clients',
+        loadChildren: () => import('./clients/client.module').then(m => m.ClientModule)
+      },
     ]
   },
   {

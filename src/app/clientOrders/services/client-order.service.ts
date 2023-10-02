@@ -15,7 +15,7 @@ export class ClientOrderService {
   constructor(private http: HttpClient) {
   }
 
-  public findClientOrders(orderId?: number, clientId?: number, orderStatus?: string): Observable<Product[]> {
+  public findClientOrders(orderId?: number, clientId?: number, orderStatusId?: number): Observable<Product[]> {
     let params: any = new HttpParams();
 
     if (orderId != null) {
@@ -24,8 +24,8 @@ export class ClientOrderService {
     if (clientId != null) {
       params = params.set("clientId", clientId);
     }
-    if (orderStatus != null && orderStatus !== '') {
-      params = params.set("orderStatus", orderStatus);
+    if (orderStatusId != null) {
+      params = params.set("orderStatusId", orderStatusId);
     }
 
     return this.http.get<Product[]>(`${this.Url}`, {params});

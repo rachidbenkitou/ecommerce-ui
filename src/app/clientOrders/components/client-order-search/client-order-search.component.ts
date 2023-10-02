@@ -42,13 +42,13 @@ export class ClientOrderSearchComponent implements OnInit {
     });
   }
 
-  public getClientOrders(id?: number, clientId?: number, ordersStatus?: string): void {
+  public getClientOrders(id?: number, clientId?: number, ordersStatusId?: number): void {
     this.loading = true
     const submitButton = (document.getElementById('find-clientOrder-form') as HTMLInputElement);
     submitButton.disabled = true
     this.clientOrderService.changeLoadingState(true)
     this.isCollapsed1 = false
-    this.clientOrderService.findClientOrders(id, clientId, ordersStatus).subscribe(
+    this.clientOrderService.findClientOrders(id, clientId, ordersStatusId).subscribe(
       (response: any[]) => {
         this.clientOrderList = response;
       },
@@ -69,7 +69,7 @@ export class ClientOrderSearchComponent implements OnInit {
   getClientOrderStatusList() {
     //this.loadingState.emit(true)
     this.statusService.changeLoadingState(true)
-    this.statusService.findSales().subscribe(
+    this.statusService.findStatuses().subscribe(
       (response: any[]) => {
         this.clientOrderStatusList = response;
         //this.loadingState.emit(false)

@@ -14,6 +14,7 @@ import { ClientOrderPageComponent } from './containers/client-order-page/client-
 import { SaleListComponent } from './components/sale-list/sale-list.component';
 import { SaleSearchComponent } from './components/sale-search/sale-search.component';
 import { SaleDetailsListComponent } from './components/sale-details-list/sale-details-list.component';
+import {ClientOrderDetailsListComponent} from "./components/client-order-details-list/client-order-details-list.component";
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { SaleDetailsListComponent } from './components/sale-details-list/sale-de
     ClientOrderPageComponent,
     SaleListComponent,
     SaleSearchComponent,
+    ClientOrderDetailsListComponent,
     SaleDetailsListComponent
   ],
   exports: [],

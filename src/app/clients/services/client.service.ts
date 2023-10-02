@@ -6,21 +6,27 @@ import {BehaviorSubject, Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class SaleService {
+export class ClientService {
   @Output() reload = new EventEmitter<any>();
-  Url: string = `${environment.appUrl}api/sales`;
+  Url: string = `${environment.appUrl}api/clients`;
 
   constructor(private http: HttpClient) {
   }
 
-  public findSales(saleId?: number, saleStatusId?: number): Observable<any[]> {
+  public findClients(clientId?: number, email?: string, phoneNumber?: string, statusId?: number): Observable<any[]> {
     let params: any = new HttpParams();
 
-    if (saleId != null) {
-      params = params.set("id", saleId);
+    if (clientId != null) {
+      params = params.set("clientId", clientId);
     }
-    if (saleStatusId != null) {
-      params = params.set("saleStatusId", saleStatusId);
+    if (email != null && email !== '') {
+      params = params.set("email", email);
+    }
+    if (phoneNumber != null && phoneNumber !== '') {
+      params = params.set("phoneNumber", phoneNumber);
+    }
+    if (statusId != null) {
+      params = params.set("statusId", statusId);
     }
 
     return this.http.get<any[]>(`${this.Url}`, {params});
@@ -34,13 +40,13 @@ export class SaleService {
     this.loading.next(loading)
   }
 
-  private saleId: number;
+  private clientId: number;
 
-  setSaleId(id: number) {
-    this.saleId = id;
+  setClientId(id: number) {
+    this.clientId = id;
   }
 
-  getSaleId(): number {
-    return this.saleId;
+  getClientId(): number {
+    return this.clientId;
   }
 }
