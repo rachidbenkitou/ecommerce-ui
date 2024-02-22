@@ -1,0 +1,42 @@
+<!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="page-breadcrumb">
+    <div class="row pb-0">
+        <div class="col-6 align-self-center">
+            <h4 class="page-title">{{pageInfo?.title}}</h4>
+            <!-- <div class="d-flex align-items-center">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <ng-template ngFor let-url [ngForOf]="pageInfo?.urls" let-last="last">
+                            <li class="breadcrumb-item" *ngIf="!last" [routerLink]="url.url">
+                                <a href='javascript:void(0)'>{{url.title}}</a>
+                            </li>
+                            <li class="breadcrumb-item active" *ngIf="last">{{url.title}}</li>
+                        </ng-template>
+                    </ol>
+                </nav>
+
+            </div> -->
+
+        </div>
+
+        <div [ngStyle]="{'visibility': showAddButton ? 'visible' : 'hidden'}"  class="col-6 align-self-center float-right">
+
+            <button (click)="onAdd()" class="btn btn-cyan rounded-pill py-md-2 ml-auto d-inline-block" style="float: right;">
+
+            <strong class="fas fa-plus font-14 mr-1 text-white"></strong>
+            <span class="ml-1 text-white font-weight-bold">{{addButtonText}}</span>
+          </button>
+
+          <button *ngIf="showSecondAddButton" (click)="onSecondAdd()" class="btn btn-purple rounded-pill py-md-2 ml-auto mr-2 d-inline-block" style="float: right;">
+
+            <strong class="fas fa-plus font-12 mr-1 text-white"></strong>
+            <span class="ml-1 text-white">Rendez-vous</span>
+          </button>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->

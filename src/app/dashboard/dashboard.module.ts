@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
 import { CountToModule } from 'angular-count-to';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../modules/shared/shared.module';
 
 
 
