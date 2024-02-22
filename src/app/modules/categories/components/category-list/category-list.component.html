@@ -2,14 +2,17 @@
 <div class="container">
   <div class="row">
     <ng-container *ngFor="let category of categoryList">
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12" >
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12">
         <div class="card mb-4 snip1418 ">
-          <img [src]="category?.categoryImageUrl" [alt]="category?.categoryImagePath" class="card-img-top">
-          <div class="card-body" >
+          <img
+            [src]="'assets/images/categories/category_'+category?.id+'/'+category?.categoryImagePath"
+            [alt]="category?.categoryImagePath" class="card-img-top">
+          <div class="card-body">
             <h4 class="card-title">#{{ category?.id }} {{ category?.name }}</h4>
             <div class="actions-container">
               <span class="badge badge-success" *ngIf="category?.visbility==='visible'">{{ category?.visbility }}</span>
-              <span class="badge badge-danger" *ngIf="category?.visbility==='invisible'">{{ category?.visbility }}</span>
+              <span class="badge badge-danger"
+                    *ngIf="category?.visbility==='invisible'">{{ category?.visbility }}</span>
               <div class="icons-container">
                 <a class="link cursor-pointer mr-2" ngbTooltip="View products" (click)="onDisplay(category)">
                   <i-feather name="eye" class="feather-sm"></i-feather>
@@ -24,7 +27,6 @@
               </div>
             </div>
           </div>
-
 
 
           <a href="#"></a>
