@@ -133,8 +133,7 @@ export class CategoryAddEditComponent implements OnInit {
   editCategory() {
     this.sppinerDeleteDisplaying = true
     this.submitButton.disabled = true
-    this.deleteAndUploadImagesIfSelected()
-    this.categoryService.updateCategory(this.categoryId, this.categoryForm.value).subscribe(
+    this.categoryService.updateCategory(this.categoryId, this.categoryForm.value, this.selectedFile).subscribe(
       (response: any) => {
       },
       (error: HttpErrorResponse) => {
@@ -146,11 +145,9 @@ export class CategoryAddEditComponent implements OnInit {
         this.toastr.success('Modifié avec succès', 'Succès!');
         //this.sppinerDeleteDisplaying = false
         //this.onAddEdit.emit()
-        if (!this.selectedFile) {
-          this.sppinerDeleteDisplaying = false
-          this.onAddEdit.emit({source: "close"});
-        }
-        this.OncloseModal()
+        this.sppinerDeleteDisplaying = false
+        this.onAddEdit.emit({source: "close"});
+        //this.OncloseModal()
       }
     );
   }

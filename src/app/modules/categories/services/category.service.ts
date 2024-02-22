@@ -45,8 +45,14 @@ export class CategoryService {
     return this.http.post<Category>(`${this.Url}`, formData);
   }
 
-  public updateCategory(id: number, category: Category): Observable<Category> {
-    return this.http.put<Category>(`${this.Url}/${id}`, category);
+  public updateCategory(id: number, category: Category, image?: File): Observable<Category> {
+    const formData = new FormData();
+    // Append hotelDto as JSON object
+    formData.append('categoryDto', JSON.stringify(category));
+    formData.append('image', image);
+    console.log("from service")
+    console.log(image)
+    return this.http.put<Category>(`${this.Url}/${id}`, formData);
   }
 
   public deleteCategory(id: number): Observable<void> {

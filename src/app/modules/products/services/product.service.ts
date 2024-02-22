@@ -50,8 +50,16 @@ export class ProductService {
   }
 
 
-  public updateProduct(id: number, product: any): Observable<Product> {
-    return this.http.put<Product>(`${this.Url}/${id}`, product);
+  public updateProduct(id: number, product: any, images?: File[]): Observable<Product> {
+    const formData = new FormData();
+    // Append hotelDto as JSON object
+    formData.append('productDto', JSON.stringify(product));
+    if (images) {
+      for (const image of images) {
+        formData.append('images', image);
+      }
+    }
+    return this.http.put<Product>(`${this.Url}/${id}`, formData);
   }
 
   public deleteProduct(id: number): Observable<void> {
