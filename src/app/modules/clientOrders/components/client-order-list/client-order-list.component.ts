@@ -1,8 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DataService} from "../../../shared/services/data.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {ClientOrderDetailsService} from "../../services/client-order-details.service";
 import {Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
+import {ClientOrderService} from "../../services/client-order.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-client-order-list',
@@ -20,7 +22,9 @@ export class ClientOrderListComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private route: Router,
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private clientOrderService: ClientOrderService,
+    private toastr: ToastrService) {
   }
 
   OncloseModal() {
@@ -29,6 +33,45 @@ export class ClientOrderListComponent implements OnInit {
 
   getOrderDetails(id: any) {
     this.route.navigate(['/clientOrders', id]);
+  }
+
+  changeClientOrderStatusToAccepted(clientOrderId: number) {
+    this.clientOrderService.changeClientOrderStatusToAccepted(clientOrderId).subscribe(
+      (response: any) => {
+      },
+      (error: HttpErrorResponse) => {
+        this.toastr.error('Problème lors de la modification', 'Oops!');
+      },
+      () => {
+        this.toastr.success('Modifié avec succès', 'Succès!');
+      }
+    );
+  }
+
+  changeClientOrderStatusToReported(clientOrderId: number) {
+    this.clientOrderService.changeClientOrderStatusToReported(clientOrderId).subscribe(
+      (response: any) => {
+      },
+      (error: HttpErrorResponse) => {
+        this.toastr.error('Problème lors de la modification', 'Oops!');
+      },
+      () => {
+        this.toastr.success('Modifié avec succès', 'Succès!');
+      }
+    );
+  }
+
+  changeClientOrderStatusToCancelled(clientOrderId: number) {
+    this.clientOrderService.changeClientOrderStatusToCancelled(clientOrderId).subscribe(
+      (response: any) => {
+      },
+      (error: HttpErrorResponse) => {
+        this.toastr.error('Problème lors de la modification', 'Oops!');
+      },
+      () => {
+        this.toastr.success('Modifié avec succès', 'Succès!');
+      }
+    );
   }
 
   loading: boolean = false

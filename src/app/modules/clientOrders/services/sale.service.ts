@@ -26,6 +26,18 @@ export class SaleService {
     return this.http.get<any[]>(`${this.Url}`, {params});
   }
 
+  public changeSaleStatusToAccepted(saleId: number): Observable<any> {
+    return this.http.patch<any>(`${this.Url}/${saleId}/accepted`, null);
+  }
+
+  public changeSaleStatusToReported(saleId: number): Observable<any> {
+    return this.http.patch<any>(`${this.Url}/${saleId}/reported`, null);
+  }
+
+  public changeSaleStatusToCancelled(saleId: number): Observable<any> {
+    return this.http.patch<any>(`${this.Url}/${saleId}/cancelled`, null);
+  }
+
   //loading in router outlet
   public loading = new BehaviorSubject(false);
   loading$ = this.loading.asObservable();

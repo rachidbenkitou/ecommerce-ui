@@ -31,6 +31,18 @@ export class ClientOrderService {
     return this.http.get<Product[]>(`${this.Url}`, {params});
   }
 
+  public changeClientOrderStatusToAccepted(clientOrderId: number): Observable<any> {
+    return this.http.patch<any>(`${this.Url}/${clientOrderId}/accepted`, null);
+  }
+
+  public changeClientOrderStatusToReported(clientOrderId: number): Observable<any> {
+    return this.http.patch<any>(`${this.Url}/${clientOrderId}/reported`, null);
+  }
+
+  public changeClientOrderStatusToCancelled(clientOrderId: number): Observable<any> {
+    return this.http.patch<any>(`${this.Url}/${clientOrderId}/cancelled`, null);
+  }
+
   public findClientOrderById(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.Url}/` + id);
   }
