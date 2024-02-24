@@ -2,20 +2,20 @@
                [footerHeight]="50" [rowHeight]="'auto'" [scrollbarH]="false" [sorts]="[{prop: 'id', dir: 'desc'}]"
                [rows]="clientOrderList">
 
-  <ngx-datatable-column [width]="70" [maxWidth]="100" name="Id" prop="id">
+  <ngx-datatable-column [width]="70" [maxWidth]="170" name="Id" prop="id">
     <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
       {{row?.id}}
     </ng-template>
   </ngx-datatable-column>
 
 
-  <ngx-datatable-column [width]="100" [maxWidth]="150" name="Price" prop="totalPrice">
+  <ngx-datatable-column [width]="100" [maxWidth]="220" name="Price" prop="totalPrice">
     <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
       {{row?.totalPrice}} Dh
     </ng-template>
   </ngx-datatable-column>
 
-  <ngx-datatable-column [width]="150" [maxWidth]="200" name="Client name" prop="clientEmail">
+  <ngx-datatable-column [width]="150" [maxWidth]="320" name="Client name" prop="clientEmail">
     <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
 
       <span>
@@ -24,7 +24,7 @@
     </ng-template>
   </ngx-datatable-column>
 
-  <ngx-datatable-column [width]="230" [maxWidth]="290" name="Client contact" prop="clientEmail">
+  <ngx-datatable-column [width]="130" [maxWidth]="280" name="Client contact" prop="clientEmail">
     <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
 
       <span>
@@ -40,7 +40,7 @@
     </ng-template>
   </ngx-datatable-column>
 
-  <ngx-datatable-column [width]="130" [maxWidth]="200" name="Date" prop="dateCreated">
+  <ngx-datatable-column [width]="130" [maxWidth]="280" name="Date" prop="dateCreated">
     <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
       <span>
            <i class="far fa-calendar-plus"></i>
@@ -53,25 +53,61 @@
     </ng-template>
   </ngx-datatable-column>
 
-  <ngx-datatable-column [width]="100" [maxWidth]="170" name="Status" prop="orderStatus">
+  <ngx-datatable-column [width]="170" [maxWidth]="300" name="Status" prop="saleStatus">
     <ng-template let-row="row" ngx-datatable-cell-template class="font-16">
-      <ng-container >
-        <span [ngClass]="row?.clientOrderStatusColor" class="px-1" style="font-size: 12px"> {{row?.clientOrderStatusName}}</span>
+      <ng-container *ngIf="row?.clientOrderStatusId === 4;">
+        <span class="badge badge-secondary px-1" style="font-size: 12px">In progress</span>
+      </ng-container>
+      <ng-container *ngIf="row?.clientOrderStatusId === 1;">
+        <span class="badge badge-success px-1" style="font-size: 12px">Accepted</span>
+      </ng-container>
+      <ng-container *ngIf="row?.clientOrderStatusId === 2;">
+        <span class="badge badge-primary px-1" style="font-size: 12px">Reported</span>
+      </ng-container>
+      <ng-container *ngIf="row?.clientOrderStatusId === 3;">
+        <span class="badge badge-danger px-1" style="font-size: 12px">Cancelled</span>
       </ng-container>
     </ng-template>
   </ngx-datatable-column>
 
-
-  <ngx-datatable-column name="Details" [sortable]="false" [width]="70" [maxWidth]="100">
+  <ngx-datatable-column name="Details" [sortable]="false" [width]="130" [maxWidth]="200">
     <ng-template let-row="row" ngx-datatable-cell-template>
-      <a class="link cursor-pointer mr-2" ngbTooltip="Show order details" (click)="getOrderDetails(row?.id)">
-        <i-feather name="eye" class="feather-sm"></i-feather> <!-- <i class="icon-eye"></i> -->
-      </a>
+      <div class="d-flex">
+        <a class="link cursor-pointer mr-2" ngbTooltip="Details" (click)="getOrderDetails(row?.id)">
+          <i-feather name="eye" class="feather-sm"></i-feather>
+        </a>
 
+        <div ngbDropdown container="body" class="d-flex">
+          <a id="dropdownBasic1" ngbDropdownToggle class="link cursor-pointer" container="body"
+             ngbTooltip="Change status">
+            <i-feather name="more-horizontal" class="feather-sm"></i-feather>
+          </a>
+
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+
+            <button class="dropdown-item" *ngIf="row?.clientOrderStatusId===4 || row?.clientOrderStatusId===2"
+                    (click)="changeClientOrderStatusToAccepted(row?.id)">
+              <i-feather name="check" class="feather-sm mr-2"></i-feather>
+              <span style="color: #369450">Accepted</span>
+            </button>
+
+            <button class="dropdown-item" *ngIf="row?.clientOrderStatusId===4"
+                    (click)="changeClientOrderStatusToReported(row?.id)">
+              <i-feather name="refresh-cw" class="feather-sm mr-2"></i-feather>
+              <span style="color: #4f4f52">Reported</span>
+            </button>
+
+            <button class="dropdown-item"
+                    *ngIf="row?.clientOrderStatusId===4 || row?.clientOrderStatusId===2 || row?.clientOrderStatusId ===1"
+                    (click)="changeClientOrderStatusToCancelled(row?.id)">
+              <i-feather name="x" class="feather-sm mr-2"></i-feather>
+              <span style="color: #981D2D">Cancelled</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </ng-template>
   </ngx-datatable-column>
-
-
 </ngx-datatable>
 
 

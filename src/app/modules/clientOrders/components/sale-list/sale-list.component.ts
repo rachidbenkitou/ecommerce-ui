@@ -38,10 +38,11 @@ export class SaleListComponent implements OnInit {
       (response: any) => {
       },
       (error: HttpErrorResponse) => {
-        this.toastr.error('Problème lors de la modification', 'Oops!');
+        this.toastr.error('Problem occurred during modification.', 'Oops!');
       },
       () => {
-        this.toastr.success('Modifié avec succès', 'Succès!');
+        this.toastr.success('Status has been changed successfully.', 'Success!');
+        this.getSales.emit()
       }
     );
   }
@@ -51,10 +52,11 @@ export class SaleListComponent implements OnInit {
       (response: any) => {
       },
       (error: HttpErrorResponse) => {
-        this.toastr.error('Problème lors de la modification', 'Oops!');
+        this.toastr.error('Problem occurred during modification.', 'Oops!');
       },
       () => {
-        this.toastr.success('Modifié avec succès', 'Succès!');
+        this.toastr.success('Status has been changed successfully.', 'Success!');
+        this.getSales.emit()
       }
     );
   }
@@ -64,10 +66,11 @@ export class SaleListComponent implements OnInit {
       (response: any) => {
       },
       (error: HttpErrorResponse) => {
-        this.toastr.error('Problème lors de la modification', 'Oops!');
+        this.toastr.error('Problem occurred during modification.', 'Oops!');
       },
       () => {
-        this.toastr.success('Modifié avec succès', 'Succès!');
+        this.toastr.success('Status has been changed successfully.', 'Success!');
+        this.getSales.emit()
       }
     );
   }

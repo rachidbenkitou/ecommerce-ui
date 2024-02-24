@@ -64,7 +64,7 @@
 
               <app-sale-list
                 *ngIf="(saleList.length!==0 && loading===false) || (saleList.length !== 0 && loading===true)"
-                [saleList]="saleList">
+                [saleList]="saleList" (getSales)="getSales()">
               </app-sale-list>
 
             </div>
