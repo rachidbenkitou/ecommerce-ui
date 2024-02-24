@@ -1,5 +1,5 @@
 import { environment } from 'src/environments/environment';
-import { DataService } from '../../modules/shared/services/data.service';
+import { DataService } from '../../modules/admin-side/shared/services/data.service';
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, } from '@angular/router';

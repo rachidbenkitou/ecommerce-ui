@@ -1,6 +1,6 @@
 import {NgSelectModule} from '@ng-select/ng-select';
-import {DataService} from './modules/shared/services/data.service';
-import {HttpInterceptorInterceptor} from './modules/shared/services/http-interceptor.interceptor';
+import {DataService} from './modules/admin-side/shared/services/data.service';
+import {HttpInterceptorInterceptor} from './modules/admin-side/shared/services/http-interceptor.interceptor';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule, registerLocaleData} from '@angular/common';
@@ -11,19 +11,19 @@ import {RouterModule} from '@angular/router';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import {FullComponent} from './layouts/full/full.component';
-import {BlankComponent} from './layouts/blank/blank.component';
+import {FullComponent} from './modules/admin-side/layouts/full/full.component';
+import {BlankComponent} from './modules/admin-side/layouts/blank/blank.component';
 
-import {VerticalNavigationComponent} from './modules/shared/vertical-header/vertical-navigation.component';
-import {VerticalSidebarComponent} from './modules/shared/vertical-sidebar/vertical-sidebar.component';
-import {BreadcrumbComponent} from './modules/shared/breadcrumb/breadcrumb.component';
-import {HorizontalNavigationComponent} from './modules/shared/horizontal-header/horizontal-navigation.component';
-import {HorizontalSidebarComponent} from './modules/shared/horizontal-sidebar/horizontal-sidebar.component';
+import {VerticalNavigationComponent} from './modules/admin-side/shared/vertical-header/vertical-navigation.component';
+import {VerticalSidebarComponent} from './modules/admin-side/shared/vertical-sidebar/vertical-sidebar.component';
+import {BreadcrumbComponent} from './modules/admin-side/shared/breadcrumb/breadcrumb.component';
+import {HorizontalNavigationComponent} from './modules/admin-side/shared/horizontal-header/horizontal-navigation.component';
+import {HorizontalSidebarComponent} from './modules/admin-side/shared/horizontal-sidebar/horizontal-sidebar.component';
 
 
 import {Approutes} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {SpinnerComponent} from './modules/shared/spinner.component';
+import {SpinnerComponent} from './modules/admin-side/shared/spinner.component';
 
 // import { AuthGuard } from './auth.guard';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
