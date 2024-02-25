@@ -95,10 +95,15 @@ export class ProductAddEditComponent implements OnInit {
           this.sppinerDeleteDisplaying = false
         },
         () => {
-          if (this.isSizeRespected) {
+          // if (this.isSizeRespected) {
+          //   this.toastr.success('Added successfully', 'Success!');
+          // }
+          setTimeout(() => {
+            this.sppinerDeleteDisplaying = false
             this.toastr.success('Added successfully', 'Success!');
-          }
-          this.router.navigate(['products/search'])
+            this.router.navigate(['products/search'])
+          }, 1500);
+
         }
       );
     } else {
@@ -138,13 +143,21 @@ export class ProductAddEditComponent implements OnInit {
         this.sppinerDeleteDisplaying = false
       },
       () => {
-        if (this.isSizeRespected) {
+        // if (this.isSizeRespected) {
+        //   this.toastr.success('Edited successfully', 'Success!');
+        // }
+
+        if (this.selectedImages !== null && this.selectedImages !== undefined) {
+          setTimeout(() => {
+            this.toastr.success('Edited successfully', 'Success!');
+            this.sppinerDeleteDisplaying = false
+            this.router.navigate(['products/search'])
+          }, 1500);
+        } else {
           this.toastr.success('Edited successfully', 'Success!');
-        }
           this.sppinerDeleteDisplaying = false
           this.router.navigate(['products/search'])
-
-
+        }
       }
     );
   }

@@ -32,7 +32,8 @@ export class CategoryAddEditComponent implements OnInit {
               private imageService: ImageService,
               private modalService: NgbModal,
               private dataService: DataService,
-              private toastr: ToastrService,) {
+              private toastr: ToastrService,
+  ) {
   }
 
   initForm() {
@@ -60,29 +61,6 @@ export class CategoryAddEditComponent implements OnInit {
     }
   }
 
-  // addCategory() {
-  //   this.sppinerDeleteDisplaying = true
-  //   this.submitButton.disabled = true
-  //   this.categoryService.addCategory(this.categoryForm.value).subscribe(
-  //     (response: any) => {
-  //       this.uploadFile(response?.id)
-  //     },
-  //     (error: HttpErrorResponse) => {
-  //       this.submitButton.disabled = false
-  //       this.sppinerDeleteDisplaying = false
-  //       this.toastr.error('Problème lors de l\'ajout', 'Oops!');
-  //     },
-  //     () => {
-  //       this.toastr.success('Ajouté avec succès', 'Succès!');
-  //       if (!this.selectedFile) {
-  //         this.sppinerDeleteDisplaying = false
-  //         this.onAddEdit.emit({source: "close"});
-  //       }
-  //       //this.OncloseModal()
-  //     }
-  //   );
-  // }
-
   addCategory() {
     this.sppinerDeleteDisplaying = true
     this.submitButton.disabled = true
@@ -95,9 +73,13 @@ export class CategoryAddEditComponent implements OnInit {
           this.sppinerDeleteDisplaying = false
         },
         () => {
-          this.sppinerDeleteDisplaying = false
-          this.onAddEdit.emit({source: "close"});
-          this.toastr.success('Ajouté avec succès', 'Succès!');
+          setTimeout(() => {
+            this.sppinerDeleteDisplaying = false
+            this.onAddEdit.emit({source: "close"});
+            this.toastr.success('Ajouté avec succès', 'Succès!');
+          }, 1500);
+
+
           // if (this.isSizeRespected) {
           //   this.toastr.success('Added successfully', 'Success!');
           // }
@@ -142,11 +124,18 @@ export class CategoryAddEditComponent implements OnInit {
         this.toastr.error('Problème lors de la modification', 'Oops!');
       },
       () => {
-        this.toastr.success('Modifié avec succès', 'Succès!');
-        //this.sppinerDeleteDisplaying = false
-        //this.onAddEdit.emit()
-        this.sppinerDeleteDisplaying = false
-        this.onAddEdit.emit({source: "close"});
+
+        if (this.selectedFile) {
+          setTimeout(() => {
+            this.toastr.success('Modifié avec succès', 'Succès!');
+            this.sppinerDeleteDisplaying = false
+            this.onAddEdit.emit({source: "close"});
+          }, 1500);
+        } else {
+          this.toastr.success('Modifié avec succès', 'Succès!');
+          this.sppinerDeleteDisplaying = false
+          this.onAddEdit.emit({source: "close"});
+        }
         //this.OncloseModal()
       }
     );
